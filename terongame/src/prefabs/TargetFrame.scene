@@ -1,0 +1,201 @@
+{
+    "id": "a4e73df6-b2b1-4ec4-9155-2cb8c69ed587",
+    "sceneType": "PREFAB",
+    "settings": {
+        "snapWidth": 4,
+        "snapHeight": 4,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "4b21f070-017f-4b54-b7ae-382a809ee0c3",
+            "label": "container_1",
+            "components": [],
+            "x": 290,
+            "y": 170,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "2d4d73f4-de9d-49cc-b4a9-9a5dd94732df",
+                    "label": "targetFrame",
+                    "components": [],
+                    "texture": {
+                        "key": "targetFrame"
+                    },
+                    "x": 70,
+                    "y": -2,
+                    "originX": 0,
+                    "originY": 0
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "23bd093e-c738-4b3c-92e6-00c4898281af",
+                    "label": "hpBackground",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 73,
+                    "y": 23,
+                    "originX": 0,
+                    "originY": 0,
+                    "isFilled": true,
+                    "fillColor": "#6f9066",
+                    "width": 130,
+                    "height": 22
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "aa3941e3-f8fd-4892-8168-86b450e82372",
+                    "label": "hpForeground",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 73,
+                    "y": 23,
+                    "scaleX": 0.75,
+                    "originX": 0,
+                    "originY": 0,
+                    "isFilled": true,
+                    "fillColor": "#008a00",
+                    "width": 130,
+                    "height": 22
+                },
+                {
+                    "type": "Text",
+                    "id": "c6ffb518-96a5-42bc-81f1-2d0b297195c0",
+                    "label": "targetName",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 95,
+                    "y": 3,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Deadly Construct 1",
+                    "fontFamily": "Arial Narrow",
+                    "fontSize": "11px"
+                },
+                {
+                    "type": "Text",
+                    "id": "456831c3-e4ff-403f-9698-68a29006a7bf",
+                    "label": "hpPercentage",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 205,
+                    "y": 28,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "75%",
+                    "fontFamily": "Arial",
+                    "fontSize": "10px"
+                },
+                {
+                    "type": "Text",
+                    "id": "43c73f63-ef44-4cfe-81b2-878513d0d7b8",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 205,
+                    "y": 45,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "100%",
+                    "fontFamily": "Arial",
+                    "fontSize": "10px"
+                },
+                {
+                    "type": "Image",
+                    "id": "3cf470b3-c3da-48cf-b01a-3fe7689bdd4d",
+                    "label": "spell_spiritLance",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritLance"
+                    },
+                    "x": 227,
+                    "y": 73,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "type": "Image",
+                    "id": "9b0e1e9f-1400-4da8-b00c-07be93f2b5c8",
+                    "label": "spell_spiritChains",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritChains"
+                    },
+                    "x": 197,
+                    "y": 73,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "type": "Text",
+                    "id": "0dbb1fb5-4c70-45f1-b6cf-2618ca18912f",
+                    "label": "chainsTimer",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 183,
+                    "y": 88,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "15",
+                    "fixedWidth": 56,
+                    "align": "center",
+                    "fontSize": "24px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "968e2b18-b5ff-4529-a18c-bb104a504b60",
+                    "label": "lanceTimer",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 213,
+                    "y": 88,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "15",
+                    "fixedWidth": 56,
+                    "align": "center",
+                    "fontSize": "24px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "dde568ff-c183-4302-9fd4-2b924e230062",
+                    "label": "lanceStacks",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 229,
+                    "y": 71,
+                    "scaleX": 0.66,
+                    "scaleY": 0.66,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "2",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}

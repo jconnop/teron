@@ -1,0 +1,38 @@
+{
+    "id": "759d9654-e628-4ab3-8420-abf64d50c8ca",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "872ba60f-40fb-4cd7-a942-38daf3a33b66",
+            "label": "balls5",
+            "components": [
+                "Physics"
+            ],
+            "texture": {
+                "key": "balls",
+                "frame": 0
+            },
+            "x": 306,
+            "y": 177,
+            "tintTopLeft": "#fe8484",
+            "tintTopRight": "#fe8484",
+            "tintBottomLeft": "#fe8484",
+            "tintBottomRight": "#fe8484"
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}

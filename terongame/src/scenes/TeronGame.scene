@@ -1,0 +1,1188 @@
+{
+    "id": "0ed7536a-4451-4751-8016-c7ad154f78cf",
+    "sceneType": "SCENE",
+    "settings": {
+        "snapWidth": 10,
+        "snapHeight": 10,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "TeronGame",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "f56cd98d-27f3-4005-ab9c-c4cbaaf37c3b",
+            "label": "background",
+            "components": [],
+            "texture": {
+                "key": "background"
+            },
+            "x": 300,
+            "y": 400
+        },
+        {
+            "type": "Rectangle",
+            "id": "d6c6a494-6516-4725-b808-04fd7aaf6648",
+            "label": "wall1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 134,
+            "y": 782,
+            "width": 128,
+            "height": 40
+        },
+        {
+            "type": "Rectangle",
+            "id": "0a12c735-030e-4b03-9183-4b0288e71007",
+            "label": "rectangle",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 39,
+            "y": 506,
+            "width": 50,
+            "height": 550
+        },
+        {
+            "type": "Rectangle",
+            "id": "16c5d0e0-3d98-41c5-9066-1f924cbc493a",
+            "label": "rectangle_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 137,
+            "y": 243,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "d9224579-04c6-4274-8178-073014cb06c2",
+            "label": "rectangle_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 216,
+            "y": 291,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "7199863f-f5ff-4f5e-be7a-a78818862544",
+            "label": "rectangle_2_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 216,
+            "y": 259,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "39354eb1-2d3c-47f2-9f48-effa38d1e165",
+            "label": "rectangle_2_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 197,
+            "y": 234,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b97d6a0f-386b-4363-8a73-e1b9f4556e42",
+            "label": "rectangle_2_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 194,
+            "y": 791,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "5aee6897-f02a-4beb-8725-19a42157168b",
+            "label": "rectangle_2_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 406,
+            "y": 789,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b6de5336-4214-4e11-804f-f802ec39e087",
+            "label": "rectangle_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 556,
+            "y": 523,
+            "width": 50,
+            "height": 550
+        },
+        {
+            "type": "Rectangle",
+            "id": "aa0eaf1a-6b63-43d0-99a9-608dc3550faf",
+            "label": "wall1_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 487,
+            "y": 784,
+            "width": 128,
+            "height": 40
+        },
+        {
+            "type": "Rectangle",
+            "id": "a7ab93d9-4682-4a5e-b47b-5ce3675b5b9f",
+            "label": "rectangle_1_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 470,
+            "y": 243,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "7d9a574f-992e-4786-ade8-bbaf9dc29329",
+            "label": "rectangle_2_1_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 391,
+            "y": 291,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "9efb709d-e9b1-426a-9acc-1376eaad6b50",
+            "label": "rectangle_2_1_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 391,
+            "y": 260,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "d9833cb1-858b-4580-9280-5eacae75df84",
+            "label": "rectangle_2_1_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 409,
+            "y": 238,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "4c34c605-296a-44aa-ab53-38bcbb54a9e9",
+            "label": "rectangle_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 470,
+            "y": 119,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "4e09fa2e-950d-49ee-b2f0-c6e5e0dda603",
+            "label": "rectangle_4_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 137,
+            "y": 118,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Rectangle",
+            "id": "ccb07212-2793-409d-bd9f-f2baff51e147",
+            "label": "rectangle_4_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 299,
+            "y": 30,
+            "width": 256,
+            "height": 48
+        },
+        {
+            "type": "Rectangle",
+            "id": "fe563618-6763-4ad9-b757-fa9e3a47f9dd",
+            "label": "rectangle_5",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 202,
+            "y": 57,
+            "width": 48,
+            "height": 48
+        },
+        {
+            "type": "Rectangle",
+            "id": "d9d7ed86-7cf3-4e06-92d8-d4f3750e981d",
+            "label": "rectangle_5_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 408,
+            "y": 61,
+            "width": 48,
+            "height": 48
+        },
+        {
+            "type": "Rectangle",
+            "id": "afac8caf-9612-4ac7-818d-b8fb6633c98c",
+            "label": "rectangle_2_2_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 385,
+            "y": 53,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "2ee2e79e-4fdf-4ca1-80d5-f6a0b0c78917",
+            "label": "rectangle_2_2_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 413,
+            "y": 82,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "71cd7414-f4de-491b-8fbc-81343ff4a8ae",
+            "label": "rectangle_2_2_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 230,
+            "y": 49,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b22d61b0-8fe3-44e8-a0bc-cd6ff7bf28a3",
+            "label": "rectangle_2_2_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 191,
+            "y": 222,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "993a2143-56cb-4016-88ed-86bfb45658b7",
+            "label": "rectangle_2_2_5",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 207,
+            "y": 252,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "204f3c6f-9119-4472-9997-853b9f638ef9",
+            "label": "rectangle_2_2_4_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 199,
+            "y": 78,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "378f7042-5b1c-43dd-830c-4439ab4b990a",
+            "label": "rectangle_2_2_4_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 367,
+            "y": 44,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "fc1bf4d0-c25e-4cd6-a91f-d76c846fcf41",
+            "label": "rectangle_2_2_4_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 402,
+            "y": 250,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b1b71a9a-3df6-48af-a78e-e281de165e12",
+            "label": "rectangle_2_2_4_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 415,
+            "y": 229,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "1722f8c8-6c2b-42f4-a3e0-27d58baba6f3",
+            "label": "rectangle_2_2_3_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 189,
+            "y": 783,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "ccfb6406-b99c-4df4-b42a-4c9b54dc6759",
+            "label": "rectangle_2_2_3_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 201,
+            "y": 803,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "e6c79a3b-4c84-4522-821d-5cd75bbe08b3",
+            "label": "rectangle_2_2_3_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 389,
+            "y": 809,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "13feaaa5-3ea4-4c51-b6bd-d2321384fcde",
+            "label": "rectangle_2_2_3_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 396,
+            "y": 800,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "6b152356-c17a-4c4a-b288-c8004984400c",
+            "label": "rectangle_2_2_3_5",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 402,
+            "y": 794,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "68dafae1-7a25-45f8-9615-cbe98c974d5b",
+            "label": "rectangle_2_2_3_6",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 415,
+            "y": 783,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "3a7017ec-a4f9-41de-89d1-2d23ae2744bf",
+            "label": "rectangle_2_2_3_7",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 186,
+            "y": 209,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "ae3ebd80-9ca0-4cc0-aed5-b0b664ebbf56",
+            "label": "rectangle_2_2_3_8",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 394,
+            "y": 62,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "cfbe3ef8-a3e9-4964-b68c-c72752a2ec69",
+            "label": "rectangle_2_2_3_9",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 379,
+            "y": 50,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "ffff3ba0-642c-4999-b48a-cdb2341e0ca7",
+            "label": "rectangle_2_2_3_10",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 408,
+            "y": 76,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "82dfbc2c-b479-4496-aaf3-e9aa4a7d8641",
+            "label": "rectangle_2_2_3_11",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 419,
+            "y": 89,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "4fc42d51-54fd-422e-823b-f49d739f724a",
+            "label": "rectangle_2_2_3_12",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 245,
+            "y": 40,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "59416ee7-ea41-409b-901b-b5ff0cef5da6",
+            "label": "rectangle_2_2_3_13",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 220,
+            "y": 54,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "d322c94d-3118-41ca-b8a7-a8c6f66744db",
+            "label": "rectangle_2_2_3_14",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 191,
+            "y": 81,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "71c13f28-d82e-48a9-8787-8467667c9ca4",
+            "label": "rectangle_2_2_3_15",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 64,
+            "y": 291,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "6d1f265e-f59e-4543-a144-bc17bdf4a1fa",
+            "label": "rectangle_2_2_3_16",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 61,
+            "y": 780,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b4c95437-5466-4102-a667-ded3ed54e1f3",
+            "label": "rectangle_2_2_3_17",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 201,
+            "y": 290,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "a11d46b0-1c97-4b1c-b98d-307730284a3e",
+            "label": "rectangle_2_2_3_7_1",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 204,
+            "y": 245,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "b0006ab5-ce1e-425e-bf8b-4e4302f89c46",
+            "label": "rectangle_2_2_3_7_2",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 200,
+            "y": 241,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "55bfa4b3-40d9-4c87-9604-ebe77a741bea",
+            "label": "rectangle_2_2_3_7_3",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 200,
+            "y": 237,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "9181f72e-b896-4414-b575-aa5710dc3d6d",
+            "label": "rectangle_2_2_3_7_4",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 189,
+            "y": 217,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "6a396c08-fce9-4877-a320-d3598c857ab6",
+            "label": "rectangle_2_2_3_7_5",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 195,
+            "y": 227,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "d977136f-2136-46e4-9188-8cb330ccd6af",
+            "label": "rectangle_2_2_3_7_6",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 207,
+            "y": 248,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "ae079514-a66a-4964-95a9-06cee28a4bb8",
+            "label": "rectangle_2_2_3_7_7",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 211,
+            "y": 252,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Rectangle",
+            "id": "e7d3ec2b-9c61-401b-99a9-bde096fa15ce",
+            "label": "rectangle_2_2_3_7_8",
+            "components": [
+                "PhysicsStatic"
+            ],
+            "x": 204,
+            "y": 241,
+            "width": 32,
+            "height": 32
+        },
+        {
+            "type": "Ellipse",
+            "id": "bc1f25b2-44a5-48ab-855a-2378f560d15a",
+            "label": "ellipse_1",
+            "components": [],
+            "x": 320,
+            "y": 185,
+            "isFilled": true,
+            "fillColor": "#f1e032",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "b423edfe-8f72-4d7d-abbb-21709c5b6eb4",
+            "label": "ellipse_2",
+            "components": [],
+            "x": 307,
+            "y": 121,
+            "isFilled": true,
+            "fillColor": "#815325",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "af0d4c3f-58b9-4341-8034-3b1d615a1566",
+            "label": "ellipse_2_1",
+            "components": [],
+            "x": 345,
+            "y": 169,
+            "isFilled": true,
+            "fillColor": "#815325",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "2fd78b9d-4741-474c-bbda-5643c44ac1bd",
+            "label": "ellipse_2_1_1",
+            "components": [],
+            "x": 281,
+            "y": 188,
+            "isFilled": true,
+            "fillColor": "#2f27e5",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "c529c103-b404-48e5-b43e-39fb0a2d9a6a",
+            "label": "ellipse_2_1_1_1",
+            "components": [],
+            "x": 391,
+            "y": 149,
+            "isFilled": true,
+            "fillColor": "#2f27e5",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "38d19e95-005c-4621-9339-ef5869bfdb64",
+            "label": "ellipse_2_1_1_2",
+            "components": [],
+            "x": 277,
+            "y": 171,
+            "isFilled": true,
+            "fillColor": "#f25b0d",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "177b2431-71e2-4efa-8d64-8541f2cd864b",
+            "label": "ellipse_2_1_1_2_1",
+            "components": [],
+            "x": 273,
+            "y": 75,
+            "isFilled": true,
+            "fillColor": "#f25b0d",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "431db26b-765e-4ebe-b794-92107cb43b10",
+            "label": "ellipse_1_1",
+            "components": [],
+            "x": 329,
+            "y": 171,
+            "isFilled": true,
+            "fillColor": "#f563e8",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "ea740e8c-624f-4803-970a-33ae243fbc33",
+            "label": "ellipse_1_1_1",
+            "components": [],
+            "x": 391,
+            "y": 127,
+            "isFilled": true,
+            "fillColor": "#f563e8",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "41ce6273-9984-4cca-8a42-36fb1f5d039d",
+            "label": "ellipse_1_1_2",
+            "components": [],
+            "x": 264,
+            "y": 183,
+            "isFilled": true,
+            "fillColor": "#f563e8",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "5b32e656-a09c-435f-8290-ac06340a3932",
+            "label": "ellipse_1_1_1_1",
+            "components": [],
+            "x": 223,
+            "y": 103,
+            "isFilled": true,
+            "fillColor": "#4abafa",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "09b25965-7b63-46d9-ac20-6e36dd61e676",
+            "label": "ellipse_1_1_1_1_1",
+            "components": [],
+            "x": 374,
+            "y": 98,
+            "isFilled": true,
+            "fillColor": "#4abafa",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "6c5abf65-12d0-426b-a160-d253701f2f16",
+            "label": "ellipse_1_1_1_1_2",
+            "components": [],
+            "x": 241,
+            "y": 131,
+            "isFilled": true,
+            "fillColor": "#a233f0",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "2d12bf4c-0d26-45de-adf4-367013c45583",
+            "label": "ellipse_1_1_1_1_2_1",
+            "components": [],
+            "x": 217,
+            "y": 163,
+            "isFilled": true,
+            "fillColor": "#a233f0",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "a4fc2bb2-3533-4fb0-841a-d071287daf0f",
+            "label": "ellipse_1_1_1_1_2_2",
+            "components": [],
+            "x": 353,
+            "y": 79,
+            "isFilled": true,
+            "fillColor": "#a233f0",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "9844ad80-cf7e-43bc-a963-d0d4ebba6392",
+            "label": "ellipse_1_1_1_1_2_3",
+            "components": [],
+            "x": 351,
+            "y": 112,
+            "isFilled": true,
+            "fillColor": "#a233f0",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "c9373145-49c9-4e54-9dc0-5c8f53549d98",
+            "label": "ellipse_1_1_1_1_2_4",
+            "components": [],
+            "x": 218,
+            "y": 124,
+            "isFilled": true,
+            "fillColor": "#ffffff",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "1c1f1d5f-4e7e-4784-a5fa-557a1d60b6dd",
+            "label": "ellipse_1_1_1_1_2_4_1",
+            "components": [],
+            "x": 331,
+            "y": 73,
+            "isFilled": true,
+            "fillColor": "#ffffff",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "6cd0a1a3-ea03-45d6-a037-6a35495318e4",
+            "label": "ellipse_1_1_1_2",
+            "components": [],
+            "x": 245,
+            "y": 83,
+            "isFilled": true,
+            "fillColor": "#3ec42c",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "9d46fcd3-a8a2-48e3-b928-2f7976c8d71d",
+            "label": "ellipse_1_1_1_2_1",
+            "components": [],
+            "x": 291,
+            "y": 67,
+            "isFilled": true,
+            "fillColor": "#3ec42c",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "4e84b258-eaa0-482f-a797-c584c418e136",
+            "label": "ellipse_1_1_1_2_2",
+            "components": [],
+            "x": 244,
+            "y": 107,
+            "isFilled": true,
+            "fillColor": "#3ec42c",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "8e6fc974-16c1-4de3-974f-3b56cc1d668b",
+            "label": "ellipse_2_1_1_1_1",
+            "components": [],
+            "x": 218,
+            "y": 144,
+            "isFilled": true,
+            "fillColor": "#2f27e5",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "16603bac-8bcc-4da0-b07c-c9cd40baf6e8",
+            "label": "ellipse_2_1_1_1_2",
+            "components": [],
+            "x": 311,
+            "y": 69,
+            "isFilled": true,
+            "fillColor": "#2f27e5",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "2b24dcfc-6720-4627-9c81-af20449294fc",
+            "label": "ellipse_2_1_1_3",
+            "components": [],
+            "x": 338,
+            "y": 184,
+            "isFilled": true,
+            "fillColor": "#2f27e5",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "type": "Ellipse",
+            "id": "2139429e-0592-4e79-9d07-3e47bb2b0939",
+            "label": "ellipse_1_1_1_1_2_4_1_1",
+            "components": [],
+            "x": 391,
+            "y": 170,
+            "isFilled": true,
+            "fillColor": "#ffffff",
+            "width": 17,
+            "height": 17
+        },
+        {
+            "prefabId": "5cdfa252-f341-4e1d-b1c4-fd05a6f6b87c",
+            "id": "d037e38e-fa40-489c-9521-d0e3c110a652",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY"
+            ],
+            "label": "debuff",
+            "scope": "CLASS",
+            "components": [],
+            "x": 527,
+            "y": 163,
+            "scaleX": 0.75,
+            "scaleY": 0.75,
+            "nestedPrefabs": []
+        },
+        {
+            "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
+            "id": "bd65a029-a6b6-498d-b345-c89a922ce167",
+            "unlock": [
+                "x",
+                "y",
+                "Named.name"
+            ],
+            "label": "ghost_4",
+            "scope": "CLASS",
+            "components": [],
+            "Named.name": "Deadly Construct 4",
+            "x": 355,
+            "y": 699
+        },
+        {
+            "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
+            "id": "9bf8fb99-bd59-486b-a581-bfce7bfa272f",
+            "unlock": [
+                "x",
+                "y",
+                "Named.name"
+            ],
+            "label": "ghost_1",
+            "scope": "CLASS",
+            "components": [],
+            "Named.name": "Deadly Construct 1",
+            "x": 254,
+            "y": 696
+        },
+        {
+            "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
+            "id": "5a7397ee-cd7f-4f60-8d62-94c004e4951b",
+            "unlock": [
+                "x",
+                "y",
+                "Named.name"
+            ],
+            "label": "ghost_2",
+            "scope": "CLASS",
+            "components": [],
+            "Named.name": "Deadly Construct 2",
+            "x": 287,
+            "y": 698
+        },
+        {
+            "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
+            "id": "fcd95dd7-f6ea-417c-987d-e45758dd0a50",
+            "unlock": [
+                "x",
+                "y",
+                "Named.name"
+            ],
+            "label": "ghost_3",
+            "scope": "CLASS",
+            "components": [],
+            "Named.name": "Deadly Construct 3",
+            "x": 325,
+            "y": 700
+        },
+        {
+            "prefabId": "759d9654-e628-4ab3-8420-abf64d50c8ca",
+            "id": "676533b0-45e2-470b-ab2e-1e4de1a446aa",
+            "unlock": [
+                "x",
+                "y",
+                "tintFill",
+                "tintTopLeft",
+                "tintTopRight",
+                "tintBottomLeft",
+                "tintBottomRight"
+            ],
+            "label": "player",
+            "scope": "CLASS",
+            "components": [],
+            "x": 245,
+            "y": 152
+        },
+        {
+            "type": "Text",
+            "id": "3b6e6d39-67af-4c03-918a-d2be8213d22a",
+            "label": "loseText",
+            "scope": "CLASS",
+            "components": [],
+            "x": 106,
+            "y": 387,
+            "originX": 0,
+            "originY": 0,
+            "visible": false,
+            "tintTopLeft": "#fd0000",
+            "tintTopRight": "#fd0000",
+            "tintBottomLeft": "#fd0000",
+            "tintBottomRight": "#fd0000",
+            "text": "You lost!\n   LOL",
+            "fontSize": "72px",
+            "fontStyle": "bold"
+        },
+        {
+            "prefabId": "bc136f2a-b964-43df-986e-a27308a6876e",
+            "id": "9aee6aab-618f-43cd-b456-a2d228839cf3",
+            "unlock": [
+                "x",
+                "y",
+                "scaleX",
+                "scaleY",
+                "visible"
+            ],
+            "label": "abilityBar",
+            "scope": "CLASS",
+            "components": [],
+            "x": 193,
+            "y": 766,
+            "scaleX": 0.66,
+            "scaleY": 0.66,
+            "visible": false,
+            "nestedPrefabs": []
+        },
+        {
+            "prefabId": "a4e73df6-b2b1-4ec4-9155-2cb8c69ed587",
+            "id": "48717ead-64f1-4c05-b199-e8dc0cc273c6",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "targetFrame",
+            "scope": "CLASS",
+            "components": [],
+            "x": 343,
+            "y": 239,
+            "nestedPrefabs": []
+        },
+        {
+            "type": "Text",
+            "id": "295d4114-4da9-4e25-a962-fb3881efd94a",
+            "label": "winText",
+            "scope": "CLASS",
+            "components": [],
+            "x": 68,
+            "y": 310,
+            "originX": 0,
+            "originY": 0,
+            "visible": false,
+            "tintTopLeft": "#3ee31c",
+            "tintTopRight": "#3ee31c",
+            "tintBottomLeft": "#3ee31c",
+            "tintBottomRight": "#3ee31c",
+            "text": "You did it!\n You won!",
+            "fontSize": "72px",
+            "fontStyle": "bold"
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    },
+    "lists": [
+        {
+            "id": "c48c91eb-a7a2-4a50-be2e-1dc3d94fb41a",
+            "label": "walls",
+            "objectIds": [
+                "269446b2-d9e4-43f5-bddb-a553e4a8b6d8",
+                "c8a67893-b987-4c7a-8952-4c73716ec633",
+                "4afc4c9d-d306-40c1-9e98-14e8a6deddf1",
+                "cec824da-9aee-4645-97da-3f8695e04c07",
+                "eed14d54-217a-407e-9e7c-ca9d3674f211",
+                "16c5d0e0-3d98-41c5-9066-1f924cbc493a",
+                "d9224579-04c6-4274-8178-073014cb06c2",
+                "7199863f-f5ff-4f5e-be7a-a78818862544",
+                "39354eb1-2d3c-47f2-9f48-effa38d1e165",
+                "0a12c735-030e-4b03-9183-4b0288e71007",
+                "d6c6a494-6516-4725-b808-04fd7aaf6648",
+                "b97d6a0f-386b-4363-8a73-e1b9f4556e42",
+                "5aee6897-f02a-4beb-8725-19a42157168b",
+                "b6de5336-4214-4e11-804f-f802ec39e087",
+                "a7ab93d9-4682-4a5e-b47b-5ce3675b5b9f",
+                "aa0eaf1a-6b63-43d0-99a9-608dc3550faf",
+                "7d9a574f-992e-4786-ade8-bbaf9dc29329",
+                "9efb709d-e9b1-426a-9acc-1376eaad6b50",
+                "d9833cb1-858b-4580-9280-5eacae75df84",
+                "4c34c605-296a-44aa-ab53-38bcbb54a9e9",
+                "4e09fa2e-950d-49ee-b2f0-c6e5e0dda603",
+                "ccb07212-2793-409d-bd9f-f2baff51e147",
+                "fe563618-6763-4ad9-b757-fa9e3a47f9dd",
+                "d9d7ed86-7cf3-4e06-92d8-d4f3750e981d",
+                "afac8caf-9612-4ac7-818d-b8fb6633c98c",
+                "2ee2e79e-4fdf-4ca1-80d5-f6a0b0c78917",
+                "71cd7414-f4de-491b-8fbc-81343ff4a8ae",
+                "b22d61b0-8fe3-44e8-a0bc-cd6ff7bf28a3",
+                "993a2143-56cb-4016-88ed-86bfb45658b7",
+                "204f3c6f-9119-4472-9997-853b9f638ef9",
+                "378f7042-5b1c-43dd-830c-4439ab4b990a",
+                "fc1bf4d0-c25e-4cd6-a91f-d76c846fcf41",
+                "b1b71a9a-3df6-48af-a78e-e281de165e12"
+            ]
+        },
+        {
+            "id": "641d6a7c-f4b8-4ca5-8283-54968595dbc3",
+            "label": "ghosts",
+            "objectIds": [
+                "9bf8fb99-bd59-486b-a581-bfce7bfa272f",
+                "5a7397ee-cd7f-4f60-8d62-94c004e4951b",
+                "fcd95dd7-f6ea-417c-987d-e45758dd0a50",
+                "bd65a029-a6b6-498d-b345-c89a922ce167"
+            ]
+        }
+    ]
+}

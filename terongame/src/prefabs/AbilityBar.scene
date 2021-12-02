@@ -1,0 +1,249 @@
+{
+    "id": "bc136f2a-b964-43df-986e-a27308a6876e",
+    "sceneType": "PREFAB",
+    "settings": {
+        "snapEnabled": true,
+        "snapWidth": 4,
+        "snapHeight": 4,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "79d7b5e8-2cde-4cc4-b822-4f105e2ced1a",
+            "label": "container_1",
+            "components": [],
+            "x": 240,
+            "y": 160,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "a1bab027-f03f-4d00-9436-23ee0b5ff909",
+                    "label": "spell_spiritStrike",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritStrike"
+                    },
+                    "x": -8,
+                    "y": 24
+                },
+                {
+                    "type": "Image",
+                    "id": "705cd4e8-72b3-4de0-b6f0-bb8378dcefa8",
+                    "label": "spell_spiritLance",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritLance"
+                    },
+                    "x": 104,
+                    "y": 24
+                },
+                {
+                    "type": "Image",
+                    "id": "8a1e89d3-f741-4fff-b263-06d9af748247",
+                    "label": "spell_spiritChains",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritChains"
+                    },
+                    "x": 160,
+                    "y": 24
+                },
+                {
+                    "type": "Image",
+                    "id": "56b1b57b-030a-4c24-a448-7d887c9b5338",
+                    "label": "spell_spiritVolley",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritVolley"
+                    },
+                    "x": 216,
+                    "y": 24
+                },
+                {
+                    "type": "Image",
+                    "id": "590def5a-c217-454d-8621-0e50ce5e8eb3",
+                    "label": "spell_spiritShield",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritShield"
+                    },
+                    "x": 328,
+                    "y": 24
+                },
+                {
+                    "type": "Text",
+                    "id": "75f05984-f260-48b8-a101-767a2c667f2a",
+                    "label": "abilityName",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": -288,
+                    "y": 12,
+                    "originX": 0,
+                    "originY": 0,
+                    "visible": false,
+                    "text": "Ability Name",
+                    "fontSize": "24px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "d31d43da-0753-49e2-a65f-e642ef9514bd",
+                    "label": "text",
+                    "components": [],
+                    "x": 4,
+                    "y": -4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "1",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "106a9bdb-f89d-4709-8c8c-f99a150d7ccc",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 116,
+                    "y": -4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "3",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "318305d7-b997-45b8-a35d-599932ac4226",
+                    "label": "text_2",
+                    "components": [],
+                    "x": 172,
+                    "y": -4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "4",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "7b449c65-52e5-4af0-95e4-4e879d7e5905",
+                    "label": "text_3",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 228,
+                    "y": -4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "5",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "57f13c32-d099-4620-9e3a-a0cfb847f974",
+                    "label": "text_4",
+                    "components": [],
+                    "x": 340,
+                    "y": -4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "7",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "d5c33a30-7a94-464b-83b0-56a68669f886",
+                    "label": "spiritVolley_cooldown",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 188,
+                    "y": 4,
+                    "originX": 0,
+                    "originY": 0,
+                    "visible": false,
+                    "text": "15",
+                    "fixedWidth": 56,
+                    "align": "center",
+                    "fontSize": "36px",
+                    "fontStyle": "bold",
+                    "color": "#ff0000ff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "fe66863b-394b-426d-84fd-eeb7aca349f7",
+                    "label": "spiritChains_cooldown",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 132,
+                    "y": 4,
+                    "originX": 0,
+                    "originY": 0,
+                    "visible": false,
+                    "text": "15",
+                    "fixedWidth": 56,
+                    "align": "center",
+                    "fontSize": "36px",
+                    "fontStyle": "bold",
+                    "color": "#ff0000ff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "shadow.fill": true
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    },
+    "lists": [
+        {
+            "id": "fb986129-6e38-4c7f-bf58-4b9ce6c83ef9",
+            "label": "spells",
+            "objectIds": [
+                "a1bab027-f03f-4d00-9436-23ee0b5ff909",
+                "705cd4e8-72b3-4de0-b6f0-bb8378dcefa8",
+                "8a1e89d3-f741-4fff-b263-06d9af748247",
+                "56b1b57b-030a-4c24-a448-7d887c9b5338",
+                "590def5a-c217-454d-8621-0e50ce5e8eb3"
+            ]
+        }
+    ]
+}

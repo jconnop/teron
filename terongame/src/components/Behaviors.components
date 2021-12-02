@@ -1,0 +1,102 @@
+{
+    "components": [
+        {
+            "name": "Physics",
+            "baseClass": "UserComponent",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": [
+                {
+                    "name": "bodyGravity",
+                    "label": "Body Gravity",
+                    "tooltip": "Body Gravity",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PhysicsBody",
+            "baseClass": "UserComponent",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": [
+                {
+                    "name": "bodyX",
+                    "label": "Body X",
+                    "tooltip": "Body X",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "bodyY",
+                    "label": "Body Y",
+                    "tooltip": "Body Y",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "bodyWidth",
+                    "label": "Body Width",
+                    "tooltip": "Body Width",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "bodyHeight",
+                    "label": "Body Height",
+                    "tooltip": "Body Height",
+                    "defValue": 0,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PreloadText",
+            "baseClass": "UserComponent",
+            "gameObjectType": "Phaser.GameObjects.Text",
+            "properties": []
+        },
+        {
+            "name": "PhysicsStatic",
+            "baseClass": "UserComponent",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": []
+        },
+        {
+            "name": "Named",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.Image",
+            "properties": [
+                {
+                    "name": "name",
+                    "label": "Name",
+                    "tooltip": "Name",
+                    "defValue": "",
+                    "customDefinition": false,
+                    "type": {
+                        "id": "string"
+                    }
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor 2D - Object Script Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType"
+    }
+}
