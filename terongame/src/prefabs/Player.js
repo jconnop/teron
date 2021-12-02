@@ -22,7 +22,8 @@ class Player extends Phaser.GameObjects.Image {
 	}
 
 	/* START-USER-CODE */
-
+	movementSpeed = 90;
+	
 	changeToGhost() {
 		this.setFrame(2);
 		this.tintTopLeft = 15767551;
@@ -37,23 +38,22 @@ class Player extends Phaser.GameObjects.Image {
 	}
 
 	movePlayer(wasd) {
-		var playerMoveSpeed = 90;
 
 		if (wasd.left.isDown) {
-			this.body.setVelocityX(-playerMoveSpeed);
+			this.body.setVelocityX(-this.movementSpeed);
 		}
 		else if (wasd.right.isDown) {
-			this.body.setVelocityX(playerMoveSpeed);
+			this.body.setVelocityX(this.movementSpeed);
 		}
 		else {
 			this.body.setVelocityX(0);
 		}
 
 		if (wasd.down.isDown) {
-			this.body.setVelocityY(playerMoveSpeed);
+			this.body.setVelocityY(this.movementSpeed);
 		}
 		else if (wasd.up.isDown) {
-			this.body.setVelocityY(-playerMoveSpeed);
+			this.body.setVelocityY(-this.movementSpeed);
 		}
 		else {
 			this.body.setVelocityY(0);

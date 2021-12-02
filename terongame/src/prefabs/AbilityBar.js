@@ -220,7 +220,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			return;	
 		}
 		
-		// TODO: range check
+		if(!this.isInRange(player, currentTarget, 6)) {
+			return;
+		}
+		
 		currentTarget.applySpiritStrike();
 		
 		this.setAbilityText("Spirit Strike");
@@ -229,10 +232,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	activateSpiritLance(player, currentTarget) {
 		if(currentTarget == null) {
-			return;	
+			return;
 		}		
 		
-		// TODO: range check
+		if(!this.isInRange(player, currentTarget, 30)) {
+			return;	
+		}
+		
 		currentTarget.applySpiritLance();
 
 		this.setAbilityText("Spirit Lance");
@@ -242,9 +248,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	activateSpiritChains(player, ghosts) {
 		if(this.spiritChains_cooldown.visible) {
 			return; // Still cooling	
+		}		
+		
+		for(var i = 0; i < 4; i++) {
+			if(ghosts[i].alive && this.isInRange(player, ghosts[i], 12)) {
+				ghosts[i].applySpiritChains()
+			}
 		}
-		// TODO: range check
-		ghosts.forEach(ghost => ghost.applySpiritChains());
 
 		this.last_spiritChains_time = new Date();
 		this.setAbilityText("Spirit Chains");
@@ -255,8 +265,12 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		if(this.spiritVolley_cooldown.visible) {
 			return; // Still cooling	
 		}
-		// TODO: range check
-		ghosts.forEach(ghost => ghost.applySpiritVolley());
+		
+		for(var i = 0; i < 4; i++) {
+			if(ghosts[i].alive && this.isInRange(player, ghosts[i], 12)) {
+				ghosts[i].applySpiritVolley()
+			}
+		}
 
 		this.last_spiritVolley_time = new Date();
 		this.setAbilityText("Spirit Volley");
@@ -275,6 +289,16 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	setAbilityText(text) {
 		this.abilityName.text = text;
 		this.abilityName.visible = true;
+	}
+	
+	isInRange(player, target, rangeYards) {
+		// In-game player movement speed is 7 yards per second
+		// So convert whatever the yards value is into game-coordinates based on this
+		var rangeGame = rangeYards * (player.movementSpeed / 7.0);
+		
+		var distance = Phaser.Math.Distance.BetweenPoints(player, target);
+		
+		return (distance <= rangeGame);
 	}
 
 	/* END-USER-CODE */
