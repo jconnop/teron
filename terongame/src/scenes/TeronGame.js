@@ -708,7 +708,9 @@ class TeronGame extends Phaser.Scene {
 		
 		var frame = this.targetFrame;
 		this.ghosts.forEach(ghost => ghost.on('pointerdown', function (pointer) {
-			frame.setTarget(ghost);
+			if(ghost.alive && ghost.visible) {
+				frame.setTarget(ghost);
+			}
 		}));
 	}
 
