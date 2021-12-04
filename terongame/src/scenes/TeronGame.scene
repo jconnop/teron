@@ -15,6 +15,7 @@
             "type": "Image",
             "id": "f56cd98d-27f3-4005-ab9c-c4cbaaf37c3b",
             "label": "background",
+            "scope": "CLASS",
             "components": [],
             "texture": {
                 "key": "background"

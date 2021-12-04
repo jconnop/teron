@@ -17,7 +17,7 @@ class TeronGame extends Phaser.Scene {
 	editorCreate() {
 
 		// background
-		this.add.image(300, 400, "background");
+		const background = this.add.image(300, 400, "background");
 
 		// wall1
 		const wall1 = this.add.rectangle(134, 782, 128, 40);
@@ -571,6 +571,7 @@ class TeronGame extends Phaser.Scene {
 		const ghost_3Named = Named.getComponent(ghost_3);
 		ghost_3Named.name = "Deadly Construct 3";
 
+		this.background = background;
 		this.debuff = debuff;
 		this.targetHighlight = targetHighlight;
 		this.freeze_ghost_1 = freeze_ghost_1;
@@ -592,6 +593,8 @@ class TeronGame extends Phaser.Scene {
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Image} */
+	background;
 	/** @type {Debuff} */
 	debuff;
 	/** @type {Phaser.GameObjects.Ellipse} */
@@ -637,7 +640,7 @@ class TeronGame extends Phaser.Scene {
 		this.editorCreate();
 		this.initFreezeIndicators();
 		this.bindKeys();
-		this.initClickTargeting();
+		this.initClickInput();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
 	}
@@ -702,16 +705,29 @@ class TeronGame extends Phaser.Scene {
 			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
 		};
 	}
-	
-	initClickTargeting() {
+
+	initClickInput() {
+		// Ghost click targeting
 		this.ghosts.forEach(ghost => ghost.setInteractive());
-		
+
 		var frame = this.targetFrame;
 		this.ghosts.forEach(ghost => ghost.on('pointerdown', function (pointer) {
 			if(ghost.alive && ghost.visible) {
 				frame.setTarget(ghost);
 			}
 		}));
+		
+		
+		// Click/touch to move player
+		this.background.setInteractive();
+		
+		var playerLocal = this.player;
+		this.background.on('pointerdown', function (pointer) {
+			playerLocal.moveTarget = pointer;
+		});
+		this.input.on('pointerup', function (pointer) {
+			playerLocal.moveTarget = null;
+		});
 	}
 
 	handleTargetSelection() {

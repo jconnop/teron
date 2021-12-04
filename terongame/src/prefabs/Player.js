@@ -24,6 +24,8 @@ class Player extends Phaser.GameObjects.Image {
 	/* START-USER-CODE */
 	movementSpeed = 90;
 	
+	moveTarget = null;
+	
 	changeToGhost() {
 		this.setFrame(2);
 		this.tintTopLeft = 15767551;
@@ -57,7 +59,15 @@ class Player extends Phaser.GameObjects.Image {
 		}
 		else {
 			this.body.setVelocityY(0);
-		}	
+		}
+		
+		if(this.moveTarget != null) {
+			var hasKeyboardInput = (wasd.left.isDown || wasd.right.isDown || wasd.down.isDown || wasd.up.isDown);
+			if(!hasKeyboardInput) {
+				this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
+			}
+		}
+
 	}
 
 	/* END-USER-CODE */

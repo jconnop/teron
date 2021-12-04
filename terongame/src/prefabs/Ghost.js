@@ -107,7 +107,7 @@ class Ghost extends Phaser.GameObjects.Image {
 		if(this.frozen == true) {
 			this.scene.physics.moveToObject(this, target, 0);
 		} else {
-			this.scene.physics.moveToObject(this, target, this.currentSpeed);	
+			this.scene.physics.moveToObject(this, target, this.currentSpeed);
 		}		
 	}
 
