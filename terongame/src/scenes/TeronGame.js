@@ -676,7 +676,7 @@ class TeronGame extends Phaser.Scene {
 		this.physics.add.collider(this.player, this.walls);
 
 		// May need ghost-ghost collision later if selecting/targeting is hard or unclear
-		this.physics.add.collider(this.ghosts, this.ghosts);
+		//this.physics.add.collider(this.ghosts, this.ghosts);
 	}
 
 	initFreezeIndicators() {

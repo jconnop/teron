@@ -37,6 +37,9 @@ class Ghost extends Phaser.GameObjects.Image {
 	lancedAt = new Date() - 10000;
 	lanceStacks = 0;
 
+	whiteTint = 16777215;
+	blueTint = 8098289;
+
 	update() {
 		if(!this.visible) {
 			return;
@@ -57,6 +60,12 @@ class Ghost extends Phaser.GameObjects.Image {
 			if(this.lanceTimeRemaining() == 0) {
 				this.currentSpeed = this.maxSpeed;
 				this.lanceStacks = 0;
+
+				// Remove lance colouration
+				this.tintTopLeft = this.whiteTint;
+				this.tintTopRight = this.whiteTint;
+				this.tintBottomLeft = this.whiteTint;
+				this.tintBottomRight = this.whiteTint;
 			}
 		}
 	}
@@ -115,6 +124,12 @@ class Ghost extends Phaser.GameObjects.Image {
 			this.currentSpeed -= (0.3 * this.maxSpeed);
 		}
 		this.lancedAt = new Date(); // Refresh debuff duration
+
+		// Apply lance colouration
+		this.tintTopLeft = this.blueTint;
+		this.tintTopRight = this.blueTint;
+		this.tintBottomLeft = this.blueTint;
+		this.tintBottomRight = this.blueTint;
 	}
 
 	applySpiritChains() {
@@ -149,7 +164,7 @@ class Ghost extends Phaser.GameObjects.Image {
 	unfreeze() {
 		this.frozen = false;
 	}
-	
+
 	stopMoving() {
 		this.body.setVelocityX(0);
 		this.body.setVelocityY(0);
