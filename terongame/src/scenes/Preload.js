@@ -22,22 +22,33 @@ class Preload extends Phaser.Scene {
 	/** @returns {void} */
 	editorCreate() {
 
-		// guapen
-		const guapen = this.add.image(400, 219, "guapen");
-		guapen.scaleX = 0.5915891440784282;
-		guapen.scaleY = 0.5915891440784282;
+		// progressText
+		const progressText = this.add.text(291, 404, "", {});
+		progressText.setOrigin(0.5, 0.5);
+		progressText.text = "0%";
+		progressText.setStyle({"fontSize":"30px"});
 
-		// progress
-		const progress = this.add.text(400, 349, "", {});
-		progress.setOrigin(0.5, 0.5);
-		progress.text = "0%";
-		progress.setStyle({"fontSize":"30px"});
+		// loadingText
+		const loadingText = this.add.text(306, 280, "", {});
+		loadingText.setOrigin(0.5, 0.5);
+		loadingText.text = "Teron Loading\nPlease Wait...";
+		loadingText.setStyle({"fontSize":"30px"});
 
-		// progress (components)
-		new PreloadText(progress);
+		// progressBar
+		const progressBar = this.add.rectangle(46, 322, 512, 48);
+		progressBar.setOrigin(0, 0);
+		progressBar.isFilled = true;
+
+		this.progressText = progressText;
+		this.progressBar = progressBar;
 
 		this.events.emit("scene-awake");
 	}
+
+	/** @type {Phaser.GameObjects.Text} */
+	progressText;
+	/** @type {Phaser.GameObjects.Rectangle} */
+	progressBar;
 
 	/* START-USER-CODE */
 
@@ -46,6 +57,11 @@ class Preload extends Phaser.Scene {
 	preload() {
 
 		this.editorCreate();
+
+		this.load.on(Phaser.Loader.Events.PROGRESS, p => {
+			this.progressText.text = Math.floor(p * 100) + "%";
+			this.progressBar.scaleX = p;
+		});
 
 		this.editorPreload();
 

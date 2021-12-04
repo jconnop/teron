@@ -7,33 +7,45 @@
             "starter-template-basic-typescript/assets/asset-pack.json"
         ],
         "createMethodName": "editorCreate",
-        "sceneKey": "Preload"
+        "sceneKey": "Preload",
+        "borderWidth": 600,
+        "borderHeight": 800
     },
     "displayList": [
         {
-            "type": "Image",
-            "id": "e413cbbf-ce25-4dad-a117-b7cf0791f655",
-            "label": "guapen",
+            "type": "Text",
+            "id": "2ce42443-5227-4c9b-b498-e81f9a21cde3",
+            "label": "progressText",
+            "scope": "CLASS",
             "components": [],
-            "texture": {
-                "key": "guapen"
-            },
-            "x": 400,
-            "y": 219,
-            "scaleX": 0.5915891440784282,
-            "scaleY": 0.5915891440784282
+            "x": 291,
+            "y": 404,
+            "text": "0%",
+            "fontSize": "30px"
         },
         {
             "type": "Text",
-            "id": "2ce42443-5227-4c9b-b498-e81f9a21cde3",
-            "label": "progress",
-            "components": [
-                "PreloadText"
-            ],
-            "x": 400,
-            "y": 349,
-            "text": "0%",
+            "id": "213a64bd-73da-4964-aa2a-ab45b86c9a12",
+            "label": "loadingText",
+            "components": [],
+            "x": 306,
+            "y": 280,
+            "text": "Teron Loading\nPlease Wait...",
             "fontSize": "30px"
+        },
+        {
+            "type": "Rectangle",
+            "id": "98927971-ceb6-4267-8622-3f0df1c87ea3",
+            "label": "progressBar",
+            "scope": "CLASS",
+            "components": [],
+            "x": 46,
+            "y": 322,
+            "originX": 0,
+            "originY": 0,
+            "isFilled": true,
+            "width": 512,
+            "height": 48
         }
     ],
     "plainObjects": [],

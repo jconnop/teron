@@ -25,11 +25,6 @@
                 "key": "debuff_shadowOfDeath"
             },
             {
-                "url": "assets/dino.png",
-                "key": "dino",
-                "type": "image"
-            },
-            {
                 "url": "assets/ghost_transparent.png",
                 "type": "image",
                 "key": "ghost_transparent"
@@ -60,24 +55,9 @@
                 "key": "spell_spiritVolley"
             },
             {
-                "url": "assets/Stage.png",
-                "type": "image",
-                "key": "Stage"
-            },
-            {
                 "url": "assets/targetFrame.png",
                 "type": "image",
                 "key": "targetFrame"
-            },
-            {
-                "url": "assets/Wall_Horizontal.png",
-                "type": "image",
-                "key": "Wall_Horizontal"
-            },
-            {
-                "url": "assets/Wall_Vertical.png",
-                "type": "image",
-                "key": "Wall_Vertical"
             }
         ]
     },

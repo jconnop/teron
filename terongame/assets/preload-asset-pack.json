@@ -1,12 +1,6 @@
 {
     "section1": {
-        "files": [
-            {
-                "url": "assets/guapen.png",
-                "type": "image",
-                "key": "guapen"
-            }
-        ]
+        "files": []
     },
     "meta": {
         "app": "Phaser Editor 2D - Asset Pack Editor",

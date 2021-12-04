@@ -18,59 +18,6 @@
             ]
         },
         {
-            "name": "PhysicsBody",
-            "baseClass": "UserComponent",
-            "gameObjectType": "Phaser.GameObjects.Image",
-            "properties": [
-                {
-                    "name": "bodyX",
-                    "label": "Body X",
-                    "tooltip": "Body X",
-                    "defValue": 0,
-                    "customDefinition": false,
-                    "type": {
-                        "id": "number"
-                    }
-                },
-                {
-                    "name": "bodyY",
-                    "label": "Body Y",
-                    "tooltip": "Body Y",
-                    "defValue": 0,
-                    "customDefinition": false,
-                    "type": {
-                        "id": "number"
-                    }
-                },
-                {
-                    "name": "bodyWidth",
-                    "label": "Body Width",
-                    "tooltip": "Body Width",
-                    "defValue": 0,
-                    "customDefinition": false,
-                    "type": {
-                        "id": "number"
-                    }
-                },
-                {
-                    "name": "bodyHeight",
-                    "label": "Body Height",
-                    "tooltip": "Body Height",
-                    "defValue": 0,
-                    "customDefinition": false,
-                    "type": {
-                        "id": "number"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "PreloadText",
-            "baseClass": "UserComponent",
-            "gameObjectType": "Phaser.GameObjects.Text",
-            "properties": []
-        },
-        {
             "name": "PhysicsStatic",
             "baseClass": "UserComponent",
             "gameObjectType": "Phaser.GameObjects.Image",
