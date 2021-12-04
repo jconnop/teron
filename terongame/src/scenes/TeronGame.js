@@ -638,8 +638,9 @@ class TeronGame extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-		this.initFreezeIndicators();
 		this.bindKeys();
+		this.initAbilityBar();
+		this.initFreezeIndicators();
 		this.initClickInput();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
@@ -674,6 +675,15 @@ class TeronGame extends Phaser.Scene {
 		this.updateGhostAddons();
 
 		this.checkGameEnded();
+	}
+	
+	initAbilityBar() {
+		this.abilityBar.player = this.player;	
+		this.abilityBar.ghosts = this.ghosts;
+		this.abilityBar.targetFrame = this.targetFrame;
+		this.abilityBar.inputKeys = this.wasd;
+		
+		this.abilityBar.initClickHandlers();
 	}
 
 	initColliders() {

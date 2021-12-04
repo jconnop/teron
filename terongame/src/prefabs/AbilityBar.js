@@ -127,19 +127,25 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	coolingColor = 4473924;
 	readyColor = 16777215;
-
-	update(wasd, player, ghosts, currentTarget) {
+	
+	inputKeys;
+	player;
+	ghosts;
+	targetFrame;
+	
+	
+	update() {
 		if(!this.visible) {
 			return;	
 		}
 		this.updateCooldowns();
-		this.activateAbilities(wasd, player, ghosts, currentTarget);
+		this.activateAbilities();
 	}
 
 	updateCooldowns() {
 
 		var currentTime = new Date();
-		var gcd = (currentTime - this.last_GCD_time) < 1000;
+		var gcd = this.isGCD();
 
 		if(gcd) {
 			this.tintSpell(this.spell_spiritStrike, this.coolingColor);
@@ -192,67 +198,107 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		spell.tintBottomRight = color;
 	}	
 
-	activateAbilities(wasd, player, ghosts, currentTarget) {
-		var currentTime = new Date();
-		var gcd = (currentTime - this.last_GCD_time) < 1000;
-				
-		if(gcd) {
-			// Can't do anything while GCD still active
-			return;	
-		}
+	activateAbilities() {
 
-		if (Phaser.Input.Keyboard.JustDown(wasd.one)) {
-			this.activateSpiritStrike(player, currentTarget);
-		} else if (Phaser.Input.Keyboard.JustDown(wasd.three)) {
-			this.activateSpiritLance(player, currentTarget);
-		}  else if (Phaser.Input.Keyboard.JustDown(wasd.four)) {
-			this.activateSpiritChains(player, ghosts);
-		}  else if (Phaser.Input.Keyboard.JustDown(wasd.five)) {
-			this.activateSpiritVolley(player, ghosts);
-		}  else if (Phaser.Input.Keyboard.JustDown(wasd.seven)) {
+		if (Phaser.Input.Keyboard.JustDown(this.inputKeys.one)) {
+			this.activateSpiritStrike();
+		} else if (Phaser.Input.Keyboard.JustDown(this.inputKeys.three)) {
+			this.activateSpiritLance();
+		}  else if (Phaser.Input.Keyboard.JustDown(this.inputKeys.four)) {
+			this.activateSpiritChains();
+		}  else if (Phaser.Input.Keyboard.JustDown(this.inputKeys.five)) {
+			this.activateSpiritVolley();
+		}  else if (Phaser.Input.Keyboard.JustDown(this.inputKeys.seven)) {
 			this.activateSpiritShield();
 		}
 
 	}
+	
+	initClickHandlers() {
+		this.spell_spiritStrike.setInteractive();
+		this.spell_spiritLance.setInteractive();
+		this.spell_spiritChains.setInteractive();
+		this.spell_spiritVolley.setInteractive();
+		this.spell_spiritShield.setInteractive();
+		
+		var thisBar = this;
+		
+		this.spell_spiritStrike.on('pointerdown', function (pointer) {
+			thisBar.activateSpiritStrike();
+		});
+		this.spell_spiritLance.on('pointerdown', function (pointer) {
+			thisBar.activateSpiritLance();
+		});
+		this.spell_spiritChains.on('pointerdown', function (pointer) {
+			thisBar.activateSpiritChains();
+		});
+		this.spell_spiritVolley.on('pointerdown', function (pointer) {
+			thisBar.activateSpiritVolley();
+		});
+		this.spell_spiritShield.on('pointerdown', function (pointer) {
+			thisBar.activateSpiritShield();
+		});
+	}
+	
+	isGCD() {
+		var currentTime = new Date();
+		var gcd = (currentTime - this.last_GCD_time) < 1000;
+		return gcd;
+	}
 
-	activateSpiritStrike(player, currentTarget) {
-		if(currentTarget == null) {
+	activateSpiritStrike() {
+		if(this.targetFrame.target == null) {
 			return;	
 		}
 		
-		if(!this.isInRange(player, currentTarget, 6)) {
+		if(this.isGCD()) {
+			// Can't do anything while GCD still active
 			return;
 		}
 		
-		currentTarget.applySpiritStrike();
+		if(!this.isInRange(this.player, this.targetFrame.target, 6)) {
+			return;
+		}
+		
+		this.targetFrame.target.applySpiritStrike();
 		
 		this.setAbilityText("Spirit Strike");
 		this.setGCD();
 	}
 
-	activateSpiritLance(player, currentTarget) {
-		if(currentTarget == null) {
+	activateSpiritLance() {
+		if(this.targetFrame.target == null) {
 			return;
-		}		
+		}
+
+		if(this.isGCD()) {
+			// Can't do anything while GCD still active
+			return;
+		}
 		
-		if(!this.isInRange(player, currentTarget, 30)) {
+		if(!this.isInRange(this.player, this.targetFrame.target, 30)) {
 			return;	
 		}
 		
-		currentTarget.applySpiritLance();
+		this.targetFrame.target.applySpiritLance();
 
 		this.setAbilityText("Spirit Lance");
 		this.setGCD();
 	}
 
-	activateSpiritChains(player, ghosts) {
+	activateSpiritChains() {
 		if(this.spiritChains_cooldown.visible) {
 			return; // Still cooling	
-		}		
+		}
+
+		if(this.isGCD()) {
+			// Can't do anything while GCD still active
+			return;
+		}
 		
 		for(var i = 0; i < 4; i++) {
-			if(ghosts[i].alive && this.isInRange(player, ghosts[i], 12)) {
-				ghosts[i].applySpiritChains()
+			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
+				this.ghosts[i].applySpiritChains()
 			}
 		}
 
@@ -261,14 +307,19 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.setGCD();
 	}
 
-	activateSpiritVolley(player, ghosts) {
+	activateSpiritVolley() {
 		if(this.spiritVolley_cooldown.visible) {
 			return; // Still cooling	
 		}
+
+		if(this.isGCD()) {
+			// Can't do anything while GCD still active
+			return;
+		}
 		
 		for(var i = 0; i < 4; i++) {
-			if(ghosts[i].alive && this.isInRange(player, ghosts[i], 12)) {
-				ghosts[i].applySpiritVolley()
+			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
+				this.ghosts[i].applySpiritVolley()
 			}
 		}
 
@@ -277,7 +328,11 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.setGCD();
 	}
 
-	activateSpiritShield() {		
+	activateSpiritShield() {
+		if(this.isGCD()) {
+			// Can't do anything while GCD still active
+			return;
+		}
 		this.setAbilityText("Spirit Shield");
 		this.setGCD();
 	}
