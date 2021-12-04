@@ -977,6 +977,77 @@
             "nestedPrefabs": []
         },
         {
+            "type": "Ellipse",
+            "id": "cd97316b-15d7-4d50-995e-24cf72ee192f",
+            "label": "targetHighlight",
+            "scope": "CLASS",
+            "components": [],
+            "x": 300,
+            "y": 762,
+            "strokeColor": "#cf1111",
+            "strokeAlpha": 0.75,
+            "lineWidth": 3,
+            "isStroked": true,
+            "width": 27,
+            "height": 27
+        },
+        {
+            "type": "Rectangle",
+            "id": "61f9e11d-c05c-42c8-9024-264061f98c9b",
+            "label": "freeze_ghost_1",
+            "scope": "CLASS",
+            "components": [],
+            "x": 207,
+            "y": 724,
+            "strokeColor": "#29a4fb",
+            "lineWidth": 2,
+            "isStroked": true,
+            "width": 30,
+            "height": 30
+        },
+        {
+            "type": "Rectangle",
+            "id": "37e12966-4aa1-442e-96da-6fb8861c5968",
+            "label": "freeze_ghost_2",
+            "scope": "CLASS",
+            "components": [],
+            "x": 271,
+            "y": 725,
+            "strokeColor": "#29a4fb",
+            "lineWidth": 2,
+            "isStroked": true,
+            "width": 30,
+            "height": 30
+        },
+        {
+            "type": "Rectangle",
+            "id": "5d0faa61-524f-4461-a618-ebeaa4064511",
+            "label": "freeze_ghost_3",
+            "scope": "CLASS",
+            "components": [],
+            "x": 327,
+            "y": 725,
+            "strokeColor": "#29a4fb",
+            "lineWidth": 2,
+            "isStroked": true,
+            "width": 30,
+            "height": 30
+        },
+        {
+            "type": "Rectangle",
+            "id": "a002c0be-c7e9-442f-b295-48fe96ce5d4d",
+            "label": "freeze_ghost_4",
+            "scope": "CLASS",
+            "components": [],
+            "x": 387,
+            "y": 726,
+            "strokeColor": "#29a4fb",
+            "lineWidth": 2,
+            "isStroked": true,
+            "width": 30,
+            "height": 30
+        },
+        {
             "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
             "id": "bd65a029-a6b6-498d-b345-c89a922ce167",
             "unlock": [
@@ -988,8 +1059,8 @@
             "scope": "CLASS",
             "components": [],
             "Named.name": "Deadly Construct 4",
-            "x": 355,
-            "y": 699
+            "x": 387,
+            "y": 688
         },
         {
             "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
@@ -1003,8 +1074,8 @@
             "scope": "CLASS",
             "components": [],
             "Named.name": "Deadly Construct 1",
-            "x": 254,
-            "y": 696
+            "x": 207,
+            "y": 689
         },
         {
             "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
@@ -1018,8 +1089,8 @@
             "scope": "CLASS",
             "components": [],
             "Named.name": "Deadly Construct 2",
-            "x": 287,
-            "y": 698
+            "x": 272,
+            "y": 689
         },
         {
             "prefabId": "6174e272-135a-4ad6-8363-e8c34d5d2a28",
@@ -1033,8 +1104,8 @@
             "scope": "CLASS",
             "components": [],
             "Named.name": "Deadly Construct 3",
-            "x": 325,
-            "y": 700
+            "x": 329,
+            "y": 688
         },
         {
             "prefabId": "759d9654-e628-4ab3-8420-abf64d50c8ca",

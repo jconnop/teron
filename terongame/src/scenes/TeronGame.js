@@ -306,20 +306,51 @@ class TeronGame extends Phaser.Scene {
 		debuff.scaleX = 0.75;
 		debuff.scaleY = 0.75;
 
+		// targetHighlight
+		const targetHighlight = this.add.ellipse(300, 762, 27, 27);
+		targetHighlight.isStroked = true;
+		targetHighlight.strokeColor = 13570321;
+		targetHighlight.strokeAlpha = 0.75;
+		targetHighlight.lineWidth = 3;
+
+		// freeze_ghost_1
+		const freeze_ghost_1 = this.add.rectangle(207, 724, 30, 30);
+		freeze_ghost_1.isStroked = true;
+		freeze_ghost_1.strokeColor = 2729211;
+		freeze_ghost_1.lineWidth = 2;
+
+		// freeze_ghost_2
+		const freeze_ghost_2 = this.add.rectangle(271, 725, 30, 30);
+		freeze_ghost_2.isStroked = true;
+		freeze_ghost_2.strokeColor = 2729211;
+		freeze_ghost_2.lineWidth = 2;
+
+		// freeze_ghost_3
+		const freeze_ghost_3 = this.add.rectangle(327, 725, 30, 30);
+		freeze_ghost_3.isStroked = true;
+		freeze_ghost_3.strokeColor = 2729211;
+		freeze_ghost_3.lineWidth = 2;
+
+		// freeze_ghost_4
+		const freeze_ghost_4 = this.add.rectangle(387, 726, 30, 30);
+		freeze_ghost_4.isStroked = true;
+		freeze_ghost_4.strokeColor = 2729211;
+		freeze_ghost_4.lineWidth = 2;
+
 		// ghost_4
-		const ghost_4 = new Ghost(this, 355, 699);
+		const ghost_4 = new Ghost(this, 387, 688);
 		this.add.existing(ghost_4);
 
 		// ghost_1
-		const ghost_1 = new Ghost(this, 254, 696);
+		const ghost_1 = new Ghost(this, 207, 689);
 		this.add.existing(ghost_1);
 
 		// ghost_2
-		const ghost_2 = new Ghost(this, 287, 698);
+		const ghost_2 = new Ghost(this, 272, 689);
 		this.add.existing(ghost_2);
 
 		// ghost_3
-		const ghost_3 = new Ghost(this, 325, 700);
+		const ghost_3 = new Ghost(this, 329, 688);
 		this.add.existing(ghost_3);
 
 		// player
@@ -541,6 +572,11 @@ class TeronGame extends Phaser.Scene {
 		ghost_3Named.name = "Deadly Construct 3";
 
 		this.debuff = debuff;
+		this.targetHighlight = targetHighlight;
+		this.freeze_ghost_1 = freeze_ghost_1;
+		this.freeze_ghost_2 = freeze_ghost_2;
+		this.freeze_ghost_3 = freeze_ghost_3;
+		this.freeze_ghost_4 = freeze_ghost_4;
 		this.ghost_4 = ghost_4;
 		this.ghost_1 = ghost_1;
 		this.ghost_2 = ghost_2;
@@ -558,6 +594,16 @@ class TeronGame extends Phaser.Scene {
 
 	/** @type {Debuff} */
 	debuff;
+	/** @type {Phaser.GameObjects.Ellipse} */
+	targetHighlight;
+	/** @type {Phaser.GameObjects.Rectangle} */
+	freeze_ghost_1;
+	/** @type {Phaser.GameObjects.Rectangle} */
+	freeze_ghost_2;
+	/** @type {Phaser.GameObjects.Rectangle} */
+	freeze_ghost_3;
+	/** @type {Phaser.GameObjects.Rectangle} */
+	freeze_ghost_4;
 	/** @type {Ghost} */
 	ghost_4;
 	/** @type {Ghost} */
@@ -589,6 +635,7 @@ class TeronGame extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
+		this.initFreezeIndicators();
 		this.bindKeys();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
@@ -611,7 +658,7 @@ class TeronGame extends Phaser.Scene {
 				this.spawnGhosts();
 			}
 		}
-		
+
 		this.handleTargetSelection();
 
 		this.abilityBar.update(this.wasd, this.player, this.ghosts, this.targetFrame.target);
@@ -619,6 +666,8 @@ class TeronGame extends Phaser.Scene {
 		this.targetFrame.update();
 
 		this.ghosts.forEach(ghost => ghost.update());
+
+		this.updateGhostAddons();
 
 		this.checkGameEnded();
 	}
@@ -628,6 +677,14 @@ class TeronGame extends Phaser.Scene {
 
 		// May need ghost-ghost collision later if selecting/targeting is hard or unclear
 		this.physics.add.collider(this.ghosts, this.ghosts);
+	}
+
+	initFreezeIndicators() {
+		// Rotate them to be diamonds instead of squares
+		this.freeze_ghost_1.angle = 45;
+		this.freeze_ghost_2.angle = 45;
+		this.freeze_ghost_3.angle = 45;
+		this.freeze_ghost_4.angle = 45;
 	}
 
 	bindKeys() {
@@ -644,26 +701,55 @@ class TeronGame extends Phaser.Scene {
 			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
 		};
 	}
-	
+
 	handleTargetSelection() {
 		if (Phaser.Input.Keyboard.JustDown(this.wasd.tab)) {
 			this.selectNextTarget();
 		}
 	}
-	
+
+	updateGhostAddons() {
+		this.updateTargetHighlight();
+		this.updateFreezeIndicators();
+	}
+
+	updateTargetHighlight() {
+		// Target highlight
+		if(this.targetFrame.target != null) {
+			this.targetHighlight.visible = true;
+			this.targetHighlight.x = this.targetFrame.target.x;
+			this.targetHighlight.y = this.targetFrame.target.y;
+		} else {
+			this.targetHighlight.visible = false;	
+		}
+	}
+
+	updateFreezeIndicators() {
+		this.updateFreezeIndicator(this.ghost_1, this.freeze_ghost_1);
+		this.updateFreezeIndicator(this.ghost_2, this.freeze_ghost_2);
+		this.updateFreezeIndicator(this.ghost_3, this.freeze_ghost_3);
+		this.updateFreezeIndicator(this.ghost_4, this.freeze_ghost_4);
+	}
+
+	updateFreezeIndicator(ghost, indicator) {
+		indicator.visible = (ghost.alive && ghost.frozen)
+		indicator.x = ghost.x;
+		indicator.y = ghost.y;
+	}
+
 	selectNextTarget() {
 		var currentIndex = this.getCurrentTargetIndex(this.targetFrame.target);
 		console.log("Current Index: " + currentIndex);
 		var newIndex = this.getNextTargetIndex(currentIndex);
 		console.log("New Index: " + newIndex);
-		
+
 		if(newIndex != -1 && this.ghosts[newIndex].visible) {
 			this.targetFrame.setTarget(this.ghosts[newIndex]);
 		} else {
 			this.targetFrame.setTarget(null);
 		}
 	}
-	
+
 	getCurrentTargetIndex(currentTarget) {
 		// Find current index, if exists
 		for (var i = 0; i < this.ghosts.length; i++) {
@@ -671,10 +757,10 @@ class TeronGame extends Phaser.Scene {
 				return i;
 			}
 		}
-		
+
 		return -1;
 	}
-	
+
 	getNextTargetIndex(currentIndex) {
 		// Try 4 times to select next target, starting from current if it exists
 		for(var j = 1; j <= 4; j++) {
@@ -683,7 +769,7 @@ class TeronGame extends Phaser.Scene {
 				return tryIndex;
 			}
 		}
-		
+
 		return -1;
 	}
 
@@ -705,7 +791,7 @@ class TeronGame extends Phaser.Scene {
 		this.abilityBar.visible = true;
 
 		this.player.changeToGhost();
-		
+
 	}
 
 	checkGameEnded() {
