@@ -637,6 +637,7 @@ class TeronGame extends Phaser.Scene {
 		this.editorCreate();
 		this.initFreezeIndicators();
 		this.bindKeys();
+		this.initClickTargeting();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
 	}
@@ -700,6 +701,15 @@ class TeronGame extends Phaser.Scene {
 			seven: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN, true),
 			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
 		};
+	}
+	
+	initClickTargeting() {
+		this.ghosts.forEach(ghost => ghost.setInteractive());
+		
+		var frame = this.targetFrame;
+		this.ghosts.forEach(ghost => ghost.on('pointerdown', function (pointer) {
+			frame.setTarget(ghost);
+		}));
 	}
 
 	handleTargetSelection() {
