@@ -128,6 +128,62 @@
                 "url": "assets/targetFrame.png",
                 "type": "image",
                 "key": "targetFrame"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Aggro.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Aggro"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Death.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Death"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_DeathAndDecay.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_DeathAndDecay"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_deathCoil.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_deathCoil"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Enrage.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Enrage"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Intro.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Intro"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Special1.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Special1"
+            },
+            {
+                "url": [
+                    "assets/sounds/teron/teron_Special2.ogg"
+                ],
+                "type": "audio",
+                "key": "teron_Special2"
             }
         ]
     },
