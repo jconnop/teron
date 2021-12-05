@@ -72,6 +72,8 @@ class Intro extends Phaser.Scene {
 	// Write your code here
 
 	introSpeech;
+	blackTempleAmbience;
+	blackTempleMusic;
 
 	create() {
 
@@ -81,6 +83,11 @@ class Intro extends Phaser.Scene {
 		this.initClickHandlers();
 
 		this.introSpeech.play();
+		this.blackTempleAmbience.play({
+			loop: true,
+			volume: 0.5
+		});
+
 	}
 
 	initClickHandlers(){
@@ -90,11 +97,15 @@ class Intro extends Phaser.Scene {
 
 		var localScene = this;
 		var localIntroSpeech = this.introSpeech;
+		var localMusic = this.blackTempleMusic;
 
 		this.startButton.on('pointerdown', function (pointer) {
 			if(localIntroSpeech.isPlaying) {
 				localIntroSpeech.stop();
-			}			
+			}
+			localMusic.play({
+				volume: 0.15
+			});
 			localScene.scene.start("TeronGame");
 		});
 
@@ -113,12 +124,12 @@ class Intro extends Phaser.Scene {
 			localStartText.tintBottomRight = 16777215;
 		});
 
-
-
 	}
 
 	initSounds(){
 		this.introSpeech = this.sound.add('teron_Intro');
+		this.blackTempleAmbience = this.sound.add('blackTempleAmbience');
+		this.blackTempleMusic = this.sound.add('blackTempleMusic');
 	}
 
 	/* END-USER-CODE */

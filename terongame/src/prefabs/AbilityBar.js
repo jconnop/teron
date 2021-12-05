@@ -259,8 +259,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.spiritStrike_Cast = scene.sound.add('spiritStrike_Cast', {volume: 0.3});
 		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact', {volume: 0.3});
 
-		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast', {volume: 0.3});
-		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact', {volume: 0.3});
+		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast', {volume: 0.2});
+		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact', {volume: 0.2});
 
 		this.spiritChains_Cast = scene.sound.add('spiritChains_Cast', {volume: 0.3});
 		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact', {volume: 0.3});

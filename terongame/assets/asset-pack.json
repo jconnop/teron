@@ -20,6 +20,20 @@
                 "key": "balls"
             },
             {
+                "url": [
+                    "assets/sounds/environment/blackTempleAmbience.ogg"
+                ],
+                "type": "audio",
+                "key": "blackTempleAmbience"
+            },
+            {
+                "url": [
+                    "assets/sounds/environment/blackTempleMusic.mp3"
+                ],
+                "type": "audio",
+                "key": "blackTempleMusic"
+            },
+            {
                 "url": "assets/spells/debuff_shadowOfDeath.jpg",
                 "type": "image",
                 "key": "debuff_shadowOfDeath"
