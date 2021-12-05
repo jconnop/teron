@@ -55,6 +55,62 @@
                 "key": "spell_spiritVolley"
             },
             {
+                "url": [
+                    "assets/sounds/spells/spiritChains_Cast.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritChains_Cast"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritChains_Impact.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritChains_Impact"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritLance_Cast.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritLance_Cast"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritLance_Impact.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritLance_Impact"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritStrike_Cast.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritStrike_Cast"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritStrike_Impact.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritStrike_Impact"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritVolley_Cast.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritVolley_Cast"
+            },
+            {
+                "url": [
+                    "assets/sounds/spells/spiritVolley_Impact.ogg"
+                ],
+                "type": "audio",
+                "key": "spiritVolley_Impact"
+            },
+            {
                 "url": "assets/targetFrame.png",
                 "type": "image",
                 "key": "targetFrame"

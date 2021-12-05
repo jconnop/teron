@@ -94,7 +94,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.spells = spells;
 
 		/* START-USER-CTR-CODE */
-		// Write your code here.
+		this.initSounds(scene);
 		/* END-USER-CTR-CODE */
 	}
 
@@ -132,7 +132,22 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	player;
 	ghosts;
 	targetFrame;
+
+
+	// Sounds
+	spiritStrike_Cast;
+	spiritStrike_Impact;
+	spiritLance_Cast;
+	spiritLance_Impact;
+	spiritChains_Cast;
+	spiritChains_Impact;
+	spiritVolley_Cast;
+	spiritVolley_Impact;
+
 	
+	create() {
+		this.initClickHandlers();
+	}
 	
 	update() {
 		if(!this.visible) {
@@ -239,6 +254,20 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			thisBar.activateSpiritShield();
 		});
 	}
+
+	initSounds(scene) {
+		this.spiritStrike_Cast = scene.sound.add('spiritStrike_Cast');
+		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact');
+
+		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast');
+		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact');
+
+		this.spiritChains_Cast = scene.sound.add('spiritChains_Cast');
+		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact');
+
+		this.spiritVolley_Cast = scene.sound.add('spiritVolley_Cast');
+		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact');
+	}
 	
 	isGCD() {
 		var currentTime = new Date();
@@ -260,7 +289,9 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			return;
 		}
 		
+		this.spiritStrike_Cast.play();
 		this.targetFrame.target.applySpiritStrike();
+		this.playImpactSoundByRange(this.spiritStrike_Impact, this.player, this.targetFrame.target, 300);
 		
 		this.setAbilityText("Spirit Strike");
 		this.setGCD();
@@ -279,8 +310,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		if(!this.isInRange(this.player, this.targetFrame.target, 30)) {
 			return;	
 		}
-		
+
+		this.spiritLance_Cast.play()
 		this.targetFrame.target.applySpiritLance();
+		this.playImpactSoundByRange(this.spiritLance_Impact, this.player, this.targetFrame.target, 600);
 
 		this.setAbilityText("Spirit Lance");
 		this.setGCD();
@@ -296,11 +329,17 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			return;
 		}
 		
+		this.spiritChains_Cast.play();
+		var impactSoundTarget = null;
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.ghosts[i].applySpiritChains()
+				this.ghosts[i].applySpiritChains();
+				impactSoundTarget = this.ghosts[i];
 			}
 		}
+		if(impactSoundTarget != null) {
+			this.playImpactSoundByRange(this.spiritChains_Impact, this.player, impactSoundTarget, 155);
+		}		
 
 		this.last_spiritChains_time = new Date();
 		this.setAbilityText("Spirit Chains");
@@ -317,11 +356,17 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			return;
 		}
 		
+		this.spiritVolley_Cast.play();
+		var impactSoundTarget = null;
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.ghosts[i].applySpiritVolley()
+				this.ghosts[i].applySpiritVolley();
+				impactSoundTarget = this.ghosts[i];
 			}
 		}
+		if(impactSoundTarget != null) {
+			this.playImpactSoundByRange(this.spiritVolley_Impact, this.player, impactSoundTarget, 155);
+		}		
 
 		this.last_spiritVolley_time = new Date();
 		this.setAbilityText("Spirit Volley");
@@ -354,6 +399,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		var distance = Phaser.Math.Distance.BetweenPoints(player, target);
 		
 		return (distance <= rangeGame);
+	}
+
+	playImpactSoundByRange(impactSound, source, target, speed) {
+		var distance = Phaser.Math.Distance.BetweenPoints(source, target);
+		impactSound.play({
+			delay: distance / speed
+		});
 	}
 
 	/* END-USER-CODE */

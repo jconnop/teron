@@ -683,7 +683,7 @@ class TeronGame extends Phaser.Scene {
 		this.abilityBar.targetFrame = this.targetFrame;
 		this.abilityBar.inputKeys = this.wasd;
 		
-		this.abilityBar.initClickHandlers();
+		this.abilityBar.create();
 	}
 
 	initColliders() {
