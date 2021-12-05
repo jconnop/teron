@@ -256,17 +256,17 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	initSounds(scene) {
-		this.spiritStrike_Cast = scene.sound.add('spiritStrike_Cast');
-		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact');
+		this.spiritStrike_Cast = scene.sound.add('spiritStrike_Cast', {volume: 0.3});
+		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact', {volume: 0.3});
 
-		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast');
-		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact');
+		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast', {volume: 0.3});
+		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact', {volume: 0.3});
 
-		this.spiritChains_Cast = scene.sound.add('spiritChains_Cast');
-		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact');
+		this.spiritChains_Cast = scene.sound.add('spiritChains_Cast', {volume: 0.3});
+		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact', {volume: 0.3});
 
-		this.spiritVolley_Cast = scene.sound.add('spiritVolley_Cast');
-		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact');
+		this.spiritVolley_Cast = scene.sound.add('spiritVolley_Cast', {volume: 0.3});
+		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact', {volume: 0.3});
 	}
 	
 	isGCD() {

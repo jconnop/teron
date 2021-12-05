@@ -44,7 +44,7 @@ class Ghost extends Phaser.GameObjects.Image {
 	deathSound;
 
 	initSounds(scene){
-		this.deathSound = scene.sound.add('ghost_Death');
+		this.deathSound = scene.sound.add('ghost_Death', {volume: 0.3});
 	}
 
 	update() {

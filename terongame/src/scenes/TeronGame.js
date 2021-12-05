@@ -641,6 +641,20 @@ class TeronGame extends Phaser.Scene {
 	teronDeathSound;
 	teronEnrageSound;
 
+	// "Random" teron sounds
+	teron_Special1;
+	teron_Special2;
+	teron_deathCoil;
+	teron_DeathAndDecay;
+
+	lastRandomSound = null;
+	lastRandomSoundCheck = new Date();
+	randomSounds;
+
+
+	gameStartTime;
+
+
 	// Write your code here
 
 	create() {
@@ -654,9 +668,10 @@ class TeronGame extends Phaser.Scene {
 		this.initSounds();
 
 
+		this.gameStartTime = new Date();
 		this.teronAggroSound.play({
 			delay: 0.3
-		});
+		});		
 	}
 
 	update() {
@@ -687,6 +702,8 @@ class TeronGame extends Phaser.Scene {
 
 		this.updateGhostAddons();
 
+		this.playRandomSound();
+
 		this.checkGameEnded();
 	}
 	
@@ -707,10 +724,16 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	initSounds(){
-		this.ghostSpawnSound = this.sound.add('ghost_Spawn');
+		this.ghostSpawnSound = this.sound.add('ghost_Spawn', {volume: 0.3});
 		this.teronDeathSound = this.sound.add('teron_Death');
 		this.teronEnrageSound = this.sound.add('teron_Enrage');
 		this.teronAggroSound = this.sound.add('teron_Aggro');
+
+		this.teron_Special1 = this.sound.add('teron_Special1');
+		this.teron_Special2 = this.sound.add('teron_Special2');
+		this.teron_deathCoil = this.sound.add('teron_deathCoil');
+		this.teron_DeathAndDecay = this.sound.add('teron_DeathAndDecay');
+		this.randomSounds = [this.teron_Special1, this.teron_Special2, this.teron_deathCoil, this.teron_DeathAndDecay];
 	}
 
 	initFreezeIndicators() {
@@ -868,6 +891,7 @@ class TeronGame extends Phaser.Scene {
 	winGame() {
 		this.winText.visible = true;
 		this.gameEnded = true;
+		this.stopRandomSounds();
 		this.teronDeathSound.play({
 			delay: 1.3
 		});
@@ -877,6 +901,7 @@ class TeronGame extends Phaser.Scene {
 		this.loseText.visible = true;
 		this.gameEnded = true;
 		this.stopGhosts();
+		this.stopRandomSounds();
 		this.teronEnrageSound.play({
 			delay: 0.75
 		});
@@ -885,6 +910,43 @@ class TeronGame extends Phaser.Scene {
 	stopGhosts() {
 		this.ghosts.forEach(ghost => ghost.stopMoving());
 		this.player.stopMoving();
+	}
+
+	stopRandomSounds() {
+		this.randomSounds.forEach(sound => !sound.isPlaying || sound.stop());
+	}
+
+	playRandomSound() {
+		var currentTime = new Date();
+		var gameElapsedTime = currentTime - this.gameStartTime;
+		var elapsedSinceLastSoundCheck = currentTime - this.lastRandomSoundCheck;
+
+		if(gameElapsedTime < 4000) {
+			return; // Still playing aggro sound
+		}
+
+		if(elapsedSinceLastSoundCheck < 1000) { // Only check once per second
+			return;
+		}
+
+		if(this.randomSounds.some(sound => sound.isPlaying)) {
+			return; // Random sound already playing
+		}
+
+		var randomSound = this.randomSounds[Math.floor(Math.random() * this.randomSounds.length)];
+
+		if(randomSound == this.lastRandomSound) {
+			return; // Don't play same sound twice in a row
+		}
+
+		// 5 seconds between sound plays on average
+		if(Math.random() < 0.2) {
+			randomSound.play();
+			this.lastRandomSound = randomSound;
+		}
+
+		this.lastRandomSoundCheck = currentTime;
+
 	}
 
 
