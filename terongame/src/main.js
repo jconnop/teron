@@ -19,6 +19,7 @@ window.addEventListener('load', function () {
 	});
 	
 	game.scene.add("Preload", Preload);
+	game.scene.add("Intro", Intro);
 	game.scene.add("TeronGame", TeronGame);
 	game.scene.add("Boot", Boot, true);
 });

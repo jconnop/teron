@@ -1,0 +1,114 @@
+{
+    "id": "e3098f73-28cd-4148-9482-c10095c732b2",
+    "sceneType": "SCENE",
+    "settings": {
+        "snapEnabled": true,
+        "snapWidth": 4,
+        "snapHeight": 4,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Intro",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "172e59b5-18d8-4a17-85ac-bcfbed423a5f",
+            "label": "background",
+            "components": [],
+            "texture": {
+                "key": "background"
+            },
+            "x": 300,
+            "y": 400
+        },
+        {
+            "type": "Rectangle",
+            "id": "93351935-5cb8-41f3-8f64-792c8e8d763b",
+            "label": "rectangle",
+            "components": [],
+            "x": 300,
+            "y": 400,
+            "isFilled": true,
+            "fillColor": "#000000",
+            "fillAlpha": 0.7,
+            "width": 600,
+            "height": 800
+        },
+        {
+            "type": "Ellipse",
+            "id": "66051470-c513-4486-86d7-a4b6f641c58c",
+            "label": "startButton",
+            "scope": "CLASS",
+            "components": [],
+            "x": 428,
+            "y": 580,
+            "isFilled": true,
+            "fillColor": "#2bf416",
+            "fillAlpha": 0.5,
+            "width": 192,
+            "height": 64
+        },
+        {
+            "type": "Text",
+            "id": "e3e4c347-2db9-419c-bad4-85d32727b219",
+            "label": "text",
+            "components": [],
+            "x": 32,
+            "y": 144,
+            "originX": 0,
+            "originY": 0,
+            "text": "It's just another day in Black Template... your raid is\nfighting Teron Gorefiend again and again and just keeps on\nwiping.\n\nIt's the eleventh try for today... finally you are the one\nwho gets the Shadow of Death debuff! Now it's up to you to\nprevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D keys to move your avatar, or click/touch\nand hold. As soon as you die, the petbar comes in\nproviding the necessary skills to deal with the constructs.\nClick them or use the respective number keys. Similar to\nthe real game, you can use the TAB key to select the\nconstructs or just click them.\n\nGood luck!",
+            "lineSpacing": 3,
+            "fontSize": "15.5px",
+            "stroke": "#000000ff"
+        },
+        {
+            "type": "Text",
+            "id": "47c92298-3b87-4beb-a650-127fce7665ee",
+            "label": "text_1",
+            "components": [],
+            "x": 24,
+            "y": 756,
+            "originX": 0,
+            "originY": 0,
+            "text": "© 2021 | Faldorn | teron.faldorn.net | Valhalla, Arugal-US",
+            "fontSize": "15.5px"
+        },
+        {
+            "type": "Text",
+            "id": "354811c0-24ee-4883-8ed8-dbcdc1ac5f34",
+            "label": "text_1_1",
+            "components": [],
+            "x": 24,
+            "y": 776,
+            "originX": 0,
+            "originY": 0,
+            "text": "*** Used graphics and sounds are property of Blizzard Entertainment ***",
+            "fontSize": "13px"
+        },
+        {
+            "type": "Text",
+            "id": "b29ff371-b7ba-4336-8201-0f9e3963e774",
+            "label": "startText",
+            "scope": "CLASS",
+            "components": [],
+            "x": 352,
+            "y": 556,
+            "originX": 0,
+            "originY": 0,
+            "text": "START",
+            "fontSize": "48px",
+            "color": "#ff000000",
+            "strokeThickness": 3
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}
