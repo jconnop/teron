@@ -27,7 +27,7 @@ class SoundToggle extends Phaser.GameObjects.Container {
 
 		soundOn.visible = !game.sound.mute;
 		soundOff.visible = game.sound.mute;
-		
+
 		soundOn.setInteractive();
 		soundOff.setInteractive();
 
