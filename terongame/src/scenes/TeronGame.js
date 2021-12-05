@@ -634,6 +634,10 @@ class TeronGame extends Phaser.Scene {
 
 	gameEnded = false;
 
+
+	// Sounds
+	ghostSpawnSound;
+
 	// Write your code here
 
 	create() {
@@ -644,6 +648,7 @@ class TeronGame extends Phaser.Scene {
 		this.initClickInput();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
+		this.initSounds();
 	}
 
 	update() {
@@ -691,6 +696,10 @@ class TeronGame extends Phaser.Scene {
 
 		// May need ghost-ghost collision later if selecting/targeting is hard or unclear
 		//this.physics.add.collider(this.ghosts, this.ghosts);
+	}
+
+	initSounds(){
+		this.ghostSpawnSound = this.sound.add('ghost_Spawn');
 	}
 
 	initFreezeIndicators() {
@@ -830,6 +839,7 @@ class TeronGame extends Phaser.Scene {
 
 		this.player.changeToGhost();
 
+		this.ghostSpawnSound.play();
 	}
 
 	checkGameEnded() {

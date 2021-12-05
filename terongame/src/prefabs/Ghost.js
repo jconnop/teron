@@ -17,6 +17,7 @@ class Ghost extends Phaser.GameObjects.Image {
 
 		/* START-USER-CTR-CODE */
 		this.visible = false;
+		this.initSounds(scene);
 		/* END-USER-CTR-CODE */
 	}
 
@@ -39,6 +40,12 @@ class Ghost extends Phaser.GameObjects.Image {
 
 	whiteTint = 16777215;
 	blueTint = 8098289;
+
+	deathSound;
+
+	initSounds(scene){
+		this.deathSound = scene.sound.add('ghost_Death');
+	}
 
 	update() {
 		if(!this.visible) {
@@ -159,6 +166,9 @@ class Ghost extends Phaser.GameObjects.Image {
 	die() {
 		this.alive = false;
 		this.visible = false;
+		this.deathSound.play({
+			delay: 0.1
+		});
 	}
 
 	unfreeze() {

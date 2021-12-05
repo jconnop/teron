@@ -25,6 +25,20 @@
                 "key": "debuff_shadowOfDeath"
             },
             {
+                "url": [
+                    "assets/sounds/ghost/ghost_Death.ogg"
+                ],
+                "type": "audio",
+                "key": "ghost_Death"
+            },
+            {
+                "url": [
+                    "assets/sounds/ghost/ghost_Spawn.ogg"
+                ],
+                "type": "audio",
+                "key": "ghost_Spawn"
+            },
+            {
                 "url": "assets/ghost_transparent.png",
                 "type": "image",
                 "key": "ghost_transparent"
