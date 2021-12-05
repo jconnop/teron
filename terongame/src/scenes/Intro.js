@@ -52,6 +52,10 @@ class Intro extends Phaser.Scene {
 		startText.text = "START";
 		startText.setStyle({"color":"#ff000000","fontSize":"48px","strokeThickness":3});
 
+		// soundToggle
+		const soundToggle = new SoundToggle(this, 544, 34);
+		this.add.existing(soundToggle);
+
 		this.startButton = startButton;
 		this.startText = startText;
 
@@ -74,12 +78,14 @@ class Intro extends Phaser.Scene {
 		this.editorCreate();
 
 		this.initSounds();
-		this.initClickHandlers();		
+		this.initClickHandlers();
 
 		this.introSpeech.play();
 	}
 
 	initClickHandlers(){
+
+		// Start Button
 		this.startButton.setInteractive();
 
 		var localScene = this;
@@ -106,6 +112,9 @@ class Intro extends Phaser.Scene {
 			localStartText.tintBottomLeft = 16777215;
 			localStartText.tintBottomRight = 16777215;
 		});
+
+
+
 	}
 
 	initSounds(){

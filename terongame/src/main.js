@@ -1,7 +1,8 @@
+var game;
 
 window.addEventListener('load', function () {
 
-	var game = new Phaser.Game({
+	game = new Phaser.Game({
 		width: 600,
 		height: 800,
 		type: Phaser.AUTO,

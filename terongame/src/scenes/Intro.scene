@@ -3,8 +3,8 @@
     "sceneType": "SCENE",
     "settings": {
         "snapEnabled": true,
-        "snapWidth": 4,
-        "snapHeight": 4,
+        "snapWidth": 2,
+        "snapHeight": 2,
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "Intro",
@@ -102,6 +102,19 @@
             "fontSize": "48px",
             "color": "#ff000000",
             "strokeThickness": 3
+        },
+        {
+            "prefabId": "1a4da722-937e-4910-9873-cb42348ef043",
+            "id": "6c10a4bf-c8fa-4d87-b970-c035fb2919ba",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "soundToggle",
+            "components": [],
+            "x": 544,
+            "y": 34,
+            "nestedPrefabs": []
         }
     ],
     "plainObjects": [],

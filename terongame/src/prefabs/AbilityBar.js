@@ -127,7 +127,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	coolingColor = 4473924;
 	readyColor = 16777215;
-	
+
 	inputKeys;
 	player;
 	ghosts;
@@ -144,11 +144,11 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	spiritVolley_Cast;
 	spiritVolley_Impact;
 
-	
+
 	create() {
 		this.initClickHandlers();
 	}
-	
+
 	update() {
 		if(!this.visible) {
 			return;	
@@ -174,13 +174,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 		var spiritChainsElapsed = currentTime - this.last_spiritChains_time;
 		var spiritVolleyElapsed = currentTime - this.last_spiritVolley_time;
-		
+
 		var spiritChainsOnCooldown = (spiritChainsElapsed < 15000);
 		var spiritVolleyOnCooldown = (spiritVolleyElapsed < 15000);
 
 		if(gcd || spiritChainsOnCooldown) {
 			this.tintSpell(this.spell_spiritChains, this.coolingColor);
-			
+
 			if(spiritChainsOnCooldown) {
 				this.spiritChains_cooldown.visible = true;
 				var remainingSeconds = Math.ceil((15000 - spiritChainsElapsed) / 1000);
@@ -193,7 +193,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 		if(gcd || spiritVolleyOnCooldown) {
 			this.tintSpell(this.spell_spiritVolley, this.coolingColor);
-			
+
 			if(spiritVolleyOnCooldown) {
 				this.spiritVolley_cooldown.visible = true;
 				var remainingSeconds = Math.ceil((15000 - spiritVolleyElapsed) / 1000);
@@ -228,16 +228,16 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 	}
-	
+
 	initClickHandlers() {
 		this.spell_spiritStrike.setInteractive();
 		this.spell_spiritLance.setInteractive();
 		this.spell_spiritChains.setInteractive();
 		this.spell_spiritVolley.setInteractive();
 		this.spell_spiritShield.setInteractive();
-		
+
 		var thisBar = this;
-		
+
 		this.spell_spiritStrike.on('pointerdown', function (pointer) {
 			thisBar.activateSpiritStrike();
 		});
@@ -268,7 +268,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.spiritVolley_Cast = scene.sound.add('spiritVolley_Cast', {volume: 0.3});
 		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact', {volume: 0.3});
 	}
-	
+
 	isGCD() {
 		var currentTime = new Date();
 		var gcd = (currentTime - this.last_GCD_time) < 1000;
@@ -279,20 +279,20 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		if(this.targetFrame.target == null) {
 			return;	
 		}
-		
+
 		if(this.isGCD()) {
 			// Can't do anything while GCD still active
 			return;
 		}
-		
+
 		if(!this.isInRange(this.player, this.targetFrame.target, 6)) {
 			return;
 		}
-		
+
 		this.spiritStrike_Cast.play();
 		this.targetFrame.target.applySpiritStrike();
 		this.playImpactSoundByRange(this.spiritStrike_Impact, this.player, this.targetFrame.target, 300);
-		
+
 		this.setAbilityText("Spirit Strike");
 		this.setGCD();
 	}
@@ -306,7 +306,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			// Can't do anything while GCD still active
 			return;
 		}
-		
+
 		if(!this.isInRange(this.player, this.targetFrame.target, 30)) {
 			return;	
 		}
@@ -328,7 +328,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			// Can't do anything while GCD still active
 			return;
 		}
-		
+
 		this.spiritChains_Cast.play();
 		var impactSoundTarget = null;
 		for(var i = 0; i < 4; i++) {
@@ -355,7 +355,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			// Can't do anything while GCD still active
 			return;
 		}
-		
+
 		this.spiritVolley_Cast.play();
 		var impactSoundTarget = null;
 		for(var i = 0; i < 4; i++) {
@@ -385,19 +385,19 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	setGCD() {
 		this.last_GCD_time = new Date();
 	}
-	
+
 	setAbilityText(text) {
 		this.abilityName.text = text;
 		this.abilityName.visible = true;
 	}
-	
+
 	isInRange(player, target, rangeYards) {
 		// In-game player movement speed is 7 yards per second
 		// So convert whatever the yards value is into game-coordinates based on this
 		var rangeGame = rangeYards * (player.movementSpeed / 7.0);
-		
+
 		var distance = Phaser.Math.Distance.BetweenPoints(player, target);
-		
+
 		return (distance <= rangeGame);
 	}
 

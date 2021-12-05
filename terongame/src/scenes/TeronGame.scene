@@ -2,8 +2,9 @@
     "id": "0ed7536a-4451-4751-8016-c7ad154f78cf",
     "sceneType": "SCENE",
     "settings": {
-        "snapWidth": 10,
-        "snapHeight": 10,
+        "snapEnabled": true,
+        "snapWidth": 2,
+        "snapHeight": 2,
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "TeronGame",
@@ -1197,6 +1198,19 @@
             "text": "You did it!\n You won!",
             "fontSize": "72px",
             "fontStyle": "bold"
+        },
+        {
+            "prefabId": "1a4da722-937e-4910-9873-cb42348ef043",
+            "id": "2566fa09-31e7-41f4-82a2-16eb0647fca8",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "soundToggle",
+            "components": [],
+            "x": 544,
+            "y": 34,
+            "nestedPrefabs": []
         }
     ],
     "plainObjects": [],

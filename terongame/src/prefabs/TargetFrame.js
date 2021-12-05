@@ -136,7 +136,7 @@ class TargetFrame extends Phaser.GameObjects.Container {
 		if(this.target == null) {
 			return;
 		}
-		
+
 		if(!this.target.alive) {
 			this.setTarget(null);
 			return;

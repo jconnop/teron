@@ -392,6 +392,10 @@ class TeronGame extends Phaser.Scene {
 		winText.text = "You did it!\n You won!";
 		winText.setStyle({"fontSize":"72px","fontStyle":"bold"});
 
+		// soundToggle
+		const soundToggle = new SoundToggle(this, 544, 34);
+		this.add.existing(soundToggle);
+
 		// lists
 		const walls = [rectangle_1, rectangle_2, rectangle_2_1, rectangle_2_2, rectangle, wall1, rectangle_2_3, rectangle_2_4, rectangle_3, rectangle_1_1, wall1_1, rectangle_2_1_1, rectangle_2_1_2, rectangle_2_1_3, rectangle_4, rectangle_4_1, rectangle_4_2, rectangle_5, rectangle_5_1, rectangle_2_2_1, rectangle_2_2_2, rectangle_2_2_3, rectangle_2_2_4, rectangle_2_2_5, rectangle_2_2_4_1, rectangle_2_2_4_2, rectangle_2_2_4_3, rectangle_2_2_4_4]
 		const ghosts = [ghost_1, ghost_2, ghost_3, ghost_4]
@@ -706,13 +710,13 @@ class TeronGame extends Phaser.Scene {
 
 		this.checkGameEnded();
 	}
-	
+
 	initAbilityBar() {
 		this.abilityBar.player = this.player;	
 		this.abilityBar.ghosts = this.ghosts;
 		this.abilityBar.targetFrame = this.targetFrame;
 		this.abilityBar.inputKeys = this.wasd;
-		
+
 		this.abilityBar.create();
 	}
 
@@ -769,11 +773,11 @@ class TeronGame extends Phaser.Scene {
 				frame.setTarget(ghost);
 			}
 		}));
-		
-		
+
+
 		// Click/touch to move player
 		this.background.setInteractive();
-		
+
 		var playerLocal = this.player;
 		this.background.on('pointerdown', function (pointer) {
 			playerLocal.moveTarget = pointer;

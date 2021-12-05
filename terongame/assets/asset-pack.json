@@ -44,6 +44,16 @@
                 "key": "ghost_transparent"
             },
             {
+                "url": "assets/soundOff.png",
+                "type": "image",
+                "key": "soundOff"
+            },
+            {
+                "url": "assets/soundOn.png",
+                "type": "image",
+                "key": "soundOn"
+            },
+            {
                 "url": "assets/spells/spell_spiritChains.jpg",
                 "type": "image",
                 "key": "spell_spiritChains"
