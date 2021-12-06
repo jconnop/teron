@@ -132,6 +132,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	player;
 	ghosts;
 	targetFrame;
+	nocooldowns = false;
 
 
 	// Sounds
@@ -170,8 +171,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		var spiritChainsElapsed = currentTime - this.last_spiritChains_time;
 		var spiritVolleyElapsed = currentTime - this.last_spiritVolley_time;
 
-		var spiritChainsOnCooldown = (spiritChainsElapsed < 15000);
-		var spiritVolleyOnCooldown = (spiritVolleyElapsed < 15000);
+		var spiritChainsOnCooldown = (!this.nocooldowns && spiritChainsElapsed < 15000);
+		var spiritVolleyOnCooldown = (!this.nocooldowns && spiritVolleyElapsed < 15000);
 
 		if(gcd || spiritChainsOnCooldown) {
 			this.tintSpell(this.spell_spiritChains, this.coolingColor);

@@ -649,6 +649,16 @@ class TeronGame extends Phaser.Scene {
 
 	gameStartTime;
 
+	// Cheats
+	cheatKeys;
+	cheat1Target = "iddqd";
+	cheat2Target = "idkfa";
+	cheat1Current;
+	cheat2Current;
+	cheat1Enabled;
+	cheat2Enabled;
+	horsemanLaugh;
+	orcKidLaugh;
 
 	// Write your code here
 
@@ -656,6 +666,10 @@ class TeronGame extends Phaser.Scene {
 		this.gameEnded = false;
 		this.lastRandomSound = null;
 		this.lastRandomSoundCheck = new Date();
+		this.cheat1Current = "";
+		this.cheat2Current = "";
+		this.cheat1Enabled = false;
+		this.cheat2Enabled = false;
 
 		if(this.blackTempleMusic != null && this.blackTempleMusic.isPlaying) {
 			// May still be playing due to restart
@@ -714,6 +728,8 @@ class TeronGame extends Phaser.Scene {
 		this.playRandomSound();
 
 		this.checkGameEnded();
+
+		this.checkCheats();
 	}
 
 	initAbilityBar() {
@@ -739,6 +755,9 @@ class TeronGame extends Phaser.Scene {
 		this.teronAggroSound = this.sound.add('teron_Aggro');
 
 		this.blackTempleMusic = this.sound.add('blackTempleMusic');
+
+		this.horsemanLaugh = this.sound.add('horsemanLaugh');
+		this.orcKidLaugh = this.sound.add('orcKidLaugh');
 
 		this.teron_Special1 = this.sound.add('teron_Special1');
 		this.teron_Special2 = this.sound.add('teron_Special2');
@@ -767,6 +786,15 @@ class TeronGame extends Phaser.Scene {
 			five: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE, true),
 			seven: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN, true),
 			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
+		};
+
+		this.cheatKeys = {
+			i: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.I, true),
+			d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),
+			q: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q, true),
+			k: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K, true),
+			f: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F, true),
+			a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true)
 		};
 	}
 
@@ -894,14 +922,56 @@ class TeronGame extends Phaser.Scene {
 		this.ghostSpawnSound.play();
 	}
 
+	checkCheats() {
+		var newKey = "";
+		if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.i)) {
+			newKey = "i"
+		} else if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.d)) {
+			newKey = "d"
+		} else if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.q)) {
+			newKey = "q"
+		} else if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.k)) {
+			newKey = "k"
+		} else if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.f)) {
+			newKey = "f"
+		} else if (Phaser.Input.Keyboard.JustDown(this.cheatKeys.a)) {
+			newKey = "a"
+		}
+
+		this.cheat1Current += newKey;
+		this.cheat2Current += newKey;
+
+		if(!this.cheat1Target.startsWith(this.cheat1Current)) {
+			this.cheat1Current = "";
+		}
+
+		if(!this.cheat2Target.startsWith(this.cheat2Current)) {
+			this.cheat2Current = "";
+		}
+
+		if(this.cheat1Current == this.cheat1Target) {
+			this.cheat1Current = "";
+			this.cheat1Enabled = true;
+			this.horsemanLaugh.play();
+		} else if(this.cheat2Current == this.cheat2Target) {
+			this.cheat2Current = "";
+			this.cheat2Enabled = true;
+			this.abilityBar.nocooldowns = true;
+			this.orcKidLaugh.play();
+		}
+		
+	}
+
 	checkGameEnded() {
 		if(this.ghosts.every(ghost => ghost.alive === false)) {
 			this.winGame();
 		} else {
-			var bossLocation = new Phaser.Geom.Point(300, 150);
+			if(!this.cheat1Enabled) {
+				var bossLocation = new Phaser.Geom.Point(300, 150);
 
-			if(this.ghosts.some(ghost => ghost.alive && Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20)) {
-				this.loseGame();
+				if(this.ghosts.some(ghost => ghost.alive && Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20)) {
+					this.loseGame();
+				}
 			}
 		}
 	}

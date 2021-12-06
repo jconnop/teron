@@ -63,6 +63,20 @@
                 "key": "ghost_transparent"
             },
             {
+                "url": [
+                    "assets/sounds/environment/horsemanLaugh.ogg"
+                ],
+                "type": "audio",
+                "key": "horsemanLaugh"
+            },
+            {
+                "url": [
+                    "assets/sounds/environment/orcKidLaugh.ogg"
+                ],
+                "type": "audio",
+                "key": "orcKidLaugh"
+            },
+            {
                 "url": "assets/soundOff.png",
                 "type": "image",
                 "key": "soundOff"
