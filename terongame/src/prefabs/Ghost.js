@@ -178,9 +178,18 @@ class Ghost extends Phaser.GameObjects.Image {
 
 	die() {
 		this.alive = false;
-		this.visible = false;
+		//this.visible = false;
 		this.deathSound.play({
 			delay: 0.1
+		});
+		
+		var ghost = this;
+		this.scene.tweens.add({
+			targets: this,
+			alpha: 0,
+			duration: 300,
+			ease: 'Power2',
+			onComplete: function () { ghost.visible = false; }
 		});
 	}
 
