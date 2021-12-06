@@ -1,0 +1,96 @@
+{
+    "id": "23c46ea3-9b3b-41fb-99b9-206e817f0371",
+    "sceneType": "PREFAB",
+    "settings": {
+        "snapEnabled": true,
+        "snapWidth": 2,
+        "snapHeight": 2,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "41bb137b-abae-4e0a-93d9-451fe6d3918e",
+            "label": "container_1",
+            "components": [],
+            "x": 300,
+            "y": 260,
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "a78a06d6-bffb-4195-8fff-8f74a6f4fa3a",
+                    "label": "rectangle",
+                    "components": [],
+                    "y": 140,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.4,
+                    "width": 600,
+                    "height": 800
+                },
+                {
+                    "type": "Text",
+                    "id": "541d490e-7a7f-47a2-9f03-d412af501cd1",
+                    "label": "text",
+                    "components": [],
+                    "x": -300,
+                    "y": 72,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "All constructs defeated!\n\nYour raid members cheer at you!\nYou saved their day!",
+                    "fixedWidth": 600,
+                    "lineSpacing": 5,
+                    "align": "center",
+                    "fontSize": "28px",
+                    "fontStyle": "bold",
+                    "color": "#333afbff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "shadow.offsetX": 2,
+                    "shadow.offsetY": 2,
+                    "shadow.color": "#000000ff"
+                },
+                {
+                    "type": "Ellipse",
+                    "id": "92afbffe-5c1c-4243-a739-7a46e45f687d",
+                    "label": "startButton",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 78,
+                    "y": 358,
+                    "isFilled": true,
+                    "fillColor": "#2bf416",
+                    "fillAlpha": 0.5,
+                    "width": 360,
+                    "height": 64
+                },
+                {
+                    "type": "Text",
+                    "id": "9aa0d0f4-771b-4ad8-8e6e-1eeef8c5387a",
+                    "label": "startText",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": -66,
+                    "y": 336,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "PLAY AGAIN",
+                    "fontSize": "48px",
+                    "color": "#ff000000",
+                    "strokeThickness": 3
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}

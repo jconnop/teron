@@ -361,16 +361,6 @@ class TeronGame extends Phaser.Scene {
 		player.tintBottomLeft = 16777215;
 		player.tintBottomRight = 16777215;
 
-		// loseText
-		const loseText = this.add.text(106, 387, "", {});
-		loseText.visible = false;
-		loseText.tintTopLeft = 16580608;
-		loseText.tintTopRight = 16580608;
-		loseText.tintBottomLeft = 16580608;
-		loseText.tintBottomRight = 16580608;
-		loseText.text = "You lost!\n   LOL";
-		loseText.setStyle({"fontSize":"72px","fontStyle":"bold"});
-
 		// abilityBar
 		const abilityBar = new AbilityBar(this, 193, 766);
 		this.add.existing(abilityBar);
@@ -382,19 +372,19 @@ class TeronGame extends Phaser.Scene {
 		const targetFrame = new TargetFrame(this, 343, 239);
 		this.add.existing(targetFrame);
 
-		// winText
-		const winText = this.add.text(68, 310, "", {});
-		winText.visible = false;
-		winText.tintTopLeft = 4121372;
-		winText.tintTopRight = 4121372;
-		winText.tintBottomLeft = 4121372;
-		winText.tintBottomRight = 4121372;
-		winText.text = "You did it!\n You won!";
-		winText.setStyle({"fontSize":"72px","fontStyle":"bold"});
-
 		// soundToggle
 		const soundToggle = new SoundToggle(this, 544, 34);
 		this.add.existing(soundToggle);
+
+		// winOverlay
+		const winOverlay = new WinOverlay(this, 300, 260);
+		this.add.existing(winOverlay);
+		winOverlay.visible = false;
+
+		// loseOverlay
+		const loseOverlay = new LoseOverlay(this, 122, 400);
+		this.add.existing(loseOverlay);
+		loseOverlay.visible = false;
 
 		// lists
 		const walls = [rectangle_1, rectangle_2, rectangle_2_1, rectangle_2_2, rectangle, wall1, rectangle_2_3, rectangle_2_4, rectangle_3, rectangle_1_1, wall1_1, rectangle_2_1_1, rectangle_2_1_2, rectangle_2_1_3, rectangle_4, rectangle_4_1, rectangle_4_2, rectangle_5, rectangle_5_1, rectangle_2_2_1, rectangle_2_2_2, rectangle_2_2_3, rectangle_2_2_4, rectangle_2_2_5, rectangle_2_2_4_1, rectangle_2_2_4_2, rectangle_2_2_4_3, rectangle_2_2_4_4]
@@ -587,10 +577,10 @@ class TeronGame extends Phaser.Scene {
 		this.ghost_2 = ghost_2;
 		this.ghost_3 = ghost_3;
 		this.player = player;
-		this.loseText = loseText;
 		this.abilityBar = abilityBar;
 		this.targetFrame = targetFrame;
-		this.winText = winText;
+		this.winOverlay = winOverlay;
+		this.loseOverlay = loseOverlay;
 		this.walls = walls;
 		this.ghosts = ghosts;
 
@@ -621,14 +611,14 @@ class TeronGame extends Phaser.Scene {
 	ghost_3;
 	/** @type {Player} */
 	player;
-	/** @type {Phaser.GameObjects.Text} */
-	loseText;
 	/** @type {AbilityBar} */
 	abilityBar;
 	/** @type {TargetFrame} */
 	targetFrame;
-	/** @type {Phaser.GameObjects.Text} */
-	winText;
+	/** @type {WinOverlay} */
+	winOverlay;
+	/** @type {LoseOverlay} */
+	loseOverlay;
 	/** @type {Phaser.GameObjects.Rectangle[]} */
 	walls;
 	/** @type {Ghost[]} */
@@ -636,7 +626,7 @@ class TeronGame extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
-	gameEnded = false;
+	gameEnded;
 
 
 	// Sounds
@@ -644,6 +634,7 @@ class TeronGame extends Phaser.Scene {
 	teronAggroSound;
 	teronDeathSound;
 	teronEnrageSound;
+	blackTempleMusic;
 
 	// "Random" teron sounds
 	teron_Special1;
@@ -651,8 +642,8 @@ class TeronGame extends Phaser.Scene {
 	teron_deathCoil;
 	teron_DeathAndDecay;
 
-	lastRandomSound = null;
-	lastRandomSoundCheck = new Date();
+	lastRandomSound;
+	lastRandomSoundCheck;
 	randomSounds;
 
 
@@ -662,6 +653,15 @@ class TeronGame extends Phaser.Scene {
 	// Write your code here
 
 	create() {
+		this.gameEnded = false;
+		this.lastRandomSound = null;
+		this.lastRandomSoundCheck = new Date();
+
+		if(this.blackTempleMusic != null && this.blackTempleMusic.isPlaying) {
+			// May still be playing due to restart
+			this.blackTempleMusic.stop();
+		}
+
 		this.editorCreate();
 		this.bindKeys();
 		this.initAbilityBar();
@@ -671,10 +671,13 @@ class TeronGame extends Phaser.Scene {
 		this.targetFrame.setTarget(null);
 		this.initSounds();
 
-
 		this.gameStartTime = new Date();
 		this.teronAggroSound.play({
 			delay: 0.3
+		});
+
+		this.blackTempleMusic.play({
+			volume: 0.15
 		});
 
 	}
@@ -733,6 +736,8 @@ class TeronGame extends Phaser.Scene {
 		this.teronDeathSound = this.sound.add('teron_Death');
 		this.teronEnrageSound = this.sound.add('teron_Enrage');
 		this.teronAggroSound = this.sound.add('teron_Aggro');
+
+		this.blackTempleMusic = this.sound.add('blackTempleMusic');
 
 		this.teron_Special1 = this.sound.add('teron_Special1');
 		this.teron_Special2 = this.sound.add('teron_Special2');
@@ -894,34 +899,51 @@ class TeronGame extends Phaser.Scene {
 		} else {
 			var bossLocation = new Phaser.Geom.Point(300, 150);
 
-			if(this.ghosts.some(ghost => Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20)) {
+			if(this.ghosts.some(ghost => ghost.alive && Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20)) {
 				this.loseGame();
 			}
 		}
 	}
 
 	winGame() {
-		this.winText.visible = true;
 		this.gameEnded = true;
+		this.player.stopMoving();
 		this.stopRandomSounds();
 		this.teronDeathSound.play({
 			delay: 1.3
 		});
+
+		this.winOverlay.visible = true;
+		this.winOverlay.alpha = 0;
+		this.tweens.add({
+			targets: this.winOverlay,
+			alpha: 1.0,
+			duration: 800,
+			ease: 'Power2'
+		});
 	}
 
 	loseGame() {
-		this.loseText.visible = true;
 		this.gameEnded = true;
 		this.stopGhosts();
+		this.player.stopMoving();
 		this.stopRandomSounds();
 		this.teronEnrageSound.play({
 			delay: 0.75
 		});
+
+		this.loseOverlay.visible = true;
+		this.loseOverlay.alpha = 0;
+		this.tweens.add({
+			targets: this.loseOverlay,
+			alpha: 1.0,
+			duration: 800,
+			ease: 'Power2'
+		});
 	}
 
 	stopGhosts() {
-		this.ghosts.forEach(ghost => ghost.stopMoving());
-		this.player.stopMoving();
+		this.ghosts.forEach(ghost => ghost.stopMoving());		
 	}
 
 	stopRandomSounds() {

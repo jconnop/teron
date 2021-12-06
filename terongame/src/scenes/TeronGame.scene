@@ -1128,25 +1128,6 @@
             "y": 152
         },
         {
-            "type": "Text",
-            "id": "3b6e6d39-67af-4c03-918a-d2be8213d22a",
-            "label": "loseText",
-            "scope": "CLASS",
-            "components": [],
-            "x": 106,
-            "y": 387,
-            "originX": 0,
-            "originY": 0,
-            "visible": false,
-            "tintTopLeft": "#fd0000",
-            "tintTopRight": "#fd0000",
-            "tintBottomLeft": "#fd0000",
-            "tintBottomRight": "#fd0000",
-            "text": "You lost!\n   LOL",
-            "fontSize": "72px",
-            "fontStyle": "bold"
-        },
-        {
             "prefabId": "bc136f2a-b964-43df-986e-a27308a6876e",
             "id": "9aee6aab-618f-43cd-b456-a2d228839cf3",
             "unlock": [
@@ -1181,25 +1162,6 @@
             "nestedPrefabs": []
         },
         {
-            "type": "Text",
-            "id": "295d4114-4da9-4e25-a962-fb3881efd94a",
-            "label": "winText",
-            "scope": "CLASS",
-            "components": [],
-            "x": 68,
-            "y": 310,
-            "originX": 0,
-            "originY": 0,
-            "visible": false,
-            "tintTopLeft": "#3ee31c",
-            "tintTopRight": "#3ee31c",
-            "tintBottomLeft": "#3ee31c",
-            "tintBottomRight": "#3ee31c",
-            "text": "You did it!\n You won!",
-            "fontSize": "72px",
-            "fontStyle": "bold"
-        },
-        {
             "prefabId": "1a4da722-937e-4910-9873-cb42348ef043",
             "id": "2566fa09-31e7-41f4-82a2-16eb0647fca8",
             "unlock": [
@@ -1210,6 +1172,38 @@
             "components": [],
             "x": 544,
             "y": 34,
+            "nestedPrefabs": []
+        },
+        {
+            "prefabId": "23c46ea3-9b3b-41fb-99b9-206e817f0371",
+            "id": "77f0f19b-5e8b-4bae-a8dd-da5a07990931",
+            "unlock": [
+                "x",
+                "y",
+                "visible"
+            ],
+            "label": "winOverlay",
+            "scope": "CLASS",
+            "components": [],
+            "x": 300,
+            "y": 260,
+            "visible": false,
+            "nestedPrefabs": []
+        },
+        {
+            "prefabId": "0739d816-1904-4990-a9d1-032e4876b86e",
+            "id": "001d1d38-d555-4cdf-891d-ee2224d6b385",
+            "unlock": [
+                "x",
+                "y",
+                "visible"
+            ],
+            "label": "loseOverlay",
+            "scope": "CLASS",
+            "components": [],
+            "x": 122,
+            "y": 400,
+            "visible": false,
             "nestedPrefabs": []
         }
     ],

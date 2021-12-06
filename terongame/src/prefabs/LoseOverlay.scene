@@ -1,0 +1,95 @@
+{
+    "id": "0739d816-1904-4990-a9d1-032e4876b86e",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "4a04a871-4da5-4c82-bfec-b72107ad79a7",
+            "label": "container_1",
+            "components": [],
+            "x": 122.02332424519167,
+            "y": 400,
+            "list": [
+                {
+                    "type": "Rectangle",
+                    "id": "3e9459b1-859b-413d-bb51-14cba8a92885",
+                    "label": "rectangle",
+                    "components": [],
+                    "x": 177.97667575480833,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "fillAlpha": 0.4,
+                    "width": 600,
+                    "height": 800
+                },
+                {
+                    "type": "Text",
+                    "id": "e9d0bcd0-2e7d-48d7-8231-33464bbbd805",
+                    "label": "text",
+                    "components": [],
+                    "x": -122,
+                    "y": -200,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Your raid leader audibly sighs...\n\n\nOk guys wipe it up. This isn't hard just .. ugh. Didn't you all practice this? Run back asap and let's hope you-know-who doesn't get shadow of death this time..",
+                    "fixedWidth": 600,
+                    "lineSpacing": 5,
+                    "align": "center",
+                    "fontSize": "28px",
+                    "fontStyle": "bold",
+                    "color": "#fb3333ff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "shadow.offsetX": 2,
+                    "shadow.offsetY": 2,
+                    "shadow.color": "#000000ff",
+                    "wordWrapWidth": 600,
+                    "wordWrapUseAdvanced": true
+                },
+                {
+                    "type": "Ellipse",
+                    "id": "ada7963f-e217-4e8a-a398-2d2bad1b0559",
+                    "label": "startButton",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 276,
+                    "y": 234,
+                    "isFilled": true,
+                    "fillColor": "#2bf416",
+                    "fillAlpha": 0.5,
+                    "width": 320,
+                    "height": 64
+                },
+                {
+                    "type": "Text",
+                    "id": "2a4d25ae-8086-411c-bce0-b5f8c5cb19b7",
+                    "label": "startText",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 149,
+                    "y": 212,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "TRY AGAIN",
+                    "fontSize": "48px",
+                    "color": "#ff000000",
+                    "strokeThickness": 3
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}
