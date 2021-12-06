@@ -344,8 +344,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.fireLance(this.player, this.ghosts[i], 155);
-				this.applySpellDelayed(this.player, this.ghosts[i], 155, this.ghosts[i].applySpiritVolley);
+				this.fireLance(this.player, this.ghosts[i], 400);
+				this.applySpellDelayed(this.player, this.ghosts[i], 400, this.ghosts[i].applySpiritVolley);
 			}
 		}	
 
@@ -408,7 +408,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			targets: particles,
 			x: (target.x - source.x),
 			y: (target.y - source.y),
-			ease: 'Quart.easeIn',
+			ease: 'Linear',
 			duration: this.getTravelTime(source, target, speed) * 1000,
 			onComplete: function () { particles.destroy(); }
 		});
