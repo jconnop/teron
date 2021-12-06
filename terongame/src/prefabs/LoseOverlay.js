@@ -17,7 +17,7 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 
 		// text
 		const text = scene.add.text(-122, -200, "", {});
-		text.text = "Your raid leader audibly sighs...\n\n\nOk guys wipe it up. This isn't hard just .. ugh. Didn't you all practice this? Run back asap and let's hope you-know-who doesn't get shadow of death this time..";
+		text.text = "Your raid leader audibly sighs...\n\n\nOk guys wipe it up. This isn't hard just.. ugh. Didn't you all practice this? Run back asap and let's hope you-know-who doesn't get Shadow of Death this time..";
 		text.setStyle({"align":"center","color":"#fb3333ff","fixedWidth":600,"fontSize":"28px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":5,"shadow.offsetX":2,"shadow.offsetY":2,"shadow.color":"#000000ff"});
 		text.setLineSpacing(5);
 		text.setWordWrapWidth(600, true);
@@ -31,9 +31,9 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 		this.add(startButton);
 
 		// startText
-		const startText = scene.add.text(149, 212, "", {});
+		const startText = scene.add.text(117, 212, "", {});
 		startText.text = "TRY AGAIN";
-		startText.setStyle({"color":"#ff000000","fontSize":"48px","strokeThickness":3});
+		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"48px","strokeThickness":3});
 		this.add(startText);
 
 		this.startButton = startButton;

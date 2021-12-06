@@ -32,25 +32,26 @@ class Intro extends Phaser.Scene {
 		startButton.fillAlpha = 0.5;
 
 		// text
-		const text = this.add.text(32, 144, "", {});
-		text.text = "It's just another day in Black Temple... your raid is\nfighting Teron Gorefiend again and again and just keeps on\nwiping.\n\nIt's the eleventh try for today... finally you are the one\nwho gets the Shadow of Death debuff! Now it's up to you to\nprevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D keys to move your avatar, or click/touch\nand hold. As soon as you die, the petbar comes in\nproviding the necessary skills to deal with the constructs.\nClick them or use the respective number keys. Similar to\nthe real game, you can use the TAB key to select the\nconstructs or just click them.\n\nGood luck!";
-		text.setStyle({"fontSize":"15.5px","stroke":"#000000ff"});
+		const text = this.add.text(0, 200, "", {});
+		text.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!";
+		text.setStyle({"align":"center","fixedWidth":600,"fontSize":"15.5px","stroke":"#000000ff"});
 		text.setLineSpacing(3);
+		text.setWordWrapWidth(550);
 
 		// text_1
-		const text_1 = this.add.text(24, 756, "", {});
+		const text_1 = this.add.text(0, 756, "", {});
 		text_1.text = "© 2021 | Faldorn | teron.faldorn.net | Valhalla, Arugal-US";
-		text_1.setStyle({"fontSize":"15.5px"});
+		text_1.setStyle({"align":"center","fixedWidth":600,"fontSize":"15.5px"});
 
 		// text_1_1
-		const text_1_1 = this.add.text(24, 776, "", {});
+		const text_1_1 = this.add.text(0, 776, "", {});
 		text_1_1.text = "*** Used graphics and sounds are property of Blizzard Entertainment ***";
-		text_1_1.setStyle({"fontSize":"13px"});
+		text_1_1.setStyle({"align":"center","fixedWidth":600,"fontSize":"13px"});
 
 		// startText
-		const startText = this.add.text(352, 556, "", {});
+		const startText = this.add.text(328, 558, "", {});
 		startText.text = "START";
-		startText.setStyle({"color":"#ff000000","fontSize":"48px","strokeThickness":3});
+		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":200,"fontSize":"48px","strokeThickness":3});
 
 		// soundToggle
 		const soundToggle = new SoundToggle(this, 544, 34);
@@ -96,7 +97,7 @@ class Intro extends Phaser.Scene {
 
 		var localScene = this;
 		var localIntroSpeech = this.introSpeech;
-		
+
 		this.startButton.on('pointerdown', function (pointer) {
 			if(localIntroSpeech.isPlaying) {
 				localIntroSpeech.stop();
