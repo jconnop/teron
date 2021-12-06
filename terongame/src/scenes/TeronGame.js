@@ -874,7 +874,16 @@ class TeronGame extends Phaser.Scene {
 		this.ghosts.forEach(ghost => ghost.visible = true);
 		this.ghosts.forEach(ghost => ghost.spawnTime = new Date());
 
+
 		this.abilityBar.visible = true;
+		this.abilityBar.y += 37;
+
+		this.tweens.add({
+			targets: this.abilityBar,
+			y: this.abilityBar.y - 37,
+			duration: 500,
+			ease: 'Quart.easeOut'
+		});
 
 		this.player.changeToGhost();
 
