@@ -416,6 +416,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	fireNova(source) {
 		var particles = this.scene.add.particles('blueFlare');
+		particles.setDepth(-1);
 		var emitter = particles.createEmitter({
 			x: source.x,
 			y: source.y,
@@ -424,7 +425,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			lifespan: 514,
 			quantity: 10,
 			scale: { start: 0.0, end: 0.5 }
-		});
+		});		
 		this.scene.time.delayedCall(514, function() { particles.destroy() });
 	}
 

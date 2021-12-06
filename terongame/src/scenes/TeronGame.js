@@ -663,6 +663,7 @@ class TeronGame extends Phaser.Scene {
 		}
 
 		this.editorCreate();
+		this.background.setDepth(-5); // Background always at the back
 		this.bindKeys();
 		this.initAbilityBar();
 		this.initFreezeIndicators();
@@ -678,7 +679,7 @@ class TeronGame extends Phaser.Scene {
 
 		this.blackTempleMusic.play({
 			volume: 0.15
-		});
+		});		
 
 	}
 
