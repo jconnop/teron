@@ -320,7 +320,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.applySpellDelayed(this.player, this.ghosts[i], 155, this.ghosts[i].applySpiritChains);
+				this.applySpellDelayed(this.player, this.ghosts[i], 300, this.ghosts[i].applySpiritChains);
 			}
 		}
 
