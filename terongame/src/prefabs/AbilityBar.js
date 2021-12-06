@@ -136,14 +136,9 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	// Sounds
 	spiritStrike_Cast;
-	spiritStrike_Impact;
 	spiritLance_Cast;
-	spiritLance_Impact;
 	spiritChains_Cast;
-	spiritChains_Impact;
 	spiritVolley_Cast;
-	spiritVolley_Impact;
-
 
 	create() {
 		this.initClickHandlers();
@@ -257,16 +252,9 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	initSounds(scene) {
 		this.spiritStrike_Cast = scene.sound.add('spiritStrike_Cast', {volume: 0.3});
-		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact', {volume: 0.3});
-
 		this.spiritLance_Cast = scene.sound.add('spiritLance_Cast', {volume: 0.2});
-		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact', {volume: 0.2});
-
 		this.spiritChains_Cast = scene.sound.add('spiritChains_Cast', {volume: 0.3});
-		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact', {volume: 0.3});
-
 		this.spiritVolley_Cast = scene.sound.add('spiritVolley_Cast', {volume: 0.3});
-		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact', {volume: 0.3});
 	}
 
 	isGCD() {
@@ -290,8 +278,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		this.spiritStrike_Cast.play();
-		this.targetFrame.target.applySpiritStrike();
-		this.playImpactSoundByRange(this.spiritStrike_Impact, this.player, this.targetFrame.target, 300);
+		this.applySpellDelayed(this.player, this.targetFrame.target, 300, this.targetFrame.target.applySpiritStrike);
 
 		this.setAbilityText("Spirit Strike");
 		this.setGCD();
@@ -312,9 +299,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		this.spiritLance_Cast.play()
-		this.targetFrame.target.applySpiritLance();
 		this.fireLance(this.player, this.targetFrame.target, 600);
-		this.playImpactSoundByRange(this.spiritLance_Impact, this.player, this.targetFrame.target, 600);
+		this.applySpellDelayed(this.player, this.targetFrame.target, 600, this.targetFrame.target.applySpiritLance);
 
 		this.setAbilityText("Spirit Lance");
 		this.setGCD();
@@ -331,16 +317,12 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		this.spiritChains_Cast.play();
-		var impactSoundTarget = null;
+
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.ghosts[i].applySpiritChains();
-				impactSoundTarget = this.ghosts[i];
+				this.applySpellDelayed(this.player, this.ghosts[i], 155, this.ghosts[i].applySpiritChains);
 			}
 		}
-		if(impactSoundTarget != null) {
-			this.playImpactSoundByRange(this.spiritChains_Impact, this.player, impactSoundTarget, 155);
-		}		
 
 		this.last_spiritChains_time = new Date();
 		this.setAbilityText("Spirit Chains");
@@ -358,17 +340,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		this.spiritVolley_Cast.play();
-		var impactSoundTarget = null;
+
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
-				this.ghosts[i].applySpiritVolley();
 				this.fireLance(this.player, this.ghosts[i], 155);
-				impactSoundTarget = this.ghosts[i];
+				this.applySpellDelayed(this.player, this.ghosts[i], 155, this.ghosts[i].applySpiritVolley);
 			}
-		}
-		if(impactSoundTarget != null) {
-			this.playImpactSoundByRange(this.spiritVolley_Impact, this.player, impactSoundTarget, 155);
-		}		
+		}	
 
 		this.last_spiritVolley_time = new Date();
 		this.setAbilityText("Spirit Volley");
@@ -403,12 +381,6 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		return (distance <= rangeGame);
 	}
 
-	playImpactSoundByRange(impactSound, source, target, speed) {		
-		impactSound.play({
-			delay: this.getTravelTime(source, target, speed)
-		});
-	}
-
 	getTravelTime(source, target, speed) {
 		var distance = Phaser.Math.Distance.BetweenPoints(source, target);
 		return distance / speed;
@@ -437,8 +409,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			y: (target.y - source.y),
 			ease: 'Quart.easeIn',
 			duration: this.getTravelTime(source, target, speed) * 1000,
-			onComplete: function () { particles.destroy() }
+			onComplete: function () { particles.destroy(); }
 		});
+	}
+
+	applySpellDelayed(source, target, speed, callback) {
+		var travelTime = this.getTravelTime(source, target, speed);
+		this.scene.time.delayedCall(travelTime * 1000, callback, null, target);
 	}
 
 	/* END-USER-CODE */

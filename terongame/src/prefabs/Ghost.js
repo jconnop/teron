@@ -42,9 +42,17 @@ class Ghost extends Phaser.GameObjects.Image {
 	blueTint = 8098289;
 
 	deathSound;
+	spiritStrike_Impact;
+	spiritLance_Impact;
+	spiritChains_Impact;
+	spiritVolley_Impact;
 
 	initSounds(scene){
 		this.deathSound = scene.sound.add('ghost_Death', {volume: 0.3});
+		this.spiritStrike_Impact = scene.sound.add('spiritStrike_Impact', {volume: 0.3});
+		this.spiritLance_Impact = scene.sound.add('spiritLance_Impact', {volume: 0.2});
+		this.spiritChains_Impact = scene.sound.add('spiritChains_Impact', {volume: 0.3});
+		this.spiritVolley_Impact = scene.sound.add('spiritVolley_Impact', {volume: 0.3});
 	}
 
 	update() {
@@ -121,6 +129,7 @@ class Ghost extends Phaser.GameObjects.Image {
 	applySpiritStrike() {
 		// 638 - 862
 		this.applyDamage(638, 862);
+		this.spiritStrike_Impact.play();
 	}
 
 	applySpiritLance() {
@@ -137,6 +146,8 @@ class Ghost extends Phaser.GameObjects.Image {
 		this.tintTopRight = this.blueTint;
 		this.tintBottomLeft = this.blueTint;
 		this.tintBottomRight = this.blueTint;
+
+		this.spiritLance_Impact.play();
 	}
 
 	applySpiritChains() {
@@ -144,11 +155,13 @@ class Ghost extends Phaser.GameObjects.Image {
 		this.applyDamage(1900, 2100);
 		this.frozen = true;
 		this.frozenAt = new Date();
+		this.spiritChains_Impact.play();
 	}
 
 	applySpiritVolley() {
 		// 9900 - 12100
 		this.applyDamage(9900, 12100);
+		this.spiritVolley_Impact.play();
 	}
 
 	applyDamage(minDamage, maxDamage) {
