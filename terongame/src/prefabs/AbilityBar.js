@@ -313,6 +313,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 		this.spiritLance_Cast.play()
 		this.targetFrame.target.applySpiritLance();
+		this.fireLance(this.player, this.targetFrame.target, 600);
 		this.playImpactSoundByRange(this.spiritLance_Impact, this.player, this.targetFrame.target, 600);
 
 		this.setAbilityText("Spirit Lance");
@@ -361,6 +362,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
 				this.ghosts[i].applySpiritVolley();
+				this.fireLance(this.player, this.ghosts[i], 155);
 				impactSoundTarget = this.ghosts[i];
 			}
 		}
@@ -401,10 +403,41 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		return (distance <= rangeGame);
 	}
 
-	playImpactSoundByRange(impactSound, source, target, speed) {
-		var distance = Phaser.Math.Distance.BetweenPoints(source, target);
+	playImpactSoundByRange(impactSound, source, target, speed) {		
 		impactSound.play({
-			delay: distance / speed
+			delay: this.getTravelTime(source, target, speed)
+		});
+	}
+
+	getTravelTime(source, target, speed) {
+		var distance = Phaser.Math.Distance.BetweenPoints(source, target);
+		return distance / speed;
+	}
+
+	fireLance(source, target, speed) {
+		var particles = this.scene.add.particles('blueFlare');
+
+		var playerBox = new Phaser.Geom.Rectangle(this.player.x, this.player.y, 5, 5);
+
+		particles.createEmitter({
+			x: source.x,
+			y: source.y,
+			speed: { min: 100, max: -500 },
+			angle: Phaser.Math.Angle.Between(target.x, target.y, source.x, source.y) / Phaser.Math.DEG_TO_RAD,
+			gravityY: 0,
+			scale: { start: 0.1, end: 0 },
+			quantity: 1,
+			lifespan: 200,
+			blendMode: 'ADD'
+		});
+
+		var tween = this.scene.tweens.add({
+			targets: particles,
+			x: (target.x - source.x),
+			y: (target.y - source.y),
+			ease: 'Quart.easeIn',
+			duration: this.getTravelTime(source, target, speed) * 1000,
+			onComplete: function () { particles.destroy() }
 		});
 	}
 

@@ -34,6 +34,11 @@
                 "key": "blackTempleMusic"
             },
             {
+                "url": "assets/animations/blue.png",
+                "type": "image",
+                "key": "blueFlare"
+            },
+            {
                 "url": "assets/spells/debuff_shadowOfDeath.jpg",
                 "type": "image",
                 "key": "debuff_shadowOfDeath"

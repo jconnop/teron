@@ -675,7 +675,8 @@ class TeronGame extends Phaser.Scene {
 		this.gameStartTime = new Date();
 		this.teronAggroSound.play({
 			delay: 0.3
-		});		
+		});
+
 	}
 
 	update() {
