@@ -23,6 +23,7 @@ class Ghost extends Phaser.GameObjects.Image {
 
 	/* START-USER-CODE */
 	maxSpeed = 45;
+	//maxSpeed = 4; // For testing
 	currentSpeed = this.maxSpeed;
 
 	alive = true;

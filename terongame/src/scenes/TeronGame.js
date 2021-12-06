@@ -825,9 +825,7 @@ class TeronGame extends Phaser.Scene {
 
 	selectNextTarget() {
 		var currentIndex = this.getCurrentTargetIndex(this.targetFrame.target);
-		console.log("Current Index: " + currentIndex);
 		var newIndex = this.getNextTargetIndex(currentIndex);
-		console.log("New Index: " + newIndex);
 
 		if(newIndex != -1 && this.ghosts[newIndex].visible) {
 			this.targetFrame.setTarget(this.ghosts[newIndex]);

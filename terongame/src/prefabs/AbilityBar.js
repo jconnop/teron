@@ -317,6 +317,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		this.spiritChains_Cast.play();
+		this.fireNova(this.player);
 
 		for(var i = 0; i < 4; i++) {
 			if(this.ghosts[i].alive && this.isInRange(this.player, this.ghosts[i], 12)) {
@@ -411,6 +412,20 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			duration: this.getTravelTime(source, target, speed) * 1000,
 			onComplete: function () { particles.destroy(); }
 		});
+	}
+
+	fireNova(source) {
+		var particles = this.scene.add.particles('blueFlare');
+		var emitter = particles.createEmitter({
+			x: source.x,
+			y: source.y,
+			speed: 270,
+			blendMode: 'ADD',
+			lifespan: 514,
+			quantity: 10,
+			scale: { start: 0.0, end: 0.5 }
+		});
+		this.scene.time.delayedCall(514, function() { particles.destroy() });
 	}
 
 	applySpellDelayed(source, target, speed, callback) {
