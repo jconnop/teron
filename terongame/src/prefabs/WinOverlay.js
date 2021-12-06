@@ -30,9 +30,9 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		this.add(startButton);
 
 		// startText
-		const startText = scene.add.text(-80, 336, "", {});
+		const startText = scene.add.text(-82, 338, "", {});
 		startText.text = "PLAY AGAIN";
-		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"48px","strokeThickness":3});
+		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"42px","strokeThickness":3});
 		this.add(startText);
 
 		this.startButton = startButton;

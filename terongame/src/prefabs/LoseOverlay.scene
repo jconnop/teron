@@ -74,13 +74,13 @@
                     "scope": "CLASS",
                     "components": [],
                     "x": 117,
-                    "y": 212,
+                    "y": 214,
                     "originX": 0,
                     "originY": 0,
                     "text": "TRY AGAIN",
                     "fixedWidth": 320,
                     "align": "center",
-                    "fontSize": "48px",
+                    "fontSize": "42px",
                     "color": "#ff000000",
                     "strokeThickness": 3
                 }

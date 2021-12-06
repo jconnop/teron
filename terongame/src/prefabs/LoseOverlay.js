@@ -31,9 +31,9 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 		this.add(startButton);
 
 		// startText
-		const startText = scene.add.text(117, 212, "", {});
+		const startText = scene.add.text(117, 214, "", {});
 		startText.text = "TRY AGAIN";
-		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"48px","strokeThickness":3});
+		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"42px","strokeThickness":3});
 		this.add(startText);
 
 		this.startButton = startButton;

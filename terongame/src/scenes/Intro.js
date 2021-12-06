@@ -49,9 +49,9 @@ class Intro extends Phaser.Scene {
 		text_1_1.setStyle({"align":"center","fixedWidth":600,"fontSize":"13px"});
 
 		// startText
-		const startText = this.add.text(328, 558, "", {});
+		const startText = this.add.text(328, 559, "", {});
 		startText.text = "START";
-		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":200,"fontSize":"48px","strokeThickness":3});
+		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":200,"fontSize":"42px","strokeThickness":3});
 
 		// soundToggle
 		const soundToggle = new SoundToggle(this, 544, 34);
