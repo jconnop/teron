@@ -22,7 +22,7 @@ class Debuff extends Phaser.GameObjects.Container {
 
 		/* START-USER-CTR-CODE */
 		this.countdownEnd = new Date();
-		this.countdownEnd.setSeconds(this.countdownEnd.getSeconds() + 10);
+		this.countdownEnd.setSeconds(this.countdownEnd.getSeconds() + 15);
 		/* END-USER-CTR-CODE */
 	}
 
