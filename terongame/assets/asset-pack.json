@@ -112,6 +112,11 @@
                 "key": "spell_spiritVolley"
             },
             {
+                "url": "assets/spellFrame.png",
+                "type": "image",
+                "key": "spellFrame"
+            },
+            {
                 "url": [
                     "assets/sounds/spells/spiritChains_Cast.ogg"
                 ],

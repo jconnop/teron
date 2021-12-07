@@ -28,6 +28,31 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		const spell_spiritShield = scene.add.image(328, 24, "spell_spiritShield");
 		this.add(spell_spiritShield);
 
+		// spellFrame_SpiritStrike
+		const spellFrame_SpiritStrike = scene.add.image(-8, 24, "spellFrame");
+		spellFrame_SpiritStrike.visible = false;
+		this.add(spellFrame_SpiritStrike);
+
+		// spellFrame_SpiritLance
+		const spellFrame_SpiritLance = scene.add.image(104, 24, "spellFrame");
+		spellFrame_SpiritLance.visible = false;
+		this.add(spellFrame_SpiritLance);
+
+		// spellFrame_SpiritChains
+		const spellFrame_SpiritChains = scene.add.image(160, 24, "spellFrame");
+		spellFrame_SpiritChains.visible = false;
+		this.add(spellFrame_SpiritChains);
+
+		// spellFrame_SpiritVolley
+		const spellFrame_SpiritVolley = scene.add.image(216, 24, "spellFrame");
+		spellFrame_SpiritVolley.visible = false;
+		this.add(spellFrame_SpiritVolley);
+
+		// spellFrame_SpiritShield
+		const spellFrame_SpiritShield = scene.add.image(328, 24, "spellFrame");
+		spellFrame_SpiritShield.visible = false;
+		this.add(spellFrame_SpiritShield);
+
 		// abilityName
 		const abilityName = scene.add.text(-288, 12, "", {});
 		abilityName.visible = false;
@@ -87,6 +112,11 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		this.spell_spiritChains = spell_spiritChains;
 		this.spell_spiritVolley = spell_spiritVolley;
 		this.spell_spiritShield = spell_spiritShield;
+		this.spellFrame_SpiritStrike = spellFrame_SpiritStrike;
+		this.spellFrame_SpiritLance = spellFrame_SpiritLance;
+		this.spellFrame_SpiritChains = spellFrame_SpiritChains;
+		this.spellFrame_SpiritVolley = spellFrame_SpiritVolley;
+		this.spellFrame_SpiritShield = spellFrame_SpiritShield;
 		this.abilityName = abilityName;
 		this.text_3 = text_3;
 		this.spiritVolley_cooldown = spiritVolley_cooldown;
@@ -108,6 +138,16 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	spell_spiritVolley;
 	/** @type {Phaser.GameObjects.Image} */
 	spell_spiritShield;
+	/** @type {Phaser.GameObjects.Image} */
+	spellFrame_SpiritStrike;
+	/** @type {Phaser.GameObjects.Image} */
+	spellFrame_SpiritLance;
+	/** @type {Phaser.GameObjects.Image} */
+	spellFrame_SpiritChains;
+	/** @type {Phaser.GameObjects.Image} */
+	spellFrame_SpiritVolley;
+	/** @type {Phaser.GameObjects.Image} */
+	spellFrame_SpiritShield;
 	/** @type {Phaser.GameObjects.Text} */
 	abilityName;
 	/** @type {Phaser.GameObjects.Text} */
@@ -141,6 +181,13 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	spiritChains_Cast;
 	spiritVolley_Cast;
 
+	// Mouse down memory
+	spiritStrike_MouseIsOver;
+	spiritLance_MouseIsOver;
+	spiritChains_MouseIsOver;
+	spiritVolley_MouseIsOver;
+	spiritShield_MouseIsOver;
+
 	create() {
 		this.initClickHandlers();
 	}
@@ -150,6 +197,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 			return;	
 		}
 		this.updateCooldowns();
+		this.updateSpellFrames();
 		this.activateAbilities();
 	}
 
@@ -207,7 +255,17 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		spell.tintTopRight = color;
 		spell.tintBottomLeft = color;
 		spell.tintBottomRight = color;
-	}	
+	}
+
+	updateSpellFrames() {
+
+		this.spellFrame_SpiritStrike.visible = (this.inputKeys.one.isDown || (this.scene.input.activePointer.isDown && this.spiritStrike_MouseIsOver));
+		this.spellFrame_SpiritLance.visible = (this.inputKeys.three.isDown || (this.scene.input.activePointer.isDown && this.spiritLance_MouseIsOver));
+		this.spellFrame_SpiritChains.visible = (this.inputKeys.four.isDown || (this.scene.input.activePointer.isDown && this.spiritChains_MouseIsOver));
+		this.spellFrame_SpiritVolley.visible = (this.inputKeys.five.isDown || (this.scene.input.activePointer.isDown && this.spiritVolley_MouseIsOver));
+		this.spellFrame_SpiritShield.visible = (this.inputKeys.seven.isDown || (this.scene.input.activePointer.isDown && this.spiritShield_MouseIsOver));
+
+	}
 
 	activateAbilities() {
 
@@ -248,6 +306,40 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		});
 		this.spell_spiritShield.on('pointerdown', function (pointer) {
 			thisBar.activateSpiritShield();
+		});
+
+
+		// Remember whether pointer is over a spell, for showing spell frames
+		this.spell_spiritStrike.on('pointerover', function (pointer) {
+			thisBar.spiritStrike_MouseIsOver = true;
+		});
+		this.spell_spiritLance.on('pointerover', function (pointer) {
+			thisBar.spiritLance_MouseIsOver = true;
+		});
+		this.spell_spiritChains.on('pointerover', function (pointer) {
+			thisBar.spiritChains_MouseIsOver = true;
+		});
+		this.spell_spiritVolley.on('pointerover', function (pointer) {
+			thisBar.spiritVolley_MouseIsOver = true;
+		});
+		this.spell_spiritShield.on('pointerover', function (pointer) {
+			thisBar.spiritShield_MouseIsOver = true;
+		});
+
+		this.spell_spiritStrike.on('pointerout', function (pointer) {
+			thisBar.spiritStrike_MouseIsOver = false;
+		});
+		this.spell_spiritLance.on('pointerout', function (pointer) {
+			thisBar.spiritLance_MouseIsOver = false;
+		});
+		this.spell_spiritChains.on('pointerout', function (pointer) {
+			thisBar.spiritChains_MouseIsOver = false;
+		});
+		this.spell_spiritVolley.on('pointerout', function (pointer) {
+			thisBar.spiritVolley_MouseIsOver = false;
+		});
+		this.spell_spiritShield.on('pointerout', function (pointer) {
+			thisBar.spiritShield_MouseIsOver = false;
 		});
 	}
 

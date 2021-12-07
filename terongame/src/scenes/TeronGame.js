@@ -959,7 +959,7 @@ class TeronGame extends Phaser.Scene {
 			this.abilityBar.nocooldowns = true;
 			this.orcKidLaugh.play();
 		}
-		
+
 	}
 
 	checkGameEnded() {

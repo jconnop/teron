@@ -81,6 +81,71 @@
                     "y": 24
                 },
                 {
+                    "type": "Image",
+                    "id": "d45a28c4-c6c1-43b1-ba67-aace191c4053",
+                    "label": "spellFrame_SpiritStrike",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spellFrame"
+                    },
+                    "x": -8,
+                    "y": 24,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "b74e8d64-310c-49c7-a7ac-1a6e267b6985",
+                    "label": "spellFrame_SpiritLance",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spellFrame"
+                    },
+                    "x": 104,
+                    "y": 24,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "2ccdead2-6894-45c8-92a9-55f6877f913a",
+                    "label": "spellFrame_SpiritChains",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spellFrame"
+                    },
+                    "x": 160,
+                    "y": 24,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "a4fa20c7-2564-4414-a2f0-35cbffec4c26",
+                    "label": "spellFrame_SpiritVolley",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spellFrame"
+                    },
+                    "x": 216,
+                    "y": 24,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "6ba43ae4-c586-4120-8b94-ce2a1339ba43",
+                    "label": "spellFrame_SpiritShield",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spellFrame"
+                    },
+                    "x": 328,
+                    "y": 24,
+                    "visible": false
+                },
+                {
                     "type": "Text",
                     "id": "75f05984-f260-48b8-a101-767a2c667f2a",
                     "label": "abilityName",

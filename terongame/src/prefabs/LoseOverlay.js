@@ -17,7 +17,7 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 
 		// text
 		const text = scene.add.text(-122, -200, "", {});
-		text.text = "Your raid leader audibly sighs...\n\n\nOk guys wipe it up. This isn't hard just.. ugh. Didn't you all practice this? Run back asap and let's hope you-know-who doesn't get Shadow of Death this time..";
+		text.text = "Your raid leader audibly sighs...\n\n\nOk wipe it up. This isn't hard just.. ugh. Didn't you all practice this? Run back asap and let's hope you-know-who doesn't get Shadow of Death this time..";
 		text.setStyle({"align":"center","color":"#fb3333ff","fixedWidth":600,"fontSize":"28px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":5,"shadow.offsetX":2,"shadow.offsetY":2,"shadow.color":"#000000ff"});
 		text.setLineSpacing(5);
 		text.setWordWrapWidth(600, true);

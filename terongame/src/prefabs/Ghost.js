@@ -183,7 +183,7 @@ class Ghost extends Phaser.GameObjects.Image {
 		this.deathSound.play({
 			delay: 0.1
 		});
-		
+
 		var ghost = this;
 		this.scene.tweens.add({
 			targets: this,
