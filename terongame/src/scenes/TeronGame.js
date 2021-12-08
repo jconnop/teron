@@ -13,16 +13,16 @@ window.addEventListener('keydown', function(e) {
 
 let instance = null;
 class EventDispatcher extends Phaser.Events.EventEmitter {
-    constructor() {
-        super();       
-    }
+	constructor() {
+		super();       
+	}
 
 	static getInstance() {
-        if (instance == null) {
-            instance = new EventDispatcher();
-        }
-        return instance;
-    }
+		if (instance == null) {
+			instance = new EventDispatcher();
+		}
+		return instance;
+	}
 }
 
 class TeronGame extends Phaser.Scene {
