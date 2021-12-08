@@ -3,13 +3,35 @@
 
 /* START OF COMPILED CODE */
 
+window.addEventListener('keydown', function(e) {
+	if (e.key === 'Tab' && e.shiftKey) {
+		let emitter = EventDispatcher.getInstance();
+		emitter.emit('shifttab');
+		e.preventDefault();
+	}
+})
+
+let instance = null;
+class EventDispatcher extends Phaser.Events.EventEmitter {
+    constructor() {
+        super();       
+    }
+
+	static getInstance() {
+        if (instance == null) {
+            instance = new EventDispatcher();
+        }
+        return instance;
+    }
+}
+
 class TeronGame extends Phaser.Scene {
 
 	constructor() {
 		super("TeronGame");
 
 		/* START-USER-CTR-CODE */
-		// Write your code here.
+		this.emitter = EventDispatcher.getInstance();
 		/* END-USER-CTR-CODE */
 	}
 
@@ -693,8 +715,12 @@ class TeronGame extends Phaser.Scene {
 
 		this.blackTempleMusic.play({
 			volume: 0.15
-		});		
+		});
 
+		let me = this;
+		this.emitter.on('shifttab', function() {
+			me.shifttab = true;
+		});
 	}
 
 	update() {
@@ -823,6 +849,11 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	handleTargetSelection() {
+		if (this.shifttab) {
+			this.selectPreviousTarget();
+			this.shifttab = false;
+			return;
+		}
 		if (Phaser.Input.Keyboard.JustDown(this.wasd.tab)) {
 			this.selectNextTarget();
 		}
@@ -868,6 +899,17 @@ class TeronGame extends Phaser.Scene {
 		}
 	}
 
+	selectPreviousTarget() {
+		var currentIndex = this.getCurrentTargetIndex(this.targetFrame.target);
+		var newIndex = this.getPreviousTargetIndex(currentIndex);
+
+		if(newIndex != -1 && this.ghosts[newIndex].visible) {
+			this.targetFrame.setTarget(this.ghosts[newIndex]);
+		} else {
+			this.targetFrame.setTarget(null);
+		}
+	}
+
 	getCurrentTargetIndex(currentTarget) {
 		// Find current index, if exists
 		for (var i = 0; i < this.ghosts.length; i++) {
@@ -883,6 +925,18 @@ class TeronGame extends Phaser.Scene {
 		// Try 4 times to select next target, starting from current if it exists
 		for(var j = 1; j <= 4; j++) {
 			var tryIndex = (currentIndex + j) % 4;
+			if(this.ghosts[tryIndex].alive) {
+				return tryIndex;
+			}
+		}
+
+		return -1;
+	}
+
+	getPreviousTargetIndex(currentIndex) {
+		// Try 4 times to select previous target, starting from current if it exists
+		for(var j = 1; j <= 4; j++) {
+			var tryIndex = (currentIndex + 4 - j) % 4;
 			if(this.ghosts[tryIndex].alive) {
 				return tryIndex;
 			}
