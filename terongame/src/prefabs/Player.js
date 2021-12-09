@@ -41,20 +41,20 @@ class Player extends Phaser.GameObjects.Image {
 
 	movePlayer(wasd) {
 
-		if (wasd.left.isDown) {
+		if (wasd.left.isDown || wasd.a.isDown) {
 			this.body.setVelocityX(-this.movementSpeed);
 		}
-		else if (wasd.right.isDown) {
+		else if (wasd.right.isDown || wasd.d.isDown) {
 			this.body.setVelocityX(this.movementSpeed);
 		}
 		else {
 			this.body.setVelocityX(0);
 		}
 
-		if (wasd.down.isDown) {
+		if (wasd.down.isDown || wasd.s.isDown) {
 			this.body.setVelocityY(this.movementSpeed);
 		}
-		else if (wasd.up.isDown) {
+		else if (wasd.up.isDown || wasd.w.isDown) {
 			this.body.setVelocityY(-this.movementSpeed);
 		}
 		else {
@@ -62,7 +62,18 @@ class Player extends Phaser.GameObjects.Image {
 		}
 
 		if(this.moveTarget != null) {
-			var hasKeyboardInput = (wasd.left.isDown || wasd.right.isDown || wasd.down.isDown || wasd.up.isDown);
+
+			var hasKeyboardInput = (
+				 wasd.left.isDown ||
+				 wasd.right.isDown ||
+				 wasd.down.isDown ||
+				 wasd.up.isDown ||
+				 wasd.a.isDown ||
+				 wasd.d.isDown ||
+				 wasd.s.isDown ||
+				 wasd.w.isDown
+			);
+
 			if(!hasKeyboardInput) {
 				this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
 			}

@@ -776,16 +776,20 @@ class TeronGame extends Phaser.Scene {
 
 	bindKeys() {
 		this.wasd = {
-			up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W, true),
-			left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true),
-			down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S, true),
-			right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),			
+			w: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W, true),
+			a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true),
+			s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S, true),
+			d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),
 			one: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE, true),
 			three: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE, true),
 			four: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR, true),
 			five: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE, true),
 			seven: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN, true),
-			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
+			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true),
+			up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP, true),
+			down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN, true),
+			left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT, true),
+			right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT, true)
 		};
 
 		this.cheatKeys = {
