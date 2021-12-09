@@ -38,7 +38,7 @@
                     "label": "text",
                     "components": [],
                     "x": -300,
-                    "y": 72,
+                    "y": 45,
                     "originX": 0,
                     "originY": 0,
                     "text": "All constructs defeated!\n\nYour raid members cheer at you!\nYou saved their day!",
@@ -65,7 +65,7 @@
                         "frame": 1
                     },
                     "x": 78,
-                    "y": 362,
+                    "y": 322,
                     "scaleX": 0.42,
                     "scaleY": 0.33
                 },
@@ -76,7 +76,7 @@
                     "scope": "CLASS",
                     "components": [],
                     "x": -82,
-                    "y": 338,
+                    "y": 298,
                     "originX": 0,
                     "originY": 0,
                     "text": "PLAY AGAIN",
@@ -85,6 +85,44 @@
                     "fontSize": "42px",
                     "color": "#ff000000",
                     "strokeThickness": 3
+                },
+                {
+                    "type": "Text",
+                    "id": "49ed12ae-44a3-44c3-b2d7-bce3157248ec",
+                    "label": "winDurationText",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": -300,
+                    "y": 405,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "You won in xx.yyy seconds! Can you beat your friends?",
+                    "fixedWidth": 600,
+                    "align": "center",
+                    "fontSize": "18px",
+                    "fontStyle": "bold",
+                    "color": "#4cf25eff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 6
+                },
+                {
+                    "type": "Text",
+                    "id": "0a190659-9598-4e10-abbc-2e21481e6a49",
+                    "label": "cheatText",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": -300,
+                    "y": 430,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "BUT YOU CHEATED!",
+                    "fixedWidth": 600,
+                    "align": "center",
+                    "fontSize": "32px",
+                    "fontStyle": "bold",
+                    "color": "#ad0d0dff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 6
                 }
             ]
         }

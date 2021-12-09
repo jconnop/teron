@@ -651,6 +651,7 @@ class TeronGame extends Phaser.Scene {
 
 
 	gameStartTime;
+	ghostSpawnTime;
 
 	// Cheats
 	cheatKeys;
@@ -913,6 +914,8 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	spawnGhosts() {
+		this.ghostSpawnTime = new Date();
+
 		this.ghost_1.x = this.player.x - 20;
 		this.ghost_1.y = this.player.y - 20;
 
@@ -1002,11 +1005,15 @@ class TeronGame extends Phaser.Scene {
 		this.abilityBar.gameEnded = true;
 		this.firstAttempt = false;
 		this.player.stopMoving();
+
+		var winDuration = this.getWinDuration();
+
 		this.stopRandomSounds();
 		this.teronDeathSound.play({
 			delay: 1.3
 		});
 
+		this.winOverlay.setWinDuration(winDuration, this.cheat1Enabled || this.cheat2Enabled);
 		this.winOverlay.visible = true;
 		this.winOverlay.alpha = 0;
 		this.tweens.add({
@@ -1036,6 +1043,12 @@ class TeronGame extends Phaser.Scene {
 			duration: 800,
 			ease: 'Power2'
 		});
+	}
+
+	getWinDuration() {
+		var currentTime = new Date();
+		var secondsElapsed = (currentTime - this.ghostSpawnTime) / 1000;
+		return secondsElapsed;
 	}
 
 	stopGhosts() {
