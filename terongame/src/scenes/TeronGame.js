@@ -823,8 +823,9 @@ class TeronGame extends Phaser.Scene {
 		this.ghosts.forEach(ghost => ghost.setInteractive());
 
 		var frame = this.targetFrame;
+		var thisScene = this;
 		this.ghosts.forEach(ghost => ghost.on('pointerdown', function (pointer) {
-			if(ghost.alive && ghost.visible) {
+			if(ghost.alive && ghost.visible && !thisScene.gameEnded) {
 				frame.setTarget(ghost);
 			}
 		}));
@@ -998,6 +999,7 @@ class TeronGame extends Phaser.Scene {
 
 	winGame() {
 		this.gameEnded = true;
+		this.abilityBar.gameEnded = true;
 		this.firstAttempt = false;
 		this.player.stopMoving();
 		this.stopRandomSounds();
@@ -1017,6 +1019,7 @@ class TeronGame extends Phaser.Scene {
 
 	loseGame() {
 		this.gameEnded = true;
+		this.abilityBar.gameEnded = true;
 		this.firstAttempt = false;
 		this.stopGhosts();
 		this.player.stopMoving();

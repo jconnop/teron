@@ -21,7 +21,7 @@ class Debuff extends Phaser.GameObjects.Container {
 		this.timer = timer;
 
 		/* START-USER-CTR-CODE */
-			this.setRemainingSeconds(15);
+			this.setRemainingSeconds(13);
 		/* END-USER-CTR-CODE */
 	}
 
