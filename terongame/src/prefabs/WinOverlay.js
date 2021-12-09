@@ -23,10 +23,9 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		this.add(text);
 
 		// startButton
-		const startButton = scene.add.ellipse(78, 358, 360, 64);
-		startButton.isFilled = true;
-		startButton.fillColor = 2880534;
-		startButton.fillAlpha = 0.5;
+		const startButton = scene.add.image(78, 362, "buttons", 1);
+		startButton.scaleX = 0.42;
+		startButton.scaleY = 0.33;
 		this.add(startButton);
 
 		// startText
@@ -64,7 +63,7 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		/* END-USER-CTR-CODE */
 	}
 
-	/** @type {Phaser.GameObjects.Ellipse} */
+	/** @type {Phaser.GameObjects.Image} */
 	startButton;
 	/** @type {Phaser.GameObjects.Text} */
 	startText;

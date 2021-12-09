@@ -40,6 +40,24 @@
                 "key": "blueFlare"
             },
             {
+                "url": "assets/buttons.png",
+                "frameConfig": {
+                    "frameWidth": 750,
+                    "frameHeight": 274,
+                    "startFrame": 0,
+                    "endFrame": -1,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "buttons"
+            },
+            {
+                "url": "assets/check.png",
+                "type": "image",
+                "key": "check"
+            },
+            {
                 "url": "assets/spells/debuff_shadowOfDeath.jpg",
                 "type": "image",
                 "key": "debuff_shadowOfDeath"

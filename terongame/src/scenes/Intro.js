@@ -25,12 +25,6 @@ class Intro extends Phaser.Scene {
 		rectangle.fillColor = 0;
 		rectangle.fillAlpha = 0.7;
 
-		// startButton
-		const startButton = this.add.ellipse(428, 580, 192, 64);
-		startButton.isFilled = true;
-		startButton.fillColor = 2880534;
-		startButton.fillAlpha = 0.5;
-
 		// text
 		const text = this.add.text(0, 200, "", {});
 		text.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!";
@@ -48,6 +42,11 @@ class Intro extends Phaser.Scene {
 		text_1_1.text = "*** Used graphics and sounds are property of Blizzard Entertainment ***";
 		text_1_1.setStyle({"align":"center","fixedWidth":600,"fontSize":"13px"});
 
+		// startButton
+		const startButton = this.add.image(428, 583, "buttons", 2);
+		startButton.scaleX = 0.25;
+		startButton.scaleY = 0.25;
+
 		// startText
 		const startText = this.add.text(328, 559, "", {});
 		startText.text = "START";
@@ -57,16 +56,70 @@ class Intro extends Phaser.Scene {
 		const soundToggle = new SoundToggle(this, 544, 34);
 		this.add.existing(soundToggle);
 
+		// azertyButton
+		const azertyButton = this.add.image(100, 688, "buttons", 3);
+		azertyButton.scaleX = 0.15;
+		azertyButton.scaleY = 0.15;
+
+		// qwertyButton
+		const qwertyButton = this.add.image(100, 644, "buttons", 3);
+		qwertyButton.scaleX = 0.15;
+		qwertyButton.scaleY = 0.15;
+
+		// startText_1
+		const startText_1 = this.add.text(68, 632, "", {});
+		startText_1.text = "QWERTY";
+		startText_1.setStyle({"align":"center","color":"#000000ff","fixedWidth":85,"fontSize":"20px","stroke":"#000000ff","strokeThickness":1});
+
+		// startText_1_1
+		const startText_1_1 = this.add.text(68, 676, "", {});
+		startText_1_1.text = "AZERTY";
+		startText_1_1.setStyle({"align":"center","color":"#000000ff","fixedWidth":85,"fontSize":"20px","stroke":"#000000ff","strokeThickness":1});
+
+		// tick_azerty
+		const tick_azerty = this.add.image(62, 685, "check");
+		tick_azerty.scaleX = 0.33;
+		tick_azerty.scaleY = 0.33;
+		tick_azerty.visible = false;
+
+		// tick_qwerty
+		const tick_qwerty = this.add.image(62, 641, "check");
+		tick_qwerty.scaleX = 0.33;
+		tick_qwerty.scaleY = 0.33;
+
+		// text_2
+		const text_2 = this.add.text(0, 128, "", {});
+		text_2.text = "Teron";
+		text_2.setStyle({"align":"center","fixedWidth":600,"fontSize":"48px","strokeThickness":2});
+
 		this.startButton = startButton;
 		this.startText = startText;
+		this.azertyButton = azertyButton;
+		this.qwertyButton = qwertyButton;
+		this.startText_1 = startText_1;
+		this.startText_1_1 = startText_1_1;
+		this.tick_azerty = tick_azerty;
+		this.tick_qwerty = tick_qwerty;
 
 		this.events.emit("scene-awake");
 	}
 
-	/** @type {Phaser.GameObjects.Ellipse} */
+	/** @type {Phaser.GameObjects.Image} */
 	startButton;
 	/** @type {Phaser.GameObjects.Text} */
 	startText;
+	/** @type {Phaser.GameObjects.Image} */
+	azertyButton;
+	/** @type {Phaser.GameObjects.Image} */
+	qwertyButton;
+	/** @type {Phaser.GameObjects.Text} */
+	startText_1;
+	/** @type {Phaser.GameObjects.Text} */
+	startText_1_1;
+	/** @type {Phaser.GameObjects.Image} */
+	tick_azerty;
+	/** @type {Phaser.GameObjects.Image} */
+	tick_qwerty;
 
 	/* START-USER-CODE */
 
@@ -74,6 +127,8 @@ class Intro extends Phaser.Scene {
 
 	introSpeech;
 	blackTempleAmbience;
+
+	qwertyEnabled = true;
 
 	create() {
 
@@ -90,19 +145,24 @@ class Intro extends Phaser.Scene {
 
 	}
 
+	update() {
+		this.tick_qwerty.visible = this.qwertyEnabled;
+		this.tick_azerty.visible = !this.qwertyEnabled;
+	}
+
 	initClickHandlers(){
+
+		var localScene = this;
 
 		// Start Button
 		this.startButton.setInteractive();
-
-		var localScene = this;
 		var localIntroSpeech = this.introSpeech;
 
 		this.startButton.on('pointerdown', function (pointer) {
 			if(localIntroSpeech.isPlaying) {
 				localIntroSpeech.stop();
 			}
-			localScene.scene.start("TeronGame");
+			localScene.scene.start("TeronGame", { qwertyEnabled: localScene.qwertyEnabled });
 		});
 
 		var localStartText = this.startText;
@@ -119,6 +179,20 @@ class Intro extends Phaser.Scene {
 			localStartText.tintBottomLeft = 16777215;
 			localStartText.tintBottomRight = 16777215;
 		});
+
+
+		// QWERTY Button		
+		this.qwertyButton.setInteractive();
+		this.qwertyButton.on('pointerdown', function (pointer) {
+			localScene.qwertyEnabled = true;
+		});
+
+		// AZERTY Button
+		this.azertyButton.setInteractive();
+		this.azertyButton.on('pointerdown', function (pointer) {
+			localScene.qwertyEnabled = false;
+		});
+
 
 	}
 

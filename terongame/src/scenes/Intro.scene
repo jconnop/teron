@@ -2,8 +2,9 @@
     "id": "e3098f73-28cd-4148-9482-c10095c732b2",
     "sceneType": "SCENE",
     "settings": {
-        "snapWidth": 2,
-        "snapHeight": 2,
+        "snapEnabled": true,
+        "snapWidth": 4,
+        "snapHeight": 4,
         "preloadPackFiles": [],
         "createMethodName": "editorCreate",
         "sceneKey": "Intro",
@@ -34,20 +35,6 @@
             "fillAlpha": 0.7,
             "width": 600,
             "height": 800
-        },
-        {
-            "type": "Ellipse",
-            "id": "66051470-c513-4486-86d7-a4b6f641c58c",
-            "label": "startButton",
-            "scope": "CLASS",
-            "components": [],
-            "x": 428,
-            "y": 580,
-            "isFilled": true,
-            "fillColor": "#2bf416",
-            "fillAlpha": 0.5,
-            "width": 192,
-            "height": 64
         },
         {
             "type": "Text",
@@ -92,6 +79,21 @@
             "fontSize": "13px"
         },
         {
+            "type": "Image",
+            "id": "1847291d-efd6-483d-bb72-7a4e0075fa47",
+            "label": "startButton",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "buttons",
+                "frame": 2
+            },
+            "x": 428,
+            "y": 583,
+            "scaleX": 0.25,
+            "scaleY": 0.25
+        },
+        {
             "type": "Text",
             "id": "b29ff371-b7ba-4336-8201-0f9e3963e774",
             "label": "startText",
@@ -120,6 +122,115 @@
             "x": 544,
             "y": 34,
             "nestedPrefabs": []
+        },
+        {
+            "type": "Image",
+            "id": "9286bbbb-51fc-419c-89d9-ef67cf90d1a6",
+            "label": "azertyButton",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "buttons",
+                "frame": 3
+            },
+            "x": 100,
+            "y": 688,
+            "scaleX": 0.15,
+            "scaleY": 0.15
+        },
+        {
+            "type": "Image",
+            "id": "ed59c8a5-8fc6-4be0-95d9-84bf63c6d045",
+            "label": "qwertyButton",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "buttons",
+                "frame": 3
+            },
+            "x": 100,
+            "y": 644,
+            "scaleX": 0.15,
+            "scaleY": 0.15
+        },
+        {
+            "type": "Text",
+            "id": "265b6834-5b8a-4060-81be-714d1a74bc9c",
+            "label": "startText_1",
+            "scope": "CLASS",
+            "components": [],
+            "x": 68,
+            "y": 632,
+            "originX": 0,
+            "originY": 0,
+            "text": "QWERTY",
+            "fixedWidth": 85,
+            "align": "center",
+            "fontSize": "20px",
+            "color": "#000000ff",
+            "stroke": "#000000ff",
+            "strokeThickness": 1
+        },
+        {
+            "type": "Text",
+            "id": "d9b5ad0b-1120-4a56-827c-83b83eee8d36",
+            "label": "startText_1_1",
+            "scope": "CLASS",
+            "components": [],
+            "x": 68,
+            "y": 676,
+            "originX": 0,
+            "originY": 0,
+            "text": "AZERTY",
+            "fixedWidth": 85,
+            "align": "center",
+            "fontSize": "20px",
+            "color": "#000000ff",
+            "stroke": "#000000ff",
+            "strokeThickness": 1
+        },
+        {
+            "type": "Image",
+            "id": "a496be87-d00f-44b9-9a5b-a40cf7e488f0",
+            "label": "tick_azerty",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "check"
+            },
+            "x": 62,
+            "y": 685,
+            "scaleX": 0.33,
+            "scaleY": 0.33,
+            "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "c2da4657-7eb2-4d79-945f-5ef5730adc2e",
+            "label": "tick_qwerty",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "check"
+            },
+            "x": 62,
+            "y": 641,
+            "scaleX": 0.33,
+            "scaleY": 0.33
+        },
+        {
+            "type": "Text",
+            "id": "0d4394e6-fb0d-429b-95aa-17ec760b9ab4",
+            "label": "text_2",
+            "components": [],
+            "y": 128,
+            "originX": 0,
+            "originY": 0,
+            "text": "Teron",
+            "fixedWidth": 600,
+            "align": "center",
+            "fontSize": "48px",
+            "strokeThickness": 2
         }
     ],
     "plainObjects": [],

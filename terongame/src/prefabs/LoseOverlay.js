@@ -24,10 +24,9 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 		this.add(text);
 
 		// startButton
-		const startButton = scene.add.ellipse(276, 234, 320, 64);
-		startButton.isFilled = true;
-		startButton.fillColor = 2880534;
-		startButton.fillAlpha = 0.5;
+		const startButton = scene.add.image(278, 238, "buttons", 5);
+		startButton.scaleX = 0.42;
+		startButton.scaleY = 0.33;
 		this.add(startButton);
 
 		// startText
@@ -65,7 +64,7 @@ class LoseOverlay extends Phaser.GameObjects.Container {
 		/* END-USER-CTR-CODE */
 	}
 
-	/** @type {Phaser.GameObjects.Ellipse} */
+	/** @type {Phaser.GameObjects.Image} */
 	startButton;
 	/** @type {Phaser.GameObjects.Text} */
 	startText;

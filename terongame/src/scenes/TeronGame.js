@@ -626,6 +626,8 @@ class TeronGame extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
+	qwertyEnabled;
+
 	gameEnded;
 
 	firstAttempt = true;
@@ -662,6 +664,10 @@ class TeronGame extends Phaser.Scene {
 	orcKidLaugh;
 
 	// Write your code here
+
+	init(data) {
+		this.qwertyEnabled = data.qwertyEnabled;
+	}
 
 	create() {
 		this.gameEnded = false;
@@ -700,7 +706,7 @@ class TeronGame extends Phaser.Scene {
 
 		this.blackTempleMusic.play({
 			volume: 0.15
-		});		
+		});
 
 	}
 
@@ -724,7 +730,7 @@ class TeronGame extends Phaser.Scene {
 
 		this.handleTargetSelection();
 
-		this.abilityBar.update(this.wasd, this.player, this.ghosts, this.targetFrame.target);
+		this.abilityBar.update();
 
 		this.targetFrame.update();
 
@@ -782,9 +788,12 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	bindKeys() {
+		// For AZERTY
+		// W -> Z
+		// A -> Q
 		this.wasd = {
-			w: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W, true),
-			a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true),
+			w: this.input.keyboard.addKey(this.qwertyEnabled ? Phaser.Input.Keyboard.KeyCodes.W : Phaser.Input.Keyboard.KeyCodes.Z, true),
+			a: this.input.keyboard.addKey(this.qwertyEnabled ? Phaser.Input.Keyboard.KeyCodes.A : Phaser.Input.Keyboard.KeyCodes.Q, true),
 			s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S, true),
 			d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),
 			one: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE, true),

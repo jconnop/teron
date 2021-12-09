@@ -54,18 +54,19 @@
                     "wordWrapUseAdvanced": true
                 },
                 {
-                    "type": "Ellipse",
-                    "id": "ada7963f-e217-4e8a-a398-2d2bad1b0559",
+                    "type": "Image",
+                    "id": "c7ef5e95-22d4-468b-91d1-c2824dfaf8ce",
                     "label": "startButton",
                     "scope": "CLASS",
                     "components": [],
-                    "x": 276,
-                    "y": 234,
-                    "isFilled": true,
-                    "fillColor": "#2bf416",
-                    "fillAlpha": 0.5,
-                    "width": 320,
-                    "height": 64
+                    "texture": {
+                        "key": "buttons",
+                        "frame": 5
+                    },
+                    "x": 278,
+                    "y": 238,
+                    "scaleX": 0.42,
+                    "scaleY": 0.33
                 },
                 {
                     "type": "Text",

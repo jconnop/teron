@@ -55,18 +55,19 @@
                     "shadow.color": "#000000ff"
                 },
                 {
-                    "type": "Ellipse",
-                    "id": "92afbffe-5c1c-4243-a739-7a46e45f687d",
+                    "type": "Image",
+                    "id": "789dc415-8c9d-4ba5-ac10-ddb160d3beef",
                     "label": "startButton",
                     "scope": "CLASS",
                     "components": [],
+                    "texture": {
+                        "key": "buttons",
+                        "frame": 1
+                    },
                     "x": 78,
-                    "y": 358,
-                    "isFilled": true,
-                    "fillColor": "#2bf416",
-                    "fillAlpha": 0.5,
-                    "width": 360,
-                    "height": 64
+                    "y": 362,
+                    "scaleX": 0.42,
+                    "scaleY": 0.33
                 },
                 {
                     "type": "Text",
