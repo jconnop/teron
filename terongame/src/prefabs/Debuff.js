@@ -21,8 +21,7 @@ class Debuff extends Phaser.GameObjects.Container {
 		this.timer = timer;
 
 		/* START-USER-CTR-CODE */
-		this.countdownEnd = new Date();
-		this.countdownEnd.setSeconds(this.countdownEnd.getSeconds() + 15);
+			this.setRemainingSeconds(15);
 		/* END-USER-CTR-CODE */
 	}
 
@@ -32,6 +31,11 @@ class Debuff extends Phaser.GameObjects.Container {
 	/* START-USER-CODE */
 
 	countdownEnd;
+
+	setRemainingSeconds(seconds) {
+		this.countdownEnd = new Date();
+		this.countdownEnd.setSeconds(this.countdownEnd.getSeconds() + seconds);
+	}
 
 	update() {
 		var currentTime = new Date();

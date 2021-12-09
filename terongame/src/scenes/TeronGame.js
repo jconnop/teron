@@ -628,6 +628,7 @@ class TeronGame extends Phaser.Scene {
 
 	gameEnded;
 
+	firstAttempt = true;
 
 	// Sounds
 	ghostSpawnSound;
@@ -684,6 +685,12 @@ class TeronGame extends Phaser.Scene {
 		this.initClickInput();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
+
+		if(!this.firstAttempt) {
+			// On subsequent attempts, don't make people wait so long since they're eager to go
+			this.debuff.setRemainingSeconds(10);
+		}
+
 		this.initSounds();
 
 		this.gameStartTime = new Date();
@@ -982,6 +989,7 @@ class TeronGame extends Phaser.Scene {
 
 	winGame() {
 		this.gameEnded = true;
+		this.firstAttempt = false;
 		this.player.stopMoving();
 		this.stopRandomSounds();
 		this.teronDeathSound.play({
@@ -1000,6 +1008,7 @@ class TeronGame extends Phaser.Scene {
 
 	loseGame() {
 		this.gameEnded = true;
+		this.firstAttempt = false;
 		this.stopGhosts();
 		this.player.stopMoving();
 		this.stopRandomSounds();
