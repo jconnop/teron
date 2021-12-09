@@ -33,7 +33,7 @@ class Intro extends Phaser.Scene {
 
 		// text
 		const text = this.add.text(0, 200, "", {});
-		text.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!";
+		text.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!";
 		text.setStyle({"align":"center","fixedWidth":600,"fontSize":"15.5px","stroke":"#000000ff"});
 		text.setLineSpacing(3);
 		text.setWordWrapWidth(550);
