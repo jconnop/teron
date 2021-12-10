@@ -16,7 +16,6 @@ class ShifTabDispatcher extends Phaser.Events.EventEmitter {
 
 	shifTabDown() {
 		if (!this._isJustDown) {
-			console.log('Emitting shiftab Event')
 			ShifTabDispatcher.getInstance().emit(ShifTabDispatcher.ShiftTabEvent)
 			this._isJustDown = true
 		}
