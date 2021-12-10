@@ -113,6 +113,9 @@ class Intro extends Phaser.Scene {
 		tick_spellBook.scaleY = 0.33;
 		tick_spellBook.visible = false;
 
+		// coffee
+		const coffee = this.add.image(85, 36, "coffee");
+
 		this.introText = introText;
 		this.startButton = startButton;
 		this.startText = startText;
@@ -126,6 +129,7 @@ class Intro extends Phaser.Scene {
 		this.spellbookButton = spellbookButton;
 		this.startText_1_2 = startText_1_2;
 		this.tick_spellBook = tick_spellBook;
+		this.coffee = coffee;
 
 		this.events.emit("scene-awake");
 	}
@@ -156,6 +160,8 @@ class Intro extends Phaser.Scene {
 	startText_1_2;
 	/** @type {Phaser.GameObjects.Image} */
 	tick_spellBook;
+	/** @type {Phaser.GameObjects.Image} */
+	coffee;
 
 	/* START-USER-CODE */
 
@@ -236,6 +242,25 @@ class Intro extends Phaser.Scene {
 			localScene.introText.visible = !localScene.introText.visible;
 			localScene.tick_spellBook.visible = !localScene.tick_spellBook.visible;
 			localScene.abilityInfo.visible = !localScene.abilityInfo.visible;
+		});
+
+		// Coffee Button
+		this.coffee.setInteractive({ useHandCursor: true });
+		this.coffee.on('pointerdown', function(pointer) {
+
+			var url = 'https://www.buymeacoffee.com/faldorn';
+
+			var s = window.open(url, '_blank');
+
+			if (s && s.focus)
+			{
+				s.focus();
+			}
+			else if (!s)
+			{
+				window.location.href = url;
+			}
+
 		});
 
 	}

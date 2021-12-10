@@ -295,6 +295,18 @@
             "scaleX": 0.33,
             "scaleY": 0.33,
             "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "ff13578a-5529-49a2-a3e0-5be41b21f4c5",
+            "label": "coffee",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "coffee"
+            },
+            "x": 85,
+            "y": 36
         }
     ],
     "plainObjects": [],

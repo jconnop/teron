@@ -58,6 +58,11 @@
                 "key": "check"
             },
             {
+                "url": "assets/coffee.png",
+                "type": "image",
+                "key": "coffee"
+            },
+            {
                 "url": "assets/spells/debuff_shadowOfDeath.jpg",
                 "type": "image",
                 "key": "debuff_shadowOfDeath"
