@@ -5,7 +5,7 @@ class ShifTabDispatcher extends Phaser.Events.EventEmitter {
         this._isJustDown = false       
 	}
 
-    static ShiftTabEvent = 'shifttab'
+	static ShiftTabEvent = 'shifttab'
 
 	static getInstance() {
 		if (shiftTabDispatcherInstance == null) {
@@ -14,16 +14,16 @@ class ShifTabDispatcher extends Phaser.Events.EventEmitter {
 		return shiftTabDispatcherInstance;
 	}
 
-    shifTabDown() {
+	shifTabDown() {
         if (!this._isJustDown) {
             console.log('Emitting shiftab Event')
             ShifTabDispatcher.getInstance().emit(ShifTabDispatcher.ShiftTabEvent)
             this._isJustDown = true
         }
-    }
+	}
 
-    shifTabUp() {
+	shifTabUp() {
         this._isJustDown = false;
-    }
+	}
 }
 
