@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
 		width: 600,
 		height: 800,
 		type: Phaser.AUTO,
-        backgroundColor: "#242424",
+		backgroundColor: "#242424",
 		scale: {
 			mode: Phaser.Scale.FIT,
 			autoCenter: Phaser.Scale.CENTER_BOTH
@@ -24,6 +24,19 @@ window.addEventListener('load', function () {
 	game.scene.add("TeronGame", TeronGame);
 	game.scene.add("Boot", Boot, true);
 });
+
+window.addEventListener('keydown', function(e) {
+	if (e.key === 'Tab' && e.shiftKey) {
+		ShifTabDispatcher.getInstance().shifTabDown();
+		e.preventDefault()
+	}
+})
+
+window.addEventListener('keyup', function(e) {
+	if (e.key === 'Tab') {
+		ShifTabDispatcher.getInstance().shifTabUp();
+	}
+})
 
 class Boot extends Phaser.Scene {
 

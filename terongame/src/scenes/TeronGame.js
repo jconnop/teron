@@ -709,6 +709,10 @@ class TeronGame extends Phaser.Scene {
 			volume: 0.15
 		});
 
+		let me = this;
+		ShifTabDispatcher.getInstance().on(ShifTabDispatcher.ShiftTabEvent, function() {
+			me.shifttab = true;
+		});
 	}
 
 	update() {
@@ -845,6 +849,11 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	handleTargetSelection() {
+		if (this.shifttab) {
+			this.selectPreviousTarget();
+			this.shifttab = false;
+			return;
+		}
 		if (Phaser.Input.Keyboard.JustDown(this.wasd.tab)) {
 			this.selectNextTarget();
 		}
@@ -890,6 +899,17 @@ class TeronGame extends Phaser.Scene {
 		}
 	}
 
+	selectPreviousTarget() {
+		var currentIndex = this.getCurrentTargetIndex(this.targetFrame.target);
+		var newIndex = this.getPreviousTargetIndex(currentIndex);
+
+		if(newIndex != -1 && this.ghosts[newIndex].visible) {
+			this.targetFrame.setTarget(this.ghosts[newIndex]);
+		} else {
+			this.targetFrame.setTarget(null);
+		}
+	}
+
 	getCurrentTargetIndex(currentTarget) {
 		// Find current index, if exists
 		for (var i = 0; i < this.ghosts.length; i++) {
@@ -905,6 +925,18 @@ class TeronGame extends Phaser.Scene {
 		// Try 4 times to select next target, starting from current if it exists
 		for(var j = 1; j <= 4; j++) {
 			var tryIndex = (currentIndex + j) % 4;
+			if(this.ghosts[tryIndex].alive) {
+				return tryIndex;
+			}
+		}
+
+		return -1;
+	}
+
+	getPreviousTargetIndex(currentIndex) {
+		// Try 4 times to select previous target, starting from current if it exists
+		for(var j = 1; j <= 4; j++) {
+			var tryIndex = (currentIndex + 4 - j) % 4;
 			if(this.ghosts[tryIndex].alive) {
 				return tryIndex;
 			}
