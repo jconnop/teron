@@ -1,0 +1,337 @@
+{
+    "id": "a6607891-7eb1-46e3-b2cd-42bae114fd31",
+    "sceneType": "PREFAB",
+    "settings": {
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "borderWidth": 600,
+        "borderHeight": 800
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "8138d1d0-167f-4e92-9847-4c97034f533f",
+            "label": "container_1",
+            "components": [],
+            "x": 192,
+            "y": 200,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "562bb61c-e976-442c-a87e-aee940eb7362",
+                    "label": "spell_spiritStrike",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritStrike"
+                    },
+                    "x": 20,
+                    "y": -89
+                },
+                {
+                    "type": "Text",
+                    "id": "61431fed-3b0d-4cee-839a-786c7cfa3399",
+                    "label": "text",
+                    "components": [],
+                    "x": 32,
+                    "y": -117,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "1",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Image",
+                    "id": "a486560a-aa10-4faa-a431-62201691b979",
+                    "label": "spell_spiritLance",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritLance"
+                    },
+                    "x": 20,
+                    "y": -9
+                },
+                {
+                    "type": "Text",
+                    "id": "73a9fe63-7779-45b6-97f0-76388c27b6e1",
+                    "label": "text_1",
+                    "components": [],
+                    "x": 32,
+                    "y": -37,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "3",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Image",
+                    "id": "2c1bf26d-306a-45df-a9a7-c6e6236dc741",
+                    "label": "spell_spiritChains",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritChains"
+                    },
+                    "x": 20,
+                    "y": 71
+                },
+                {
+                    "type": "Text",
+                    "id": "eccf286f-9f54-4411-a207-5fd8cdb021fd",
+                    "label": "text_2",
+                    "components": [],
+                    "x": 32,
+                    "y": 43,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "4",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Image",
+                    "id": "6320c38c-fa8a-4651-9e8a-f902262056eb",
+                    "label": "spell_spiritVolley",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritVolley"
+                    },
+                    "x": 20,
+                    "y": 151
+                },
+                {
+                    "type": "Text",
+                    "id": "71a30874-44fa-4143-b4e0-82dd5ccfbcff",
+                    "label": "text_3",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": 32,
+                    "y": 123,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "5",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Image",
+                    "id": "74ff23c1-37a0-4b8f-8c81-6563474ad105",
+                    "label": "spell_spiritShield",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "spell_spiritShield"
+                    },
+                    "x": 20,
+                    "y": 231
+                },
+                {
+                    "type": "Text",
+                    "id": "fc907e28-eb35-4a0a-ab85-ac6116ad93e9",
+                    "label": "text_4",
+                    "components": [],
+                    "x": 32,
+                    "y": 203,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "7",
+                    "fontSize": "20px",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 5,
+                    "backgroundColor": "",
+                    "shadow.fill": true
+                },
+                {
+                    "type": "Text",
+                    "id": "e9954904-2153-4bec-8002-f27b2f13c546",
+                    "label": "text_5",
+                    "components": [],
+                    "x": 55,
+                    "y": -117,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Spirit Strike",
+                    "fontSize": "20px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "e3194f7c-c59b-434d-9a86-eaf0434bf71e",
+                    "label": "text_6",
+                    "components": [],
+                    "x": 55,
+                    "y": -93,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Low damage, single target melee ability.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "31abf029-5080-4d3b-9baf-f8e75900dc5f",
+                    "label": "text_5_1",
+                    "components": [],
+                    "x": 55,
+                    "y": -37,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Spirit Lance",
+                    "fontSize": "20px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "314a20e9-5913-4937-a28f-8e6b2675c7de",
+                    "label": "text_6_1",
+                    "components": [],
+                    "x": 55,
+                    "y": -13,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Medium damage. Single target. 30 yd range.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "9b7b9de7-560e-48a2-bd89-c6a760fe8618",
+                    "label": "text_5_2",
+                    "components": [],
+                    "x": 55,
+                    "y": 43,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Spirit Chains",
+                    "fontSize": "20px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "f9bbd26f-1c63-46ee-9328-fe3d57dcab5c",
+                    "label": "text_6_2",
+                    "components": [],
+                    "x": 55,
+                    "y": 67,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Low damage AoE. 15 second CD. 12 yd range.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "748d7f8a-e3e4-4233-bd58-310082c6c52c",
+                    "label": "text_5_3",
+                    "components": [],
+                    "x": 55,
+                    "y": 123,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Spirit Volley",
+                    "fontSize": "20px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "54be0199-1054-4e00-9f07-c87672c437b6",
+                    "label": "text_6_3",
+                    "components": [],
+                    "x": 55,
+                    "y": 149,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "High Damage AoE. 15 second CD. 12 yd range.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "3b5a814e-9197-447a-9e3f-28351147fb0f",
+                    "label": "text_5_4",
+                    "components": [],
+                    "x": 55,
+                    "y": 203,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Spirit Shield",
+                    "fontSize": "20px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "0678d00f-bb37-40b0-b001-0ec955d00434",
+                    "label": "text_6_4",
+                    "components": [],
+                    "x": 55,
+                    "y": 227,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Place shield on a friendly player.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "ea19b7b4-187b-4cb1-b955-24fcaf399e60",
+                    "label": "text_6_4_1",
+                    "components": [],
+                    "x": 55,
+                    "y": 244,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "(not functional in this game)",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "ae38e568-6205-4d2e-a357-28c0aa092531",
+                    "label": "text_6_2_1",
+                    "components": [],
+                    "x": 55,
+                    "y": 84,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Apply 5 second roots, broken by any damage.",
+                    "fontSize": "14px"
+                },
+                {
+                    "type": "Text",
+                    "id": "d197f995-7713-4dd2-927e-eecdc90b3398",
+                    "label": "text_6_2_1_1",
+                    "components": [],
+                    "x": 55,
+                    "y": 4,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Apply 30% slow for 9 seconds, max 3 stacks.",
+                    "fontSize": "14px"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor 2D - Scene Editor",
+        "url": "https://phasereditor2d.com",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 2
+    }
+}

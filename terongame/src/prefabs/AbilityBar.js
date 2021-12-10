@@ -398,7 +398,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		if(!this.isInRange(this.player, this.targetFrame.target, 30)) {
-			return;	
+			return;
 		}
 
 		this.spiritLance_Cast.play()

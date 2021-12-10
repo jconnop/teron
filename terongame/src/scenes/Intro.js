@@ -25,12 +25,12 @@ class Intro extends Phaser.Scene {
 		rectangle.fillColor = 0;
 		rectangle.fillAlpha = 0.7;
 
-		// text
-		const text = this.add.text(0, 200, "", {});
-		text.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!";
-		text.setStyle({"align":"center","fixedWidth":600,"fontSize":"15.5px","stroke":"#000000ff"});
-		text.setLineSpacing(3);
-		text.setWordWrapWidth(550);
+		// introText
+		const introText = this.add.text(0, 200, "", {});
+		introText.text = "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nIn the actual game, keep in mind that the ghost's abilities are on a possess bar, so if you use a custom bar mod like Bartender etc, you should prepare macros to /cast the ghost abilities and bind them beforehand!\n\nGood luck!";
+		introText.setStyle({"align":"center","fixedWidth":600,"fontSize":"15.5px","stroke":"#000000ff"});
+		introText.setLineSpacing(3);
+		introText.setWordWrapWidth(550);
 
 		// text_1
 		const text_1 = this.add.text(0, 756, "", {});
@@ -43,12 +43,12 @@ class Intro extends Phaser.Scene {
 		text_1_1.setStyle({"align":"center","fixedWidth":600,"fontSize":"13px"});
 
 		// startButton
-		const startButton = this.add.image(428, 583, "buttons", 2);
+		const startButton = this.add.image(476, 663, "buttons", 2);
 		startButton.scaleX = 0.25;
 		startButton.scaleY = 0.25;
 
 		// startText
-		const startText = this.add.text(328, 559, "", {});
+		const startText = this.add.text(376, 639, "", {});
 		startText.text = "START";
 		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":200,"fontSize":"42px","strokeThickness":3});
 
@@ -92,6 +92,28 @@ class Intro extends Phaser.Scene {
 		text_2.text = "Teron";
 		text_2.setStyle({"align":"center","fixedWidth":600,"fontSize":"48px","strokeThickness":2});
 
+		// abilityInfo
+		const abilityInfo = new AbilityInfo(this, 111, 320);
+		this.add.existing(abilityInfo);
+		abilityInfo.visible = false;
+
+		// spellbookButton
+		const spellbookButton = this.add.image(252, 665, "buttons", 1);
+		spellbookButton.scaleX = 0.2;
+		spellbookButton.scaleY = 0.2;
+
+		// startText_1_2
+		const startText_1_2 = this.add.text(174, 652, "", {});
+		startText_1_2.text = "Spellbook";
+		startText_1_2.setStyle({"align":"center","color":"#000000ff","fixedWidth":180,"fontSize":"20px","stroke":"#000000ff","strokeThickness":1});
+
+		// tick_spellBook
+		const tick_spellBook = this.add.image(198, 662, "check");
+		tick_spellBook.scaleX = 0.33;
+		tick_spellBook.scaleY = 0.33;
+		tick_spellBook.visible = false;
+
+		this.introText = introText;
 		this.startButton = startButton;
 		this.startText = startText;
 		this.azertyButton = azertyButton;
@@ -100,10 +122,16 @@ class Intro extends Phaser.Scene {
 		this.startText_1_1 = startText_1_1;
 		this.tick_azerty = tick_azerty;
 		this.tick_qwerty = tick_qwerty;
+		this.abilityInfo = abilityInfo;
+		this.spellbookButton = spellbookButton;
+		this.startText_1_2 = startText_1_2;
+		this.tick_spellBook = tick_spellBook;
 
 		this.events.emit("scene-awake");
 	}
 
+	/** @type {Phaser.GameObjects.Text} */
+	introText;
 	/** @type {Phaser.GameObjects.Image} */
 	startButton;
 	/** @type {Phaser.GameObjects.Text} */
@@ -120,6 +148,14 @@ class Intro extends Phaser.Scene {
 	tick_azerty;
 	/** @type {Phaser.GameObjects.Image} */
 	tick_qwerty;
+	/** @type {AbilityInfo} */
+	abilityInfo;
+	/** @type {Phaser.GameObjects.Image} */
+	spellbookButton;
+	/** @type {Phaser.GameObjects.Text} */
+	startText_1_2;
+	/** @type {Phaser.GameObjects.Image} */
+	tick_spellBook;
 
 	/* START-USER-CODE */
 
@@ -193,6 +229,14 @@ class Intro extends Phaser.Scene {
 			localScene.qwertyEnabled = false;
 		});
 
+		// Spellbook Button
+		this.spellbookButton.setInteractive();
+		this.spellbookButton.on('pointerdown', function (pointer) {
+			// Toggle everything between 2 modes
+			localScene.introText.visible = !localScene.introText.visible;
+			localScene.tick_spellBook.visible = !localScene.tick_spellBook.visible;
+			localScene.abilityInfo.visible = !localScene.abilityInfo.visible;
+		});
 
 	}
 

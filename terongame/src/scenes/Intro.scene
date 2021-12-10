@@ -2,7 +2,6 @@
     "id": "e3098f73-28cd-4148-9482-c10095c732b2",
     "sceneType": "SCENE",
     "settings": {
-        "snapEnabled": true,
         "snapWidth": 4,
         "snapHeight": 4,
         "preloadPackFiles": [],
@@ -39,12 +38,13 @@
         {
             "type": "Text",
             "id": "e3e4c347-2db9-419c-bad4-85d32727b219",
-            "label": "text",
+            "label": "introText",
+            "scope": "CLASS",
             "components": [],
             "y": 200,
             "originX": 0,
             "originY": 0,
-            "text": "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nGood luck!",
+            "text": "It's just another day in Black Temple... your raid is fighting Teron Gorefiend again and again and just keeps on wiping.\n\nIt's the eleventh try for today... finally you are the one who gets the Shadow of Death debuff! Now it's up to you to prevent the deadly constructs from wiping your raid!\n\nUse the W,A,S,D or arrow keys to move your avatar, or click/touch and hold. As soon as you die, the petbar comes in providing the necessary skills to deal with the constructs. Click them or use the respective number keys. Similar to the real game, you can use the TAB key to select the constructs or just click them.\n\nIn the actual game, keep in mind that the ghost's abilities are on a possess bar, so if you use a custom bar mod like Bartender etc, you should prepare macros to /cast the ghost abilities and bind them beforehand!\n\nGood luck!",
             "fixedWidth": 600,
             "lineSpacing": 3,
             "align": "center",
@@ -88,8 +88,8 @@
                 "key": "buttons",
                 "frame": 2
             },
-            "x": 428,
-            "y": 583,
+            "x": 476,
+            "y": 663,
             "scaleX": 0.25,
             "scaleY": 0.25
         },
@@ -99,8 +99,8 @@
             "label": "startText",
             "scope": "CLASS",
             "components": [],
-            "x": 328,
-            "y": 559,
+            "x": 376,
+            "y": 639,
             "originX": 0,
             "originY": 0,
             "text": "START",
@@ -231,6 +231,70 @@
             "align": "center",
             "fontSize": "48px",
             "strokeThickness": 2
+        },
+        {
+            "prefabId": "a6607891-7eb1-46e3-b2cd-42bae114fd31",
+            "id": "051fbb69-3df1-436e-b0b1-8589405ac5ee",
+            "unlock": [
+                "x",
+                "y",
+                "visible"
+            ],
+            "label": "abilityInfo",
+            "scope": "CLASS",
+            "components": [],
+            "x": 111,
+            "y": 320,
+            "visible": false,
+            "nestedPrefabs": []
+        },
+        {
+            "type": "Image",
+            "id": "cd8fbe83-930a-448c-a792-77a06667ff07",
+            "label": "spellbookButton",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "buttons",
+                "frame": 1
+            },
+            "x": 252,
+            "y": 665,
+            "scaleX": 0.2,
+            "scaleY": 0.2
+        },
+        {
+            "type": "Text",
+            "id": "705582dc-27b5-4e87-a6d4-fa9f6d40dda6",
+            "label": "startText_1_2",
+            "scope": "CLASS",
+            "components": [],
+            "x": 174,
+            "y": 652,
+            "originX": 0,
+            "originY": 0,
+            "text": "Spellbook",
+            "fixedWidth": 180,
+            "align": "center",
+            "fontSize": "20px",
+            "color": "#000000ff",
+            "stroke": "#000000ff",
+            "strokeThickness": 1
+        },
+        {
+            "type": "Image",
+            "id": "23148f04-3e61-4aa6-8466-bcfe098b1b5b",
+            "label": "tick_spellBook",
+            "scope": "CLASS",
+            "components": [],
+            "texture": {
+                "key": "check"
+            },
+            "x": 198,
+            "y": 662,
+            "scaleX": 0.33,
+            "scaleY": 0.33,
+            "visible": false
         }
     ],
     "plainObjects": [],
