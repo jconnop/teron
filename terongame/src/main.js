@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
 		width: 600,
 		height: 800,
 		type: Phaser.AUTO,
-        backgroundColor: "#242424",
+		backgroundColor: "#242424",
 		scale: {
 			mode: Phaser.Scale.FIT,
 			autoCenter: Phaser.Scale.CENTER_BOTH
