@@ -9,7 +9,7 @@ class TeronGame extends Phaser.Scene {
 		super("TeronGame");
 
 		/* START-USER-CTR-CODE */
-		this.shifTabDispatcher = ShifTabDispatcher.getInstance();
+		// Write your code here.
 		/* END-USER-CTR-CODE */
 	}
 
@@ -696,7 +696,7 @@ class TeronGame extends Phaser.Scene {
 		});
 
 		let me = this;
-		this.shifTabDispatcher.on(ShifTabDispatcher.ShiftTabEvent, function() {
+		ShifTabDispatcher.getInstance().on(ShifTabDispatcher.ShiftTabEvent, function() {
 			me.shifttab = true;
 		});
 	}
