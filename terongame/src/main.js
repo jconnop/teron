@@ -25,6 +25,19 @@ window.addEventListener('load', function () {
 	game.scene.add("Boot", Boot, true);
 });
 
+window.addEventListener('keydown', function(e) {
+	if (e.key === 'Tab' && e.shiftKey) {
+		ShifTabDispatcher.getInstance().shifTabDown();
+		e.preventDefault()
+	}
+})
+
+window.addEventListener('keyup', function(e) {
+	if (e.key === 'Tab') {
+		ShifTabDispatcher.getInstance().shifTabUp();
+	}
+})
+
 class Boot extends Phaser.Scene {
 
 	preload() {

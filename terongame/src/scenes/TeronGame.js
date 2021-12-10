@@ -3,35 +3,13 @@
 
 /* START OF COMPILED CODE */
 
-window.addEventListener('keydown', function(e) {
-	if (e.key === 'Tab' && e.shiftKey) {
-		let emitter = EventDispatcher.getInstance();
-		emitter.emit('shifttab');
-		e.preventDefault();
-	}
-})
-
-let instance = null;
-class EventDispatcher extends Phaser.Events.EventEmitter {
-	constructor() {
-		super();       
-	}
-
-	static getInstance() {
-		if (instance == null) {
-			instance = new EventDispatcher();
-		}
-		return instance;
-	}
-}
-
 class TeronGame extends Phaser.Scene {
 
 	constructor() {
 		super("TeronGame");
 
 		/* START-USER-CTR-CODE */
-		this.emitter = EventDispatcher.getInstance();
+		this.shifTabDispatcher = ShifTabDispatcher.getInstance();
 		/* END-USER-CTR-CODE */
 	}
 
@@ -718,7 +696,7 @@ class TeronGame extends Phaser.Scene {
 		});
 
 		let me = this;
-		this.emitter.on('shifttab', function() {
+		this.shifTabDispatcher.on(ShifTabDispatcher.ShiftTabEvent, function() {
 			me.shifttab = true;
 		});
 	}
