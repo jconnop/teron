@@ -25,6 +25,28 @@ class Player extends Phaser.GameObjects.Image {
 	movementSpeed = 90;
 
 	moveTarget = null;
+	followTarget = false;
+
+	setMoveTarget(newMoveTarget, followTarget) {
+		if(newMoveTarget == null) {
+			this.moveTarget = null;
+			this.followTarget = false;
+			return;
+		}
+
+		if(followTarget) {
+			// If following target, continue to adjust to new target position as it moves around
+			this.moveTarget = newMoveTarget;
+			this.followTarget = true;
+		} else {
+			// Otherwise just save a snapshot of where the target was at the time and mvoe to that
+			this.moveTarget = {
+				x: newMoveTarget.x,
+				y: newMoveTarget.y
+			};
+			this.followTarget = false;
+		}
+	}
 
 	changeToGhost() {
 		this.setFrame(2);
@@ -75,7 +97,16 @@ class Player extends Phaser.GameObjects.Image {
 			);
 
 			if(!hasKeyboardInput) {
-				this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
+				var distance = Phaser.Math.Distance.BetweenPoints(this, this.moveTarget);
+				if(distance < 8 && !this.followTarget) {
+					// When reached auto-move target, stop moving
+					this.setMoveTarget(null);
+				} else {
+					this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
+				}
+			} else {
+				// Any keyboard input resets auto-move target
+				this.setMoveTarget(null);
 			}
 		}
 

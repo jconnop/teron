@@ -664,6 +664,8 @@ class TeronGame extends Phaser.Scene {
 	horsemanLaugh;
 	orcKidLaugh;
 
+	ghostSpawnOffset;
+
 	// Write your code here
 
 	init(data) {
@@ -678,6 +680,7 @@ class TeronGame extends Phaser.Scene {
 		this.cheat2Current = "";
 		this.cheat1Enabled = false;
 		this.cheat2Enabled = false;
+		this.ghostSpawnOffset = 20;
 
 		if(this.blackTempleMusic != null && this.blackTempleMusic.isPlaying) {
 			// May still be playing due to restart
@@ -686,6 +689,11 @@ class TeronGame extends Phaser.Scene {
 
 		this.editorCreate();
 		this.background.setDepth(-5); // Background always at the back
+
+		if(!this.sys.game.device.os.desktop) {
+			this.reconfigureForMobile();
+		}
+
 		this.bindKeys();
 		this.initAbilityBar();
 		this.initFreezeIndicators();
@@ -717,6 +725,31 @@ class TeronGame extends Phaser.Scene {
 		gtag("event", "level_start", {
 			level_name: "TeronGame"
 		});
+	}
+
+	reconfigureForMobile() {
+		// Scale up ability bar for easier casting
+		this.abilityBar.scale = 1.4;
+		this.abilityBar.x = 74;
+		this.abilityBar.y = 727;
+
+		// Scale ghosts / ghost addons for easier target selection
+		var ghostScaleFactor = 2;
+		this.ghosts.forEach(ghost => ghost.scale *= ghostScaleFactor);
+		this.freeze_ghost_1.scale *= ghostScaleFactor;
+		this.freeze_ghost_2.scale *= ghostScaleFactor;
+		this.freeze_ghost_3.scale *= ghostScaleFactor;
+		this.freeze_ghost_4.scale *= ghostScaleFactor;
+		this.targetHighlight.scale *= ghostScaleFactor;
+
+		this.ghostSpawnOffset *= 1.6;
+
+
+		// Ghosts collide with each other so they're easier to target
+		this.physics.add.collider(this.ghosts, this.ghosts);
+
+		// Scale player up a bit
+		this.player.scale *= 1.5;
 	}
 
 	update() {
@@ -840,16 +873,25 @@ class TeronGame extends Phaser.Scene {
 		}));
 
 
-		// Click/touch to move player
+		// Ttouch to move player on mobile
 		this.background.setInteractive();
 
 		var playerLocal = this.player;
-		this.background.on('pointerdown', function (pointer) {
-			playerLocal.moveTarget = pointer;
-		});
-		this.input.on('pointerup', function (pointer) {
-			playerLocal.moveTarget = null;
-		});
+		if(this.sys.game.device.os.desktop) {
+			// Desktop, only move while click held, and follow pointer around as it moves
+			this.background.on('pointerdown', function (pointer) {
+				playerLocal.setMoveTarget(pointer, true);
+			});
+			this.input.on('pointerup', function (pointer) {
+				playerLocal.setMoveTarget(null);
+			});
+		} else {
+			// Mobile, continue to move to target location after touch released, don't follow "pointer" as it touches other spells etc
+			this.background.on('pointerdown', function (pointer) {
+				playerLocal.setMoveTarget(pointer, false);
+			});
+		}
+
 	}
 
 	handleTargetSelection() {
@@ -952,17 +994,17 @@ class TeronGame extends Phaser.Scene {
 	spawnGhosts() {
 		this.ghostSpawnTime = new Date();
 
-		this.ghost_1.x = this.player.x - 20;
-		this.ghost_1.y = this.player.y - 20;
+		this.ghost_1.x = this.player.x - this.ghostSpawnOffset;
+		this.ghost_1.y = this.player.y - this.ghostSpawnOffset;
 
-		this.ghost_2.x = this.player.x + 20;
-		this.ghost_2.y = this.player.y - 20;
+		this.ghost_2.x = this.player.x + this.ghostSpawnOffset;
+		this.ghost_2.y = this.player.y - this.ghostSpawnOffset;
 
-		this.ghost_3.x = this.player.x - 20;
-		this.ghost_3.y = this.player.y + 20;
+		this.ghost_3.x = this.player.x - this.ghostSpawnOffset;
+		this.ghost_3.y = this.player.y + this.ghostSpawnOffset;
 
-		this.ghost_4.x = this.player.x + 20;
-		this.ghost_4.y = this.player.y + 20;
+		this.ghost_4.x = this.player.x + this.ghostSpawnOffset;
+		this.ghost_4.y = this.player.y + this.ghostSpawnOffset;
 		this.ghosts.forEach(ghost => ghost.visible = true);
 		this.ghosts.forEach(ghost => ghost.spawnTime = new Date());
 
@@ -1063,7 +1105,7 @@ class TeronGame extends Phaser.Scene {
 			level_name: "TeronGame",
 			success: true,
 		});
-		  
+
 	}
 
 	loseGame() {
