@@ -44,6 +44,18 @@ class SoundToggle extends Phaser.GameObjects.Container {
 			button.visible = false;
 			otherButton.visible = true;
 			game.sound.mute = !game.sound.mute;
+
+			if(game.sound.mute) {
+				gtag("event", "select_content", {
+					content_type: "button",
+					item_id: "muteGame"
+				});	
+			} else {
+				gtag("event", "select_content", {
+					content_type: "button",
+					item_id: "unmuteGame"
+				});	
+			}
 		});
 
 		button.on('pointerover', function (pointer) {

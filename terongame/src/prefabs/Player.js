@@ -25,6 +25,28 @@ class Player extends Phaser.GameObjects.Image {
 	movementSpeed = 90;
 
 	moveTarget = null;
+	followTarget = false;
+
+	setMoveTarget(newMoveTarget, followTarget) {
+		if(newMoveTarget == null) {
+			this.moveTarget = null;
+			this.followTarget = false;
+			return;
+		}
+
+		if(followTarget) {
+			// If following target, continue to adjust to new target position as it moves around
+			this.moveTarget = newMoveTarget;
+			this.followTarget = true;
+		} else {
+			// Otherwise just save a snapshot of where the target was at the time and mvoe to that
+			this.moveTarget = {
+				x: newMoveTarget.x,
+				y: newMoveTarget.y
+			};
+			this.followTarget = false;
+		}
+	}
 
 	changeToGhost() {
 		this.setFrame(2);
@@ -41,20 +63,20 @@ class Player extends Phaser.GameObjects.Image {
 
 	movePlayer(wasd) {
 
-		if (wasd.left.isDown) {
+		if (wasd.left.isDown || wasd.a.isDown) {
 			this.body.setVelocityX(-this.movementSpeed);
 		}
-		else if (wasd.right.isDown) {
+		else if (wasd.right.isDown || wasd.d.isDown) {
 			this.body.setVelocityX(this.movementSpeed);
 		}
 		else {
 			this.body.setVelocityX(0);
 		}
 
-		if (wasd.down.isDown) {
+		if (wasd.down.isDown || wasd.s.isDown) {
 			this.body.setVelocityY(this.movementSpeed);
 		}
-		else if (wasd.up.isDown) {
+		else if (wasd.up.isDown || wasd.w.isDown) {
 			this.body.setVelocityY(-this.movementSpeed);
 		}
 		else {
@@ -62,9 +84,29 @@ class Player extends Phaser.GameObjects.Image {
 		}
 
 		if(this.moveTarget != null) {
-			var hasKeyboardInput = (wasd.left.isDown || wasd.right.isDown || wasd.down.isDown || wasd.up.isDown);
+
+			var hasKeyboardInput = (
+				 wasd.left.isDown ||
+				 wasd.right.isDown ||
+				 wasd.down.isDown ||
+				 wasd.up.isDown ||
+				 wasd.a.isDown ||
+				 wasd.d.isDown ||
+				 wasd.s.isDown ||
+				 wasd.w.isDown
+			);
+
 			if(!hasKeyboardInput) {
-				this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
+				var distance = Phaser.Math.Distance.BetweenPoints(this, this.moveTarget);
+				if(distance < 8 && !this.followTarget) {
+					// When reached auto-move target, stop moving
+					this.setMoveTarget(null);
+				} else {
+					this.scene.physics.moveToObject(this, this.moveTarget, this.movementSpeed);
+				}
+			} else {
+				// Any keyboard input resets auto-move target
+				this.setMoveTarget(null);
 			}
 		}
 

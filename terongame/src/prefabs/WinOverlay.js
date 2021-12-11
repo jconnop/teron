@@ -16,27 +16,40 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		this.add(rectangle);
 
 		// text
-		const text = scene.add.text(-300, 72, "", {});
+		const text = scene.add.text(-300, 45, "", {});
 		text.text = "All constructs defeated!\n\nYour raid members cheer at you!\nYou saved their day!";
 		text.setStyle({"align":"center","color":"#333afbff","fixedWidth":600,"fontSize":"28px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":5,"shadow.offsetX":2,"shadow.offsetY":2,"shadow.color":"#000000ff"});
 		text.setLineSpacing(5);
 		this.add(text);
 
 		// startButton
-		const startButton = scene.add.ellipse(78, 358, 360, 64);
-		startButton.isFilled = true;
-		startButton.fillColor = 2880534;
-		startButton.fillAlpha = 0.5;
+		const startButton = scene.add.image(78, 322, "buttons", 1);
+		startButton.scaleX = 0.42;
+		startButton.scaleY = 0.33;
 		this.add(startButton);
 
 		// startText
-		const startText = scene.add.text(-82, 338, "", {});
+		const startText = scene.add.text(-82, 298, "", {});
 		startText.text = "PLAY AGAIN";
 		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"42px","strokeThickness":3});
 		this.add(startText);
 
+		// winDurationText
+		const winDurationText = scene.add.text(-300, 405, "", {});
+		winDurationText.text = "You won in xx.yyy seconds! Can you beat your friends?";
+		winDurationText.setStyle({"align":"center","color":"#4cf25eff","fixedWidth":600,"fontSize":"18px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":6});
+		this.add(winDurationText);
+
+		// cheatText
+		const cheatText = scene.add.text(-300, 430, "", {});
+		cheatText.text = "BUT YOU CHEATED!";
+		cheatText.setStyle({"align":"center","color":"#ad0d0dff","fixedWidth":600,"fontSize":"32px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":6});
+		this.add(cheatText);
+
 		this.startButton = startButton;
 		this.startText = startText;
+		this.winDurationText = winDurationText;
+		this.cheatText = cheatText;
 
 		/* START-USER-CTR-CODE */
 
@@ -58,18 +71,74 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		});
 
 		this.startButton.on('pointerdown', function(pointer) {
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "winScreenReplay"
+			});			  
+
 			scene.scene.start("TeronGame");
 		});
 
 		/* END-USER-CTR-CODE */
 	}
 
-	/** @type {Phaser.GameObjects.Ellipse} */
+	/** @type {Phaser.GameObjects.Image} */
 	startButton;
 	/** @type {Phaser.GameObjects.Text} */
 	startText;
+	/** @type {Phaser.GameObjects.Text} */
+	winDurationText;
+	/** @type {Phaser.GameObjects.Text} */
+	cheatText;
 
 	/* START-USER-CODE */
+
+	setWinDuration(seconds, cheats) {
+
+		if(cheats) {
+			this.winDurationText.setText('You "won" in ' + seconds + " seconds...");
+			this.winDurationText.setColor(this.rgbToHex(102, 102, 102)); // Cheaters always grey parse
+			this.cheatText.visible = true;
+		} else {
+			this.winDurationText.setText("You won in " + seconds + " seconds! Can you beat your friends?");
+			this.cheatText.visible = false;
+
+			// Theoretically perfect = 27 seconds ... I think?
+			if(seconds <= 27.5) {
+				// White
+				this.winDurationText.setColor(this.rgbToHex(229, 204, 94));
+			} else if (seconds <= 29) {
+				// Pink
+				this.winDurationText.setColor(this.rgbToHex(226, 104, 130));
+			} else if (seconds <= 30) {
+				// Orange
+				this.winDurationText.setColor(this.rgbToHex(255, 128, 0));
+			} else if (seconds <= 32) {
+				// Purple
+				this.winDurationText.setColor(this.rgbToHex(163, 53, 238));
+			} else if (seconds <= 35) {
+				// Blue
+				this.winDurationText.setColor(this.rgbToHex(0, 112, 255));
+			} else if (seconds <= 40){
+				// Green
+				this.winDurationText.setColor(this.rgbToHex(30, 255, 0));
+			} else {
+				// Grey
+				this.winDurationText.setColor(this.rgbToHex(102, 102, 102));
+			}
+		}
+
+	}
+
+	componentToHex(c) {
+		var hex = c.toString(16);
+		return hex.length == 1 ? "0" + hex : hex;
+	}
+
+	rgbToHex(r, g, b) {
+		return "#" + this.componentToHex(r) + this.componentToHex(g) + this.componentToHex(b);
+	}
 
 	/* END-USER-CODE */
 }

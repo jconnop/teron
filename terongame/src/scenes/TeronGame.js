@@ -626,8 +626,11 @@ class TeronGame extends Phaser.Scene {
 
 	/* START-USER-CODE */
 
+	qwertyEnabled;
+
 	gameEnded;
 
+	firstAttempt = true;
 
 	// Sounds
 	ghostSpawnSound;
@@ -648,6 +651,7 @@ class TeronGame extends Phaser.Scene {
 
 
 	gameStartTime;
+	ghostSpawnTime;
 
 	// Cheats
 	cheatKeys;
@@ -660,7 +664,13 @@ class TeronGame extends Phaser.Scene {
 	horsemanLaugh;
 	orcKidLaugh;
 
+	ghostSpawnOffset;
+
 	// Write your code here
+
+	init(data) {
+		this.qwertyEnabled = data.qwertyEnabled;
+	}
 
 	create() {
 		this.gameEnded = false;
@@ -670,6 +680,7 @@ class TeronGame extends Phaser.Scene {
 		this.cheat2Current = "";
 		this.cheat1Enabled = false;
 		this.cheat2Enabled = false;
+		this.ghostSpawnOffset = 20;
 
 		if(this.blackTempleMusic != null && this.blackTempleMusic.isPlaying) {
 			// May still be playing due to restart
@@ -678,12 +689,23 @@ class TeronGame extends Phaser.Scene {
 
 		this.editorCreate();
 		this.background.setDepth(-5); // Background always at the back
+
+		if(!this.sys.game.device.os.desktop) {
+			this.reconfigureForMobile();
+		}
+
 		this.bindKeys();
 		this.initAbilityBar();
 		this.initFreezeIndicators();
 		this.initClickInput();
 		this.initColliders();
 		this.targetFrame.setTarget(null);
+
+		if(!this.firstAttempt) {
+			// On subsequent attempts, don't make people wait so long since they're eager to go
+			this.debuff.setRemainingSeconds(10);
+		}
+
 		this.initSounds();
 
 		this.gameStartTime = new Date();
@@ -699,6 +721,35 @@ class TeronGame extends Phaser.Scene {
 		ShifTabDispatcher.getInstance().on(ShifTabDispatcher.ShiftTabEvent, function() {
 			me.shifttab = true;
 		});
+
+		gtag("event", "level_start", {
+			level_name: "TeronGame"
+		});
+	}
+
+	reconfigureForMobile() {
+		// Scale up ability bar for easier casting
+		this.abilityBar.scale = 1.4;
+		this.abilityBar.x = 74;
+		this.abilityBar.y = 727;
+
+		// Scale ghosts / ghost addons for easier target selection
+		var ghostScaleFactor = 2;
+		this.ghosts.forEach(ghost => ghost.scale *= ghostScaleFactor);
+		this.freeze_ghost_1.scale *= ghostScaleFactor;
+		this.freeze_ghost_2.scale *= ghostScaleFactor;
+		this.freeze_ghost_3.scale *= ghostScaleFactor;
+		this.freeze_ghost_4.scale *= ghostScaleFactor;
+		this.targetHighlight.scale *= ghostScaleFactor;
+
+		this.ghostSpawnOffset *= 1.6;
+
+
+		// Ghosts collide with each other so they're easier to target
+		this.physics.add.collider(this.ghosts, this.ghosts);
+
+		// Scale player up a bit
+		this.player.scale *= 1.5;
 	}
 
 	update() {
@@ -721,7 +772,7 @@ class TeronGame extends Phaser.Scene {
 
 		this.handleTargetSelection();
 
-		this.abilityBar.update(this.wasd, this.player, this.ghosts, this.targetFrame.target);
+		this.abilityBar.update();
 
 		this.targetFrame.update();
 
@@ -779,17 +830,24 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	bindKeys() {
+		// For AZERTY
+		// W -> Z
+		// A -> Q
 		this.wasd = {
-			up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W, true),
-			left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true),
-			down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S, true),
-			right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),			
+			w: this.input.keyboard.addKey(this.qwertyEnabled ? Phaser.Input.Keyboard.KeyCodes.W : Phaser.Input.Keyboard.KeyCodes.Z, true),
+			a: this.input.keyboard.addKey(this.qwertyEnabled ? Phaser.Input.Keyboard.KeyCodes.A : Phaser.Input.Keyboard.KeyCodes.Q, true),
+			s: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S, true),
+			d: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D, true),
 			one: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE, true),
 			three: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE, true),
 			four: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR, true),
 			five: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE, true),
 			seven: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SEVEN, true),
-			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true)
+			tab: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TAB, true),
+			up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP, true),
+			down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN, true),
+			left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT, true),
+			right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT, true)
 		};
 
 		this.cheatKeys = {
@@ -807,23 +865,33 @@ class TeronGame extends Phaser.Scene {
 		this.ghosts.forEach(ghost => ghost.setInteractive());
 
 		var frame = this.targetFrame;
+		var thisScene = this;
 		this.ghosts.forEach(ghost => ghost.on('pointerdown', function (pointer) {
-			if(ghost.alive && ghost.visible) {
+			if(ghost.alive && ghost.visible && !thisScene.gameEnded) {
 				frame.setTarget(ghost);
 			}
 		}));
 
 
-		// Click/touch to move player
+		// Ttouch to move player on mobile
 		this.background.setInteractive();
 
 		var playerLocal = this.player;
-		this.background.on('pointerdown', function (pointer) {
-			playerLocal.moveTarget = pointer;
-		});
-		this.input.on('pointerup', function (pointer) {
-			playerLocal.moveTarget = null;
-		});
+		if(this.sys.game.device.os.desktop) {
+			// Desktop, only move while click held, and follow pointer around as it moves
+			this.background.on('pointerdown', function (pointer) {
+				playerLocal.setMoveTarget(pointer, true);
+			});
+			this.input.on('pointerup', function (pointer) {
+				playerLocal.setMoveTarget(null);
+			});
+		} else {
+			// Mobile, continue to move to target location after touch released, don't follow "pointer" as it touches other spells etc
+			this.background.on('pointerdown', function (pointer) {
+				playerLocal.setMoveTarget(pointer, false);
+			});
+		}
+
 	}
 
 	handleTargetSelection() {
@@ -924,17 +992,19 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	spawnGhosts() {
-		this.ghost_1.x = this.player.x - 20;
-		this.ghost_1.y = this.player.y - 20;
+		this.ghostSpawnTime = new Date();
 
-		this.ghost_2.x = this.player.x + 20;
-		this.ghost_2.y = this.player.y - 20;
+		this.ghost_1.x = this.player.x - this.ghostSpawnOffset;
+		this.ghost_1.y = this.player.y - this.ghostSpawnOffset;
 
-		this.ghost_3.x = this.player.x - 20;
-		this.ghost_3.y = this.player.y + 20;
+		this.ghost_2.x = this.player.x + this.ghostSpawnOffset;
+		this.ghost_2.y = this.player.y - this.ghostSpawnOffset;
 
-		this.ghost_4.x = this.player.x + 20;
-		this.ghost_4.y = this.player.y + 20;
+		this.ghost_3.x = this.player.x - this.ghostSpawnOffset;
+		this.ghost_3.y = this.player.y + this.ghostSpawnOffset;
+
+		this.ghost_4.x = this.player.x + this.ghostSpawnOffset;
+		this.ghost_4.y = this.player.y + this.ghostSpawnOffset;
 		this.ghosts.forEach(ghost => ghost.visible = true);
 		this.ghosts.forEach(ghost => ghost.spawnTime = new Date());
 
@@ -1010,12 +1080,18 @@ class TeronGame extends Phaser.Scene {
 
 	winGame() {
 		this.gameEnded = true;
+		this.abilityBar.gameEnded = true;
+		this.firstAttempt = false;
 		this.player.stopMoving();
+
+		var winDuration = this.getWinDuration();
+
 		this.stopRandomSounds();
 		this.teronDeathSound.play({
 			delay: 1.3
 		});
 
+		this.winOverlay.setWinDuration(winDuration, this.cheat1Enabled || this.cheat2Enabled);
 		this.winOverlay.visible = true;
 		this.winOverlay.alpha = 0;
 		this.tweens.add({
@@ -1024,10 +1100,18 @@ class TeronGame extends Phaser.Scene {
 			duration: 800,
 			ease: 'Power2'
 		});
+
+		gtag("event", "level_end", {
+			level_name: "TeronGame",
+			success: true,
+		});
+
 	}
 
 	loseGame() {
 		this.gameEnded = true;
+		this.abilityBar.gameEnded = true;
+		this.firstAttempt = false;
 		this.stopGhosts();
 		this.player.stopMoving();
 		this.stopRandomSounds();
@@ -1043,6 +1127,24 @@ class TeronGame extends Phaser.Scene {
 			duration: 800,
 			ease: 'Power2'
 		});
+
+		gtag("event", "level_end", {
+			level_name: "TeronGame",
+			success: false,
+		});
+	}
+
+	getWinDuration() {
+		var currentTime = new Date();
+		var secondsElapsed = (currentTime - this.ghostSpawnTime) / 1000;
+
+		gtag("event", "post_score", {
+			score: secondsElapsed,
+			level: 1,
+			character: "Player"
+		});
+
+		return secondsElapsed;
 	}
 
 	stopGhosts() {

@@ -174,6 +174,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	targetFrame;
 	nocooldowns = false;
 
+	gameEnded = false;
+
 
 	// Sounds
 	spiritStrike_Cast;
@@ -357,6 +359,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	activateSpiritStrike() {
+		if(this.gameEnded) {
+			return;
+		}
+
 		if(this.targetFrame.target == null) {
 			return;	
 		}
@@ -378,6 +384,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	activateSpiritLance() {
+		if(this.gameEnded) {
+			return;
+		}
+
 		if(this.targetFrame.target == null) {
 			return;
 		}
@@ -388,7 +398,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 		}
 
 		if(!this.isInRange(this.player, this.targetFrame.target, 30)) {
-			return;	
+			return;
 		}
 
 		this.spiritLance_Cast.play()
@@ -400,6 +410,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	activateSpiritChains() {
+		if(this.gameEnded) {
+			return;
+		}
+
 		if(this.spiritChains_cooldown.visible) {
 			return; // Still cooling	
 		}
@@ -424,6 +438,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	activateSpiritVolley() {
+		if(this.gameEnded) {
+			return;
+		}
+
 		if(this.spiritVolley_cooldown.visible) {
 			return; // Still cooling	
 		}
@@ -448,6 +466,10 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	}
 
 	activateSpiritShield() {
+		if(this.gameEnded) {
+			return;
+		}
+
 		if(this.isGCD()) {
 			// Can't do anything while GCD still active
 			return;
