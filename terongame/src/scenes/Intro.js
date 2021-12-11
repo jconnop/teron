@@ -185,6 +185,11 @@ class Intro extends Phaser.Scene {
 			volume: 0.5
 		});
 
+
+		gtag("event", "level_start", {
+			level_name: "Intro"
+		});
+
 	}
 
 	update() {
@@ -204,6 +209,14 @@ class Intro extends Phaser.Scene {
 			if(localIntroSpeech.isPlaying) {
 				localIntroSpeech.stop();
 			}
+
+
+			gtag("event", "level_end", {
+				level_name: "Intro",
+				success: true,
+			});
+			  
+
 			localScene.scene.start("TeronGame", { qwertyEnabled: localScene.qwertyEnabled });
 		});
 
@@ -227,12 +240,22 @@ class Intro extends Phaser.Scene {
 		this.qwertyButton.setInteractive();
 		this.qwertyButton.on('pointerdown', function (pointer) {
 			localScene.qwertyEnabled = true;
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "introQwerty"
+			});	
 		});
 
 		// AZERTY Button
 		this.azertyButton.setInteractive();
 		this.azertyButton.on('pointerdown', function (pointer) {
 			localScene.qwertyEnabled = false;
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "introAzerty"
+			});	
 		});
 
 		// Spellbook Button
@@ -242,6 +265,11 @@ class Intro extends Phaser.Scene {
 			localScene.introText.visible = !localScene.introText.visible;
 			localScene.tick_spellBook.visible = !localScene.tick_spellBook.visible;
 			localScene.abilityInfo.visible = !localScene.abilityInfo.visible;
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "introSpellbook"
+			});	
 		});
 
 		// Coffee Button
@@ -260,6 +288,11 @@ class Intro extends Phaser.Scene {
 			{
 				window.location.href = url;
 			}
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "introCoffee"
+			});	
 
 		});
 

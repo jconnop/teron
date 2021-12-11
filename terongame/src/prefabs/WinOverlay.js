@@ -71,6 +71,12 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		});
 
 		this.startButton.on('pointerdown', function(pointer) {
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "winScreenReplay"
+			});			  
+
 			scene.scene.start("TeronGame");
 		});
 

@@ -713,6 +713,10 @@ class TeronGame extends Phaser.Scene {
 		ShifTabDispatcher.getInstance().on(ShifTabDispatcher.ShiftTabEvent, function() {
 			me.shifttab = true;
 		});
+
+		gtag("event", "level_start", {
+			level_name: "TeronGame"
+		});
 	}
 
 	update() {
@@ -1054,6 +1058,12 @@ class TeronGame extends Phaser.Scene {
 			duration: 800,
 			ease: 'Power2'
 		});
+
+		gtag("event", "level_end", {
+			level_name: "TeronGame",
+			success: true,
+		});
+		  
 	}
 
 	loseGame() {
@@ -1075,11 +1085,23 @@ class TeronGame extends Phaser.Scene {
 			duration: 800,
 			ease: 'Power2'
 		});
+
+		gtag("event", "level_end", {
+			level_name: "TeronGame",
+			success: false,
+		});
 	}
 
 	getWinDuration() {
 		var currentTime = new Date();
 		var secondsElapsed = (currentTime - this.ghostSpawnTime) / 1000;
+
+		gtag("event", "post_score", {
+			score: secondsElapsed,
+			level: 1,
+			character: "Player"
+		});
+
 		return secondsElapsed;
 	}
 
