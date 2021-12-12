@@ -105,7 +105,7 @@ class WinOverlay extends Phaser.GameObjects.Container {
 			this.cheatText.visible = false;
 
 			// Theoretically perfect = 27 seconds ... I think?
-			if(seconds <= 27.5) {
+			if(seconds <= 28) {
 				// White
 				this.winDurationText.setColor(this.rgbToHex(229, 204, 94));
 			} else if (seconds <= 29) {
