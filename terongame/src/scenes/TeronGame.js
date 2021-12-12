@@ -981,6 +981,12 @@ class TeronGame extends Phaser.Scene {
 
 	getPreviousTargetIndex(currentIndex) {
 		// Try 4 times to select previous target, starting from current if it exists
+
+		if(currentIndex == -1) {
+			// Place cursor right "before" ghost #4 when no ghost is selected
+			currentIndex = 0;
+		}
+
 		for(var j = 1; j <= 4; j++) {
 			var tryIndex = (currentIndex + 8 - j) % 4;
 			if(this.ghosts[tryIndex].alive) {
