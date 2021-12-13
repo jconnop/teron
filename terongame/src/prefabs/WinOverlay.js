@@ -23,13 +23,13 @@ class WinOverlay extends Phaser.GameObjects.Container {
 		this.add(text);
 
 		// startButton
-		const startButton = scene.add.image(78, 322, "buttons", 1);
+		const startButton = scene.add.image(114, 298, "buttons", 1);
 		startButton.scaleX = 0.42;
 		startButton.scaleY = 0.33;
 		this.add(startButton);
 
 		// startText
-		const startText = scene.add.text(-82, 298, "", {});
+		const startText = scene.add.text(-46, 274, "", {});
 		startText.text = "PLAY AGAIN";
 		startText.setStyle({"align":"center","color":"#ff000000","fixedWidth":320,"fontSize":"42px","strokeThickness":3});
 		this.add(startText);
@@ -42,14 +42,29 @@ class WinOverlay extends Phaser.GameObjects.Container {
 
 		// cheatText
 		const cheatText = scene.add.text(-300, 430, "", {});
+		cheatText.visible = false;
 		cheatText.text = "BUT YOU CHEATED!";
 		cheatText.setStyle({"align":"center","color":"#ad0d0dff","fixedWidth":600,"fontSize":"32px","fontStyle":"bold","stroke":"#000000ff","strokeThickness":6});
 		this.add(cheatText);
+
+		// joinValhallaButton
+		const joinValhallaButton = scene.add.image(-196, 298, "buttons", 2);
+		joinValhallaButton.scaleX = 0.2;
+		joinValhallaButton.scaleY = 0.2;
+		this.add(joinValhallaButton);
+
+		// joinText
+		const joinText = scene.add.text(-356, 286, "", {});
+		joinText.text = "Join Valhalla";
+		joinText.setStyle({"align":"center","color":"#ffffffff","fixedWidth":320,"stroke":"#000000ff","strokeThickness":3});
+		this.add(joinText);
 
 		this.startButton = startButton;
 		this.startText = startText;
 		this.winDurationText = winDurationText;
 		this.cheatText = cheatText;
+		this.joinValhallaButton = joinValhallaButton;
+		this.joinText = joinText;
 
 		/* START-USER-CTR-CODE */
 
@@ -80,6 +95,44 @@ class WinOverlay extends Phaser.GameObjects.Container {
 			scene.scene.start("TeronGame");
 		});
 
+		// Join Button
+		this.joinValhallaButton.setInteractive();
+
+		this.joinValhallaButton.on('pointerdown', function(pointer) {
+
+			var url = 'https://www.reddit.com/r/Arugal/comments/rf6aft/h_valhalla_1010_is_recruiting_hunters_and_any/';
+
+			var s = window.open(url, '_blank');
+
+			if (s && s.focus)
+			{
+				s.focus();
+			}
+			else if (!s)
+			{
+				window.location.href = url;
+			}
+
+			gtag("event", "select_content", {
+				content_type: "button",
+				item_id: "winScreenJoinValhalla"
+			});	
+		});
+
+		this.joinValhallaButton.on('pointerover', function (pointer) {
+			joinText.tintTopLeft = 16181535; // Yellow
+			joinText.tintTopRight = 16181535;
+			joinText.tintBottomLeft = 16181535;
+			joinText.tintBottomRight = 16181535;
+		});
+
+		this.joinValhallaButton.on('pointerout', function (pointer) {
+			joinText.tintTopLeft = 16777215; // White
+			joinText.tintTopRight = 16777215;
+			joinText.tintBottomLeft = 16777215;
+			joinText.tintBottomRight = 16777215;
+		});
+
 		/* END-USER-CTR-CODE */
 	}
 
@@ -91,6 +144,10 @@ class WinOverlay extends Phaser.GameObjects.Container {
 	winDurationText;
 	/** @type {Phaser.GameObjects.Text} */
 	cheatText;
+	/** @type {Phaser.GameObjects.Image} */
+	joinValhallaButton;
+	/** @type {Phaser.GameObjects.Text} */
+	joinText;
 
 	/* START-USER-CODE */
 

@@ -64,8 +64,8 @@
                         "key": "buttons",
                         "frame": 1
                     },
-                    "x": 78,
-                    "y": 322,
+                    "x": 114,
+                    "y": 298,
                     "scaleX": 0.42,
                     "scaleY": 0.33
                 },
@@ -75,8 +75,8 @@
                     "label": "startText",
                     "scope": "CLASS",
                     "components": [],
-                    "x": -82,
-                    "y": 298,
+                    "x": -46,
+                    "y": 274,
                     "originX": 0,
                     "originY": 0,
                     "text": "PLAY AGAIN",
@@ -115,6 +115,7 @@
                     "y": 430,
                     "originX": 0,
                     "originY": 0,
+                    "visible": false,
                     "text": "BUT YOU CHEATED!",
                     "fixedWidth": 600,
                     "align": "center",
@@ -123,6 +124,38 @@
                     "color": "#ad0d0dff",
                     "stroke": "#000000ff",
                     "strokeThickness": 6
+                },
+                {
+                    "type": "Image",
+                    "id": "55bc5cac-a11d-4d86-a1e8-ee546c9c6cf6",
+                    "label": "joinValhallaButton",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "buttons",
+                        "frame": 2
+                    },
+                    "x": -196,
+                    "y": 298,
+                    "scaleX": 0.2,
+                    "scaleY": 0.2
+                },
+                {
+                    "type": "Text",
+                    "id": "08701391-71e6-4023-bef3-b15a255f7721",
+                    "label": "joinText",
+                    "scope": "CLASS",
+                    "components": [],
+                    "x": -356,
+                    "y": 286,
+                    "originX": 0,
+                    "originY": 0,
+                    "text": "Join Valhalla",
+                    "fixedWidth": 320,
+                    "align": "center",
+                    "color": "#ffffffff",
+                    "stroke": "#000000ff",
+                    "strokeThickness": 3
                 }
             ]
         }
