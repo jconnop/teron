@@ -26,7 +26,7 @@ class Ghost extends Phaser.GameObjects.Image {
 	//maxSpeed = 4; // For testing
 	currentSpeed = this.maxSpeed;
 
-	alive = true;
+	alive = true;	
 
 	spawnTime;
 
@@ -64,11 +64,119 @@ class Ghost extends Phaser.GameObjects.Image {
 		this.checkDebuffs();
 	}
 
+
+	frozenTimeRemaining() {
+		var currentTime = new Date();
+		var timeSinceFrozen = currentTime - this.frozenAt;
+		if(timeSinceFrozen >= 5000) {
+			return 0;
+		} else {
+			return 5000 - timeSinceFrozen;	
+		}
+	}
+
+	unfreeze(d) {
+		if(d != null) {
+			this.td += d;
+		}
+
+		this.frozen = false;
+	}
+
+	lanceTimeRemaining() {
+		var currentTime = new Date();
+		var timeSinceLanced = currentTime - this.lancedAt;
+		if(timeSinceLanced >= 9000) {
+			return 0;
+		} else {
+			return 9000 - timeSinceLanced;	
+		}
+	}
+
+	applySpiritStrike() {
+		// 638 - 862
+		this.applyDamage(638, 862);
+		this.spiritStrike_Impact.play();
+		this.s+=1;
+	}
+
+	applySpiritLance() {
+		// 6175 - 6825
+		this.applyDamage(6175, 6825);
+		if(this.lanceStacks < 3) { // Max 3 stacks
+			this.lanceStacks += 1;
+			this.currentSpeed -= (0.3 * this.maxSpeed);
+		}
+		this.lancedAt = new Date(); // Refresh debuff duration
+
+		// Apply lance colouration
+		this.tintTopLeft = this.blueTint;
+		this.tintTopRight = this.blueTint;
+		this.tintBottomLeft = this.blueTint;
+		this.tintBottomRight = this.blueTint;
+		this.l+=1;
+
+		this.spiritLance_Impact.play();
+	}
+
+	applySpiritChains() {
+		// 1900 - 2100
+		this.applyDamage(1900, 2100);
+		this.frozen = true;
+		this.frozenAt = new Date();
+		this.spiritChains_Impact.play();
+		this.c+=1;
+	}
+
+	applySpiritVolley() {
+		// 9900 - 12100
+		this.applyDamage(9900, 12100);
+		this.spiritVolley_Impact.play();
+		this.v+=1;
+	}
+
+	applyDamage(minDamage, maxDamage) {		
+
+		var damage = ((maxDamage - minDamage) / 2) + minDamage; // Average
+		if(damage > this.currentHP) {
+			damage = this.currentHP;
+		}
+		this.currentHP -= damage;
+		
+		this.unfreeze(damage) // Any damage removes frozen
+
+		if(this.currentHP <= 0) {
+			this.die();
+		}
+	}
+
+	die() {
+		this.alive = false;
+		//this.visible = false;
+		this.deathSound.play({
+			delay: 0.1
+		});
+
+		var ghost = this;
+		this.scene.tweens.add({
+			targets: this,
+			alpha: 0,
+			duration: 300,
+			ease: 'Power2',
+			onComplete: function () { ghost.visible = false; }
+		});
+	}
+
+	stopMoving() {
+		this.body.setVelocityX(0);
+		this.body.setVelocityY(0);
+	}
+
 	checkDebuffs() {		
 
 		if(this.frozen) {
 			if(this.frozenTimeRemaining() == 0) {
-				this.unfreeze()
+				this.unfreeze(null)
 			}
 		}
 
@@ -85,27 +193,7 @@ class Ghost extends Phaser.GameObjects.Image {
 			}
 		}
 	}
-
-	frozenTimeRemaining() {
-		var currentTime = new Date();
-		var timeSinceFrozen = currentTime - this.frozenAt;
-		if(timeSinceFrozen >= 5000) {
-			return 0;
-		} else {
-			return 5000 - timeSinceFrozen;	
-		}
-	}
-
-	lanceTimeRemaining() {
-		var currentTime = new Date();
-		var timeSinceLanced = currentTime - this.lancedAt;
-		if(timeSinceLanced >= 9000) {
-			return 0;
-		} else {
-			return 9000 - timeSinceLanced;	
-		}
-	}
-
+	
 	moveGhost() {		
 		var currentTime = new Date();
 		var timeSinceSpawn = currentTime - this.spawnTime;
@@ -127,81 +215,11 @@ class Ghost extends Phaser.GameObjects.Image {
 		}		
 	}
 
-	applySpiritStrike() {
-		// 638 - 862
-		this.applyDamage(638, 862);
-		this.spiritStrike_Impact.play();
-	}
-
-	applySpiritLance() {
-		// 6175 - 6825
-		this.applyDamage(6175, 6825);
-		if(this.lanceStacks < 3) { // Max 3 stacks
-			this.lanceStacks += 1;
-			this.currentSpeed -= (0.3 * this.maxSpeed);
-		}
-		this.lancedAt = new Date(); // Refresh debuff duration
-
-		// Apply lance colouration
-		this.tintTopLeft = this.blueTint;
-		this.tintTopRight = this.blueTint;
-		this.tintBottomLeft = this.blueTint;
-		this.tintBottomRight = this.blueTint;
-
-		this.spiritLance_Impact.play();
-	}
-
-	applySpiritChains() {
-		// 1900 - 2100
-		this.applyDamage(1900, 2100);
-		this.frozen = true;
-		this.frozenAt = new Date();
-		this.spiritChains_Impact.play();
-	}
-
-	applySpiritVolley() {
-		// 9900 - 12100
-		this.applyDamage(9900, 12100);
-		this.spiritVolley_Impact.play();
-	}
-
-	applyDamage(minDamage, maxDamage) {
-		this.unfreeze() // Any damage removes frozen
-
-		var damage = ((maxDamage - minDamage) / 2) + minDamage; // Average
-		if(damage >= this.currentHP) {
-			this.currentHP = 0;
-			this.die();
-		} else {
-			this.currentHP -= damage;
-		}
-	}
-
-	die() {
-		this.alive = false;
-		//this.visible = false;
-		this.deathSound.play({
-			delay: 0.1
-		});
-
-		var ghost = this;
-		this.scene.tweens.add({
-			targets: this,
-			alpha: 0,
-			duration: 300,
-			ease: 'Power2',
-			onComplete: function () { ghost.visible = false; }
-		});
-	}
-
-	unfreeze() {
-		this.frozen = false;
-	}
-
-	stopMoving() {
-		this.body.setVelocityX(0);
-		this.body.setVelocityY(0);
-	}
+	td=0;
+	v=0;
+	l=0;
+	c=0;
+	s=0;
 
 	/* END-USER-CODE */
 }

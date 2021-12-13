@@ -190,6 +190,8 @@ class AbilityBar extends Phaser.GameObjects.Container {
 	spiritVolley_MouseIsOver;
 	spiritShield_MouseIsOver;
 
+	g=0;
+
 	create() {
 		this.initClickHandlers();
 	}
@@ -480,6 +482,7 @@ class AbilityBar extends Phaser.GameObjects.Container {
 
 	setGCD() {
 		this.last_GCD_time = new Date();
+		this.g+=1;
 	}
 
 	setAbilityText(text) {

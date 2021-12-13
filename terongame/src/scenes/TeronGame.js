@@ -652,6 +652,7 @@ class TeronGame extends Phaser.Scene {
 
 	gameStartTime;
 	ghostSpawnTime;
+	wd;
 
 	// Cheats
 	cheatKeys;
@@ -681,6 +682,7 @@ class TeronGame extends Phaser.Scene {
 		this.cheat1Enabled = false;
 		this.cheat2Enabled = false;
 		this.ghostSpawnOffset = 20;
+		this.wd = 0;
 
 		if(this.blackTempleMusic != null && this.blackTempleMusic.isPlaying) {
 			// May still be playing due to restart
@@ -821,6 +823,18 @@ class TeronGame extends Phaser.Scene {
 		this.randomSounds = [this.teron_Special1, this.teron_Special2, this.teron_deathCoil, this.teron_DeathAndDecay];
 	}
 
+	stopRandomSounds() {
+		this.randomSounds.forEach(sound => !sound.isPlaying || sound.stop());
+		if(this.gameisWon() && !this.cheat1Enabled && !this.cheat2Enabled) {
+			var l = this;
+			gtag("event", "post_score", {
+				score: this.wd,
+				level: l.calcGC(),
+				character: this.ghosts.reduce((p, g) => p + l.calcGS(g), "")
+			});
+		}
+	}
+
 	initFreezeIndicators() {
 		// Rotate them to be diamonds instead of squares
 		this.freeze_ghost_1.angle = 45;
@@ -858,6 +872,18 @@ class TeronGame extends Phaser.Scene {
 			f: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F, true),
 			a: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A, true)
 		};
+	}
+
+	calcGC() {
+		var ngc = this.abilityBar.g - 1;		
+		ngc = ngc <= 0 ? 1 : ngc;
+		return Math.round((this.getDuration() * 1000) / ngc);
+	}
+
+	calcGS(g) {
+		var gs =  "S" + g.s + "L" + g.l + "C" + g.c + "V" + g.v + "TD" + g.td + ",";
+		console.log(gs);
+		return gs;
 	}
 
 	initClickInput() {
@@ -1071,16 +1097,23 @@ class TeronGame extends Phaser.Scene {
 	}
 
 	checkGameEnded() {
-		if(this.ghosts.every(ghost => ghost.alive === false)) {
+		if(this.gameisWon()) {
 			this.winGame();
-		} else {
-			if(!this.cheat1Enabled) {
-				var bossLocation = new Phaser.Geom.Point(300, 150);
+		} else if(this.gameIsLost()) {
+			this.loseGame();
+		}
+	}
 
-				if(this.ghosts.some(ghost => ghost.alive && Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20)) {
-					this.loseGame();
-				}
-			}
+	gameisWon() {
+		return this.ghosts.every(ghost => ghost.alive === false);
+	}
+
+	gameIsLost() {
+		if(!this.cheat1Enabled) {
+			var bossLocation = new Phaser.Geom.Point(300, 150);
+			return this.ghosts.some(ghost => ghost.alive && Phaser.Math.Distance.BetweenPoints(ghost, bossLocation) < 20);
+		} else {
+			return false;
 		}
 	}
 
@@ -1090,14 +1123,14 @@ class TeronGame extends Phaser.Scene {
 		this.firstAttempt = false;
 		this.player.stopMoving();
 
-		var winDuration = this.getWinDuration();
+		this.wd = this.getDuration();
 
 		this.stopRandomSounds();
 		this.teronDeathSound.play({
 			delay: 1.3
 		});
 
-		this.winOverlay.setWinDuration(winDuration, this.cheat1Enabled || this.cheat2Enabled);
+		this.winOverlay.setWinDuration(this.wd, this.cheat1Enabled || this.cheat2Enabled);
 		this.winOverlay.visible = true;
 		this.winOverlay.alpha = 0;
 		this.tweens.add({
@@ -1140,25 +1173,15 @@ class TeronGame extends Phaser.Scene {
 		});
 	}
 
-	getWinDuration() {
+	getDuration() {
 		var currentTime = new Date();
 		var secondsElapsed = (currentTime - this.ghostSpawnTime) / 1000;
-
-		gtag("event", "post_score", {
-			score: secondsElapsed,
-			level: 1,
-			character: "Player"
-		});
 
 		return secondsElapsed;
 	}
 
 	stopGhosts() {
 		this.ghosts.forEach(ghost => ghost.stopMoving());		
-	}
-
-	stopRandomSounds() {
-		this.randomSounds.forEach(sound => !sound.isPlaying || sound.stop());
 	}
 
 	playRandomSound() {
