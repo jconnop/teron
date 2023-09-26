@@ -100,7 +100,7 @@ class WinOverlay extends Phaser.GameObjects.Container {
 
 		this.joinValhallaButton.on('pointerdown', function(pointer) {
 
-			var url = 'https://www.reddit.com/r/Arugal/comments/109iuob/h_valhalla_recruiting_magewarlock_or_other/';
+			var url = 'https://discord.gg/valhallaguild';
 
 			var s = window.open(url, '_blank');
 
